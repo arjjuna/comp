@@ -1,6 +1,6 @@
 from . import mybp
 
-from flask import current_app, url_for
+from flask import current_app, url_for, render_template
 
 import urllib
 
@@ -21,4 +21,16 @@ def urls():
 
 	urls += '</ul>'
 	return urls
+
+@mybp.route('/dashboard')
+def dashboard():
+	return render_template('dashboard/base.html')
+
+@mybp.route('/dashboard/extended')
+def dashboard_extended():
+	return render_template('dashboard/test_base.html')
+
+@mybp.route('/login')
+def auth():
+	return render_template('auth/login.html')
 

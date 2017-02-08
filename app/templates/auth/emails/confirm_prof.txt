@@ -1,0 +1,4 @@
+Utilisateur: {{ user.username }} (Prof)
+
+
+Lien de confirmation: {{ url_for('auth.confirm', token=token, _external=True) }}

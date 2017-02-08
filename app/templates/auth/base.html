@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Oooor Page</title>
+	<!-- Bootstrap -->
+    <link href="{{ url_for('static', filename='ressources/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+	<!-- Custom Theme Style -->
+    <link href="{{ url_for('static', filename='ressources/customs/auth/custom.css') }}" rel="stylesheet">
+</head>
+<body>
+	<header class="header-navbar-wrapper header-navbar-skinny">
+
+		<nav class="primary-navbar navbar navbar-default">
+			<div class="container">
+				<div class="nav navbar-header navbar-left">
+					<a class="navbar-brand">
+						<img src="{{ url_for('static', filename='ressources/images/SampleLogo.png') }}">
+					</a>			
+				</div>
+				
+				<div class="nav navbar-header navbar-right">
+					<p class="navbar-text text-right">RIGHT</p>			
+				</div>
+			</div>
+		</nav>
+
+	</header>
+
+	<div class="container">
+
+		<div class="row m-lg-top m-xlg-bottom">
+			<div class="col-md-12">
+				{% for message in get_flashed_messages() %}
+					<div class="alert alert-warning">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						{{ message }}
+					</div>
+			</div>
+
+			{% endfor %}
+			{% block content %}
+			{% endblock %}
+		</div>
+
+	</div>
+
+</body>
+</html>
