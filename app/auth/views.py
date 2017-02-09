@@ -15,6 +15,6 @@ def registration_choice():
 	return render_template('auth/registration_choice.html')
 
 @auth.route('/enregistrer/client', methods=['GET', 'POST'])
-def registration_client():
+def register_client():
 	form = ClientRegistrationForm()
 	return render_template('auth/client_registration.html', form=form)

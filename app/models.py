@@ -9,18 +9,19 @@ from werkzeug.security import generate_password_hash, check_password_hash
 class Permission:
 	"""A binary representation of permissions.
 	Can sum two permissions (example: 0b001+0b100 = 0b101)"""
-	EDIT_SELF =   0b000001
-	ADMINISTER  = 0b100000
+	EDIT_SELF  = 0b000001
+	ADMINISTER = 0b100000
 
 class Role(db.Model):
 	"""Users roles, simple user or admin (not to confuse with Client, Prof)"""
 	__tablename__ = 'roles'
-	id = db.Column(db.Integer, primary_key=True)
-	name = db.Column(db.String(64), unique=True)
-	default = db.Column(db.Boolean, default=False)
-	permissions = db.Column(db.Integer)
 
-	users = db.relationship('User', backref='role')
+	id            = db.Column(db.Integer, primary_key=True)
+	name          = db.Column(db.String(64), unique=True)
+	default       = db.Column(db.Boolean, default=False)
+	permissions   = db.Column(db.Integer)
+
+	users         = db.relationship('User', backref='role')
 
 	@staticmethod
 	def insert_roles():
@@ -56,9 +57,12 @@ class User(UserMixin, db.Model):
 	picture       = db.Column(db.String(500))
 	member_since  = db.Column(db.DateTime(), default=datetime.utcnow)
 	confirmed     = db.Column(db.Boolean, default=False)
-	last_seen = db.Column(db.DateTime(), default=datetime.utcnow)
+	last_seen     = db.Column(db.DateTime(), default=datetime.utcnow)
 	
-	role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
+	role_id       = db.Column(db.Integer, db.ForeignKey('roles.id'))
+
+	client        = db.relationship('clients', uselist='False', back_populates='user')
+	prof          = db.relationship('prof', uselist='False', back_populates='user')
 	
 	
 	#Password is proprety that can't be accessed
@@ -124,12 +128,41 @@ def load_user(user_id):
 	# User loader, requirement of the Flask-login extension
 	return User.query.get(int(user_id))
 
+class Client(db.Model):
+	"""A client user, with a one-to-one relationship to the users table"""
+	__tablename__ = 'clients'
+
+	id            = db.Column(db.Integer, primary_key=True)
+	about_me      = db.Column(db.String(250))
+
+	user_id       = db.Column(db.Integer, db.ForeignKey('users.id'))
+	user          = db.relationship("users", back_populates="client")
+
+	def __repr__(self):
+		return '<Client %s>' % self.id
+
+class Prof(db.Model):
+	"""A prof user, with a one-to-one relationship to the users table"""
+	__tablename__ = 'profs'
+
+	id            = db.Column(db.Integer, primary_key=True)
+	title         = db.Column(db.String(250))
+
+	user_id       = db.Column(db.Integer, db.ForeignKey('users.id'))
+	user          = db.relationship("users", back_populates="prof")
+
+	def __repr__(self):
+		return '<Prof %s>' % self.id
+
 class Message(db.Model):
+	"""Message model"""
 	__tablename__ = 'messages'
-	id = db.Column(db.Integer, primary_key=True)
-	text = db.Column(db.String(250))
-	timestamp = db.Column(db.DateTime(), default=datetime.utcnow)
+	id            = db.Column(db.Integer, primary_key=True)
+	text          = db.Column(db.String(250))
+	timestamp     = db.Column(db.DateTime(), default=datetime.utcnow)
 
-	from_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-	to_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+	from_id       = db.Column(db.Integer, db.ForeignKey('users.id'))
+	to_id         = db.Column(db.Integer, db.ForeignKey('users.id'))
 
+	def __repr__(self):
+		return '<Message %s>' % self.id
