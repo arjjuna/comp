@@ -4,6 +4,8 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms import ValidationError
 from wtforms.validators import Required, Length, Email, Regexp, EqualTo
 
+from ..models import User
+
 
 class LoginForm(FlaskForm):
 	email       = StringField('Email', validators=[])
@@ -16,7 +18,7 @@ class ProfRegistrationForm(FlaskForm):
 	email      = StringField('Email', validators=[Required(), Length(1,64), Email() ] )
 	username   = StringField("Nom d'utilisateur", validators=[Required(), Length(1, 64), Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0,
 																								"Ne peut contenir que des lettres, des nombre, '.' et '_' ")])
-	password   = PasswordField("Mot de passe", validators=[Required(), EqualTo('password2', message=u"Veuillez resaisir le m\xeame mot de passe" )] )
+	password   = PasswordField("Mot de passe", validators=[Required(), EqualTo('password_confirmation', message=u"Veuillez resaisir le m\xeame mot de passe" )] )
 	password_confirmation = PasswordField('Confirmer le mot de passe', validators=[Required()])
 	first_name = StringField(u'Pr\xe9nom', validators=[Required()])
 	last_name  = StringField(u'Nom', validators=[Required()])
@@ -35,7 +37,7 @@ class ClientRegistrationForm(FlaskForm):
 	email      = StringField('Email', validators=[Required(), Length(1,64), Email() ] )
 	username   = StringField("Nom d'utilisateur", validators=[Required(), Length(1, 64), Regexp('^[A-Za-z][A-Za-z0-9_.]*$', 0,
 																							"Ne peut contenir que des lettres, des nombre, '.' et '_' ")])
-	password   = PasswordField("Mot de passe", validators=[Required(), EqualTo('password2', message=u"Veuillez resaisir le m\xeame mot de passe" )] )
+	password   = PasswordField("Mot de passe", validators=[Required(), EqualTo('password_confirmation', message=u"Veuillez resaisir le m\xeame mot de passe" )] )
 	password_confirmation = PasswordField('Confirmer le mot de passe', validators=[Required()])
 	first_name = StringField(u'Pr\xe9nom', validators=[Required()])
 	last_name  = StringField(u'Nom', validators=[Required()])

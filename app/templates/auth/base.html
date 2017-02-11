@@ -36,13 +36,20 @@
 						{{ message }}
 					</div>
 			</div>
-
 			{% endfor %}
+			
+
 			{% block content %}
 			{% endblock %}
 		</div>
 
 	</div>
-
+	
+ 	<!-- jQuery -->
+    <script src="{{ url_for('static', filename='ressources/jquery/dist/jquery.min.js') }}"></script>
+    <!-- Bootstrap -->
+    <script src="{{ url_for('static', filename='ressources/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <!-- FastClick: removes click lag -->
+    <script src="{{ url_for('static', filename='ressources/fastclick/lib/fastclick.js') }}"></script>
 </body>
 </html>

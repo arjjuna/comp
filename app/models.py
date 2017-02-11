@@ -1,9 +1,12 @@
+from flask import current_app
+
 from . import db, login_manager
 
 from datetime import datetime
 
 from flask_login import UserMixin, AnonymousUserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
 
 class Permission:
@@ -61,9 +64,12 @@ class User(UserMixin, db.Model):
 	
 	role_id       = db.Column(db.Integer, db.ForeignKey('roles.id'))
 
-	client        = db.relationship('clients', uselist='False', back_populates='user')
-	prof          = db.relationship('prof', uselist='False', back_populates='user')
+	client        = db.relationship('Client', uselist=False, back_populates='user')
+	prof          = db.relationship('Prof', uselist=False, back_populates='user')
 	
+	messages_sent     = db.relationship('Message', backref='sender',   lazy='dynamic', foreign_keys='Message.from_id')
+	messages_received = db.relationship('Message', backref='receiver', lazy='dynamic', foreign_keys='Message.to_id')
+
 	
 	#Password is proprety that can't be accessed
 	@property
@@ -102,6 +108,12 @@ class User(UserMixin, db.Model):
 	def is_administrator(self):
 		# Checks  if the user is an administrator
 		return self.role.name == 'administrator'
+
+	def is_client(self):
+		return self.client != None
+
+	def is_prof(self):
+		return self.prof != None
 	
 	def __init__(self, **kwargs):
 		super(User, self).__init__(**kwargs)
@@ -111,7 +123,7 @@ class User(UserMixin, db.Model):
 			if self.role is None:
 				self.role = Role.query.filter_by(name='user').first()
 			if self.picture is None:
-				self.picture = current_app.config['APP_UPLOAD_FOLDER'] + '/' + "150x150_placeholder.png"
+				self.picture = current_app.config['APP_UPLOAD_FOLDER'] + '/' + "users/placeholder.jpg"
 	
 	def __repr__(self):
 		return '<User %r, email: %r>' % (self.username, self.email)
@@ -119,14 +131,28 @@ class User(UserMixin, db.Model):
 class AnonymousUser(AnonymousUserMixin):
 	# Anonymous user, requirement of the Flask-login extension
 	def can(self, permission):
-		return false
+		return False
 	def is_administrator(self, permission):
-		return false
+		return False
+	def is_client(self):
+		return False
+	def is_prof(self):
+		return False
+
+# Set the flask_login anonymous user to the custom one
+login_manager.anonymous_user = AnonymousUser
 
 @login_manager.user_loader
 def load_user(user_id):
 	# User loader, requirement of the Flask-login extension
 	return User.query.get(int(user_id))
+
+class MessageRestriction(Exception):
+	"""Error raised when the message sender is not allowed to contact the receiver""" 
+	def __init__(self, message, *args):
+		self.message = message
+
+		super(MessageRestriction, self).__init__(message, *args)
 
 class Client(db.Model):
 	"""A client user, with a one-to-one relationship to the users table"""
@@ -136,7 +162,14 @@ class Client(db.Model):
 	about_me      = db.Column(db.String(250))
 
 	user_id       = db.Column(db.Integer, db.ForeignKey('users.id'))
-	user          = db.relationship("users", back_populates="client")
+	user          = db.relationship("User", back_populates="client")
+
+	def send_message(self, prof, text):
+		if not prof.user.is_prof():
+			raise MessageRestriction("Client can only messages to profs")
+		message = Message(text=text, sender=self.user, receiver=prof.user)
+		db.session.add(message)
+		db.session.commit()
 
 	def __repr__(self):
 		return '<Client %s>' % self.id
@@ -149,7 +182,14 @@ class Prof(db.Model):
 	title         = db.Column(db.String(250))
 
 	user_id       = db.Column(db.Integer, db.ForeignKey('users.id'))
-	user          = db.relationship("users", back_populates="prof")
+	user          = db.relationship("User", back_populates="prof")
+
+	def send_message(self, client, text):
+		if not client.user.is_client():
+			raise MessageRestriction("Prof can only messages to clients")
+		message = Message(text=text, sender=self.user, receiver=client.user)
+		db.session.add(message)
+		db.session.commit()
 
 	def __repr__(self):
 		return '<Prof %s>' % self.id
@@ -158,7 +198,7 @@ class Message(db.Model):
 	"""Message model"""
 	__tablename__ = 'messages'
 	id            = db.Column(db.Integer, primary_key=True)
-	text          = db.Column(db.String(250))
+	text          = db.Column(db.String(2500))
 	timestamp     = db.Column(db.DateTime(), default=datetime.utcnow)
 
 	from_id       = db.Column(db.Integer, db.ForeignKey('users.id'))

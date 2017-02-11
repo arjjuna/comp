@@ -20,6 +20,10 @@ class Config(object):
 class DevelopmentConfig(Config):
 	DEBUG = True
 
+	APP_UPLOAD_FOLDER =  '/home/arjjuna/flask/compagnon/compagnon/app/static/uploads'
+	APP_STATIC_FOLDER = '/home/arjjuna/flask/compagnon/compagnon/app/static'
+	
+
 	MAIL_SERVER             = 'smtp.gmail.com'
 	MAIL_PORT               = 587
 	MAIL_USE_TLS            = True
