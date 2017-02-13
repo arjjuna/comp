@@ -7,6 +7,8 @@ from ..models import Message
 
 from ..tasks import save_message_from_dict
 
+
+
 """
 @socketio.on('join')
 def joinRoom(data):
@@ -23,7 +25,5 @@ def joinRoom(data):
 
 @socketio.on('msg_out')
 def receive_message(data):
-	save_message_from_dict(data)
+	save_message_from_dict.delay(data)
 	socketio.emit('msg_in', data, room=data['room'], broadcast=True)
-
-

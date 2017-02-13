@@ -3,8 +3,8 @@ import subprocess
 import sys
 
 
-#import eventlet
-#eventlet.monkey_patch()
+import eventlet
+eventlet.monkey_patch()
 
 from app import create_app, db, socketio
 from flask_script import Manager, Command, Shell, Server as _Server, Option
@@ -100,7 +100,7 @@ class CeleryWorker(Command):
 
 	def run(self, argv):
 		ret = subprocess.call(
-			['celery', 'worker', '-A', 'flack.celery'] + argv)
+			['celery', 'worker', '-A', 'app.celery'] + argv)
 		sys.exit(ret)
 
 

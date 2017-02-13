@@ -24,9 +24,9 @@ $(window).on('load', function(){
 	
 	
 	socket.on("connect", function(){
-		//console.log("conected, emitting 'join'")
+		console.log("conected, emitting 'join'")
 		socket.emit('join',  {room: r} );
-		//console.log("joined")
+		console.log("joined")
 	});
 	
 
@@ -46,7 +46,7 @@ $(window).on('load', function(){
 										to_id: t['id'],
 										message: htmlEntities($("#chatBox").val())
 									});
-			//console.log("Sent");
+			console.log("Sent");
 			$('#chatBox').val('');
 		}
 
@@ -54,7 +54,7 @@ $(window).on('load', function(){
 	});
 
 	socket.on("msg_in", function(data){
-		//console.log(data);
+		console.log(data);
 		if (data['from_id'] == t['id']) {
 			// The client (browser user) is the sender of the message
 			$("#messages").append('\

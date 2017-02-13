@@ -7,7 +7,7 @@ from flask_login import LoginManager
 from flask_bootstrap import Bootstrap
 from flask_mail import Mail
 from flask_socketio import SocketIO
-
+from celery import Celery
 
 
 db = SQLAlchemy()
@@ -15,6 +15,7 @@ migrate = Migrate()
 bootstrap = Bootstrap()
 mail = Mail()
 socketio = SocketIO()
+celery = Celery(__name__, broker="amqp://localhost", backend="amqp://localhost")
 
 
 login_manager = LoginManager()
@@ -27,6 +28,7 @@ login_manager.login_view = 'auth.login'
 # thats why the models import is done after the instanciation of db)
 from . import models
 from . import sockets
+from . import tasks
 
 def create_app(config_name="default"):
 	app = Flask(__name__)
@@ -39,6 +41,7 @@ def create_app(config_name="default"):
 	mail.init_app(app)
 	socketio.init_app(app)
 
+	celery.conf.update(config[config_name].CELERY_CONFIG)
 
 	#Main blueprint, public urls
 	from main import main as main_blueprint

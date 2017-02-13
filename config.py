@@ -32,10 +32,14 @@ class DevelopmentConfig(Config):
 
 	SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:' + PROJECT_DB_PASSWORD + '@localhost/dev_db_1'
 
+	CELERY_CONFIG = {}
+
 class TestingConfig(Config):
 	TESTING = True
 
 	SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:' + PROJECT_DB_PASSWORD + '@localhost/test_db_1'
+
+	CELERY_CONFIG = {'CELERY_ALWAYS_EAGER': True}
 
 
 config = {
