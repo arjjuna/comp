@@ -10,6 +10,7 @@ from ..decorators import client_required
 
 from sqlalchemy import or_
 
+
 def room_name(id1, id2):
 	if id1 > id2:
 		return str(id2) + "_" + str(id1)
@@ -25,7 +26,7 @@ def before_request():
 def index():
 	return render_template('client/index.html')
 
-# Non workin view, just shows the chat looks
+# Non workin view, just shows the chat lookss
 @client.route('/chat_looks')
 def chat_looks():
 	return render_template('client/chat_looks.html')

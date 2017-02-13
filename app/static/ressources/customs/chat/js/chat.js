@@ -11,7 +11,6 @@ function htmlEntities(str) {
     return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
-var socket
 
 $(window).on('load', function(){
 	console.log("creating socket")
@@ -19,15 +18,17 @@ $(window).on('load', function(){
 	var socket = io.connect('http://' + document.domain + ':' + location.port);
 	var x = 0;
 
-	console.log("socket created")
+	console.log("socket created");
 
 	$(".live-chat-body .scrollable").scrollTop($(".live-chat-body .scrollable")[0].scrollHeight);
 	
+	
 	socket.on("connect", function(){
-		console.log("conected, emitting 'join'")
+		//console.log("conected, emitting 'join'")
 		socket.emit('join',  {room: r} );
-		console.log("joined")
+		//console.log("joined")
 	});
+	
 
 
 	$("#chatBox").keyup(function(event){
@@ -45,7 +46,7 @@ $(window).on('load', function(){
 										to_id: t['id'],
 										message: htmlEntities($("#chatBox").val())
 									});
-			console.log("Sending");
+			//console.log("Sent");
 			$('#chatBox').val('');
 		}
 
@@ -53,7 +54,7 @@ $(window).on('load', function(){
 	});
 
 	socket.on("msg_in", function(data){
-		console.log(data);
+		//console.log(data);
 		if (data['from_id'] == t['id']) {
 			// The client (browser user) is the sender of the message
 			$("#messages").append('\
@@ -64,7 +65,7 @@ $(window).on('load', function(){
                   </div> \
                   <div class="name">' + f['name'] + '</div> \
                   <div class="text"> ' + data["message"] + ' </div> \
-                  <div class="time">5 min ago</div> \
+                  <div class="time"></div> \
                 </div> \
 				');
 		}
@@ -78,7 +79,7 @@ $(window).on('load', function(){
 						</div> \
 						<div class="name">' + f['name'] + '</div> \
 						<div class="text"> ' + data["message"] + ' </div> \
-						<div class="time">5 min ago</div> \
+						<div class="time"></div> \
 					</div> \
 					');
 		}

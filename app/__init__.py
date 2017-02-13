@@ -9,6 +9,7 @@ from flask_mail import Mail
 from flask_socketio import SocketIO
 
 
+
 db = SQLAlchemy()
 migrate = Migrate()
 bootstrap = Bootstrap()

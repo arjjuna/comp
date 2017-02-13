@@ -61,7 +61,6 @@
  
     <div class="answer-add">
       <input id="chatBox" placeholder="Write a message">
-      <span class="answer-btn answer-btn-1"></span>
       <span id="sendButton" class="answer-btn answer-btn-2"></span>
     </div> 
 
@@ -264,8 +263,9 @@
     var t = {id: "{{ _to.id }}", name: "{{ _to.first_name}} {{ _to.last_name}}"}
     var r = "{{ room_name }}";
   </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.js"></script>
   <script src="{{ url_for('static', filename='ressources/customs/chat/js/chat.js') }}"></script>
   <script src="{{ url_for('static', filename='ressources/moment/min/moment.min.js') }}"></script>
   <!--script src="{{ url_for('static', filename='ressources/socket.io-client/dist/socket.io.js') }}"></script-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.2/socket.io.js"></script>
+
 {% endblock %}

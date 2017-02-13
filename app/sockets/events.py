@@ -18,15 +18,12 @@ def joinRoom(data):
 
 @socketio.on('join')
 def joinRoom(data):
-	print "############ ONE IN"
 	join_room(data['room'])
+
 
 @socketio.on('msg_out')
 def receive_message(data):
-	print "saving message"
 	save_message_from_dict(data)
-	print "saved"
-	socketio.emit('msg_in', data, room=data['room'])
-
+	socketio.emit('msg_in', data, room=data['room'], broadcast=True)
 
 
