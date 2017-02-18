@@ -1,55 +1,59 @@
 {% extends 'auth/base.html' %}
 
+{% block styles %}
+{{ super() }}
+	    <link href="{{ url_for('static', filename='ressources/customs/auth/choice.css') }}" rel="stylesheet">
+
+{% endblock %}
+
 {% block content %}
 
 <div class="col-md-12 m-lg-bottom">
 	<hgroup class="text-center">
-		<h1 class="m-xs-top-bottom">Hell world!</h1>
-		<h1 class="m-xs-top-bottom">A slightly larger title in here</h1>
+		<h1 class="m-xs-top-bottom">Bienvenue!</h1>
+		<h1 class="m-xs-top-bottom">Quel type de compte voulez vou ouvrir?</h1>
 	</hgroup>
 </div>
 
-<div class="col-md-12 m-lg-bottom hidden-xs-down">
-	
-</div>
+<div class="col-md-12 m-lg-bottom hidden-xs-down"></div>
 
 <div class="col-md-12 text-center">
 
 	<div class="col-md-5 text-center user-choice">
 		<div class="text-muted">
-			<div>
-				<i class="glyphicon user-choice-icon glyphicon-user"></i>
+			<div class="user-choice-icon">
+				<img src="{{url_for('static', filename='ressources/images/icons/student.png')}}">
 			</div>
 			<div class="user-choice-text">
-				Some text right here baby!
+				Ouvrir un compte client
 			</div>
 		</div>
 		<p class="m-lg-bottom">
-			Find something
+			Vous-êtes un étudiant,
 			<br>
-			Do something
+			ou un parent?
 		</p>
-		<a class="btn btn-primary register-btn" href="#">Click</a>
+		<a class="btn btn-primary register-btn" href="#">Continuer</a>
 	</div>
 
 	<div class="col-md-2 text-center or-divider">OU</div>
 
 	<div class="col-md-5 text-center user-choice">
 		<div class="text-muted">
-			<div>
-				<i class="glyphicon user-choice-icon glyphicon-user"></i>
+			<div class="user-choice-icon">
+				<img src="{{url_for('static', filename='ressources/images/icons/teacher2.png')}}">
 			</div>
 			<div class="user-choice-text">
-				Some text right here baby!
+				Ouvrir un compt prof
 			</div>
 		</div>
 		<p class="m-lg-bottom">
-			Find something
+			Vous êtes un prof,
 			<br>
-			Do something
+			voulez vous enseigner?
 		</p>
-		<a class="btn btn-primary register-btn" href="#">Click</a>
-	</div>
+		<a class="btn btn-primary register-btn" href="#">Continuer</a>
+	</div> <!-- div 1 -->
 	
-</div>
+</div> <!-- div 2 -->
 {% endblock %}

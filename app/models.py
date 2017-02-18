@@ -114,6 +114,9 @@ class User(UserMixin, db.Model):
 
 	def is_prof(self):
 		return self.prof != None
+
+	def is_anonymous(self):
+		return False
 	
 	def __init__(self, **kwargs):
 		super(User, self).__init__(**kwargs)
@@ -138,6 +141,8 @@ class AnonymousUser(AnonymousUserMixin):
 		return False
 	def is_prof(self):
 		return False
+	def is_anonymous(self):
+		return True
 
 # Set the flask_login anonymous user to the custom one
 login_manager.anonymous_user = AnonymousUser

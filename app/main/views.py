@@ -1,8 +1,14 @@
 from . import main
 
-from flask import current_app, url_for
+from flask import abort, flash, url_for, render_template, redirect, request, current_app
+from flask_login import current_user
 
 
 @main.route('/')
 def index():
-	return "Index Page"
+	if current_user.is_anonymous():
+		return render_template('main/index.html')
+	elif current_user.is_client():
+		return redirect(url_for('client.index'))
+	elif current_user.is_prof():
+		return redirect(url_for('prof.index'))

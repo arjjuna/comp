@@ -10,6 +10,8 @@ from ..decorators import client_required
 
 from sqlalchemy import or_
 
+from ..utils import latest_messages_by_sender
+
 
 def room_name(id1, id2):
 	if id1 > id2:
@@ -24,9 +26,11 @@ def before_request():
 
 @client.route('/')
 def index():
-	return render_template('client/index.html')
+	latest_messages = latest_messages_by_sender(current_user, 4)
 
-# Non workin view, just shows the chat lookss
+	return render_template('client/nindex.html')
+
+# Non workin view, just shows the chat looks
 @client.route('/chat_looks')
 def chat_looks():
 	return render_template('client/chat_looks.html')

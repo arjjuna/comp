@@ -40,8 +40,8 @@
                 <img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
-                <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <span>Bienvenue,</span>
+                <h2>{{ current_user.first_name }} {{ current_user.last_name }}</h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -50,7 +50,7 @@
 
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section">
+              <div class="menu_section first_menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
@@ -192,7 +192,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}" alt="">John Doe
+                    <img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}" alt="">{{ current_user.first_name }} {{ current_user.last_name }}
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -204,7 +204,7 @@
                       </a>
                     </li>
                     <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="{{ url_for('auth.logout') }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
 
@@ -214,58 +214,26 @@
                     <span class="badge bg-green">6</span>
                   </a>
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <a>
-                        <span class="image"><img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
+                    {% for (p, m) in latest_messages %}
+                      <li>
+                        <a>
+                          <span class="image"><img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}" alt="Profile Image" /></span>
+                          <span>
+                            <span>{{ p.first_name }} {{ p.last_name }}</span>
+                            <span class="time" data-time="{{ m.timestamp }}"></span>
+                          </span>
+                          <span class="message">
+                            {{ m.text }}
+                          </span>
+                        </a>
+                      </li>
+                    {% endfor %}
+
+
                     <li>
                       <div class="text-center">
-                        <a>
-                          <strong>See All Alerts</strong>
+                        <a href="{{ url_for('client.chat_looks') }}">
+                          <strong>Tout les messages</strong>
                           <i class="fa fa-angle-right"></i>
                         </a>
                       </div>
@@ -321,6 +289,20 @@
   
     <!-- Custom Theme Scripts -->
     <script src="{{ url_for('static', filename='ressources/customs/dashboard/custom.js') }}"></script>
+    
+    <!-- Moment.js -->
+    <script src="{{ url_for('static', filename='ressources/moment/min/moment.min.js') }}"></script>
+
+    <script>
+      $(document).ready(function(){
+        $(".time").each(function(){
+          $(this).html(
+            moment($(this).data("time")).fromNow()
+          );
+        });
+      });
+
+    </script>
 
     {% block scripts %}
     {% endblock %}
