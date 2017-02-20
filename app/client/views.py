@@ -27,8 +27,33 @@ def before_request():
 @client.route('/')
 def index():
 	latest_messages = latest_messages_by_sender(current_user, 4)
+	user = {
+		'full_name': current_user.first_name + " " + current_user.last_name,
+		'first_name': current_user.first_name,
+		'last_name': current_user.last_name,
+	}
+	return render_template('client/nindex.html', user=user)
 
-	return render_template('client/nindex.html')
+@client.route('/search')
+def search():
+	latest_messages = latest_messages_by_sender(current_user, 4)
+	user = {
+		'full_name': current_user.first_name + " " + current_user.last_name,
+		'first_name': current_user.first_name,
+		'last_name': current_user.last_name,
+	}
+	return render_template('client/nsearch.html', user=user)
+
+@client.route('/prof')
+def aprof():
+	latest_messages = latest_messages_by_sender(current_user, 4)
+	user = {
+		'full_name': current_user.first_name + " " + current_user.last_name,
+		'first_name': current_user.first_name,
+		'last_name': current_user.last_name,
+	}
+	return render_template('client/naprof.html', user=user)
+
 
 # Non workin view, just shows the chat looks
 @client.route('/chat_looks')

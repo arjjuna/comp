@@ -4,8 +4,14 @@
 	<title>Oooor Page</title>
 	<!-- Bootstrap -->
     <link href="{{ url_for('static', filename='ressources/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{{ url_for('static', filename='ressources/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+	
 	<!-- Custom Theme Style -->
     <link href="{{ url_for('static', filename='ressources/customs/client/custom.css') }}" rel="stylesheet">
+	
+    <!--link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"--> 
+
 
     {% block styles %}
     {% endblock %}
@@ -22,7 +28,119 @@
 				</div>
 				
 				<div class="nav navbar-header navbar-right">
-					<p class="navbar-text text-right">Déjà membre? <a href="{{ url_for('auth.registration_choice') }}">Connectez vous</a></p>			
+					<div class="right-wrapper">
+						<div class="notification-icon desktop-only">
+							<div class="notification-number">2</div>
+							<i class="fa fa-bell-o" aria-hidden="true"></i>
+						</div>
+						<div class="notification-icon mobile-only">
+							<a href="foo">
+								<div class="notification-number">2</div>
+								<i class="fa fa-bell-o" aria-hidden="true"></i>
+							</a>
+						</div>
+						<div class="notification-list hidden">
+							<ul>
+								<li>
+									<img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}">
+									<div class="middle-wrapper">
+										<div class="notification-text"> Message 1, when it is too long what should be done bro, come on give me an answer brooo</div>
+									</div>
+									<div class="notification-time"> Monday </div>
+								</li>
+								<li>
+									<img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}">
+									<div class="middle-wrapper">
+										<div class="notification-text"> Message 1, when it is too long what should be done bro, come on give me an answer brooo</div>
+									</div>
+									<div class="notification-time"> Monday </div>
+								</li>
+								
+							</ul>
+							<div class="text-center see-more">
+								<a href="#">Voir plus</a>
+							</div>
+
+						</div>
+
+						<div class="message-icon desktop-only">
+							<div class="unread-number">3</div>
+							<i class="fa fa-comment-o" aria-hidden="true"></i>
+						</div>
+						<div class="message-icon mobile-only">
+							<a href="foo">
+								<div class="unread-number">3</div>
+								<i class="fa fa-comment-o" aria-hidden="true"></i>
+							</a>
+						</div>
+						<div class="message-list hidden">
+
+							<ul>
+								<li>
+									<img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}">
+									<div class="middle-wrapper">
+										<div class="message-sender"> Med Tiw </div>
+										<div class="message-prev"> Message 1, when it is too long what should be done bro, come on give me an answer brooo</div>
+									</div>
+									<div class="message-time"> Monday </div>
+								</li>
+								<li>
+									<img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}">
+									<div class="middle-wrapper">
+										<div class="message-sender"> Med Tiw </div>
+										<div class="message-prev"> Message 1, when it is too long what should be done bro, come on give me an answer brooo</div>
+									</div>
+									<div class="message-time"> Monday </div>
+
+								</li>
+							</ul>
+							<div class="text-center see-more">
+								<a href="#">Voir plus</a>
+							</div>
+
+						</div>
+						<div class="name-wrapper desktop-only">
+							<div class="user-icon">
+								<i class="fa fa-user-o user-icon" aria-hidden="true"></i>
+							</div>
+							<div class="name-menu">
+								<p class="navbar-text-right text-right name">
+										{{ user['full_name'] }} 
+									<i class="fa fa-angle-double-down" aria-hidden="true"></i>
+								</p>
+							</div>
+						</div>
+						<div class="name-wrapper mobile-only">
+							<div class="user-icon">
+								<i class="fa fa-user-o user-icon" aria-hidden="true"></i>
+							</div>
+							<div class="name-menu">
+								<p class="navbar-text-right text-right name">
+										{{ user['full_name'] }} 
+									<i class="fa fa-angle-double-down" aria-hidden="true"></i>
+								</p>
+							</div>
+						</div>
+						<div class="profile-list hidden">
+							<ul>
+								<li>
+									<img src="{{ url_for('static', filename='ressources/images/icons/user.png') }}">
+									Profile
+								</li>
+								<li>
+									<img src="{{ url_for('static', filename='ressources/images/icons/settings.png') }}">
+									Préférences
+								</li>
+								<li>
+									<img src="{{ url_for('static', filename='ressources/images/icons/logout.png') }}">
+									Déconnexion
+								</li>
+								
+							</ul>
+						</div>
+
+
+					</div>		
 				</div>
 			</div>
 		</nav>
@@ -31,7 +149,7 @@
 
 	<div class="container"> <!-- opening container -->
 
-		<div class="row m-lg-top m-xlg-bottom">
+		<div class="row m-md-top m-lg-bottom">
 			<div class="col-md-12">
 				{% for message in get_flashed_messages() %}
 					<div class="alert alert-warning">
@@ -41,9 +159,10 @@
 			{% endfor %}
 			</div>
 			
-
-			{% block content %}
-			{% endblock %}
+			<div class="col-md-12">
+				{% block content %}
+				{% endblock %}
+			</div>
 		</div> <!-- div 3 -->
 
 	</div> <!-- close container -->
@@ -68,6 +187,11 @@
     <!-- Bootstrap -->
     <script src="{{ url_for('static', filename='ressources/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <!-- FastClick: removes click lag -->
-    <script src="{{ url_for('static', filename='ressources/fastclick/lib/fastclick.js') }}"></script>
+    <script src="{{ url_for('static', filename='ressources/fastclick/lib/fastclick.js') }}"></script>    
+
+	{% block scripts %}
+	{% endblock %}
+	<!-- Custom jsg -->
+    <script src="{{ url_for('static', filename='ressources/customs/client/custom.js') }}"></script>
 </body>
 </html>
