@@ -1,0 +1,248 @@
+{% extends 'client/nbase.html' %}
+
+{% block styles %}
+{{ super() }}
+<!-- Select2 -->
+<link href="{{ url_for('static', filename='ressources/select2/dist/css/select2.min.css') }}" rel="stylesheet">
+
+<!--  -->
+<link href="{{ url_for('static', filename='ressources/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+
+<!-- ion.rangeSlider -->
+<link href="{{ url_for('static', filename='ressources/ion.rangeSlider/css/ion.rangeSlider.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='ressources/ion.rangeSlider/css/ion.rangeSlider.skinHTML5.css') }}" rel="stylesheet">
+
+<link href="{{ url_for('static', filename='ressources/customs/client/css/booking.css') }}" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-12 main-title">
+    <h1>Demande de réservation:</h1>
+  </div>
+  <div class="main-tile booking-tile col-md-12 tile">
+    <div class="row top-row ">
+      <div class="col-md-3 col-sm-4 col-xs-12 profile-img-col">
+        <div class="profile-img">
+          <img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}">
+        </div>
+
+        <div class="rating text-center">
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star-o" ></i>
+              <br><span>(12 avis)</span>
+              <div class="prof-name">Mohammed tiw
+              <br><span class="age-city"> 24, rabat</span></div>
+        </div>
+      </div>
+      <div class="col-md-9 col-sm-8 col-xs-12">
+        <div class="row options-row">
+
+          <div class="col-md-12 datetimepicker-col option-col">
+              <div class="title">Date et heure: <span class="moment" value=""></span></div>
+              <div style="overflow:hidden;">
+                  <div class="form-group">
+                      <div class="row">
+                          <div class="col-md-12">
+                              <div id="datetimepicker"></div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <div class="col-md-12 option-col" >
+            <div class="row price-row">
+              <div class="col-md-6"> 
+                <div class="title">Prix convennu:  <span id="price-val"></span> <span>dh/h</span></div>
+              </div>
+              <div class="col-md-6">
+                <input type="text" id="price-range" value="" name="range" />
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 option-col" >
+            <div class="row hours-row">
+              <div class="col-md-8"> 
+                <div class="title">Nombre d'heures:  
+                  <i class="fa fa-plus-circle plus" aria-hidden="true"></i>
+                  <span id="hours">2</span>
+                  <i class="fa fa-minus-circle minus" aria-hidden="true"></i>
+                </div>
+              </div>
+              <div class="col-md-4"> 
+                <div class="title">(Total: <span id="total-price"></span> dh)</div>
+              </div>              
+            </div>
+          </div>
+
+          <div class="col-md-12 option-col" >
+            <div class="row subject-row">
+              <div class="col-md-6 col-sm-5 col-xs-6"> 
+                <div class="title">Matière:  
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-7 col-xs-6"> 
+                 <div class="subject-select">
+                  <select id="subject-select">
+                    <option value="volvo">Volvo</option>
+                    <option value="saab">Saab</option>
+                    <option value="mercedes">Mercedes</option>
+                    <option value="audi">Audi</option>
+                  </select> 
+                 </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 option-col message-col" >
+            <div class="row message-row">
+              <div class="col-md-12">
+                <textarea id="feedback-message" class="form-control" rows="4" placeholder="Laisser un Message:"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-12 option-col validation-col" >
+            <div class="row validation-row">
+              <div class="col-md-12 mybtn-col">
+                <div id="book-btn" class="mybtn">Envoyer la demande</div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- Main tile -->
+
+</div> <!-- row -->
+
+
+		
+
+		
+
+		
+{% endblock %}
+
+
+
+{% block scripts %}
+{{ super() }}
+<!-- Select2 -->
+<script src="{{ url_for('static', filename='ressources/select2/dist/js/select2.min.js') }}"></script>
+<script src="{{ url_for('static', filename='ressources/ion.rangeSlider/js/ion.rangeSlider.min.js') }}"></script>
+<script src="{{ url_for('static', filename='ressources/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+
+
+
+
+<!-- Select2 -->
+<script>
+  $(document).ready(function() {
+    $(".select2_single").select2({
+      placeholder: "Select a state",
+      allowClear: true
+    });
+    $(".select2_group").select2({});
+    $(".select2_multiple").select2({
+      maximumSelectionLength: 4,
+      placeholder: "With Max Selection limit 4",
+      allowClear: true
+    });
+  });
+</script>
+<!-- /Select2 -->
+
+
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker').datetimepicker({
+            inline: true,
+            sideBySide: true,
+            minDate : moment(),
+        });
+    });
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+  function updateTotal() {
+    total = parseInt($('#hours').text())*parseInt($('#price-val').text());
+    $("#total-price").text(total);
+  }
+
+  $("#price-range").ionRangeSlider({
+          hide_min_max: true,
+          keyboard: true,
+          min: 50,
+          max: 1000,
+          from: 200,
+          step: 10,
+          grid: true,
+          hide_min_max: true,
+          hide_from_to: true,
+
+          onStart: function (data) {
+             $("#price-val").text(data.from);
+             updateTotal();
+
+           },
+          onChange: function (data) {
+             $("#price-val").text(data.from);
+             updateTotal();
+
+           }
+        });
+
+
+  $('.option-col .hours-row i.plus').on('click', function(){
+    current_val = parseInt($('#hours').text())
+    if (current_val < 10) {
+      $('#hours').text(current_val + 1);
+
+      updateTotal()
+    }
+  });
+  
+  $('.option-col .hours-row i.minus').on('click', function(){
+    current_val = parseInt($('#hours').text())
+    if (current_val > 1) {
+      $('#hours').text(current_val - 1);
+
+      updateTotal();
+    }
+  });
+
+  $('#subject-select').select2();
+
+ });
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".datetimepicker-col .title span.moment").text(moment($("#datetimepicker").data("DateTimePicker").date()).format('LLL'));
+  $('#datetimepicker').on("dp.change", function() {
+  $(".datetimepicker-col .title span.moment").text(moment($("#datetimepicker").data("DateTimePicker").date()).format('LLL'));
+    });
+});
+</script>
+
+
+
+<script src="{{ url_for('static', filename='ressources/customs/client/js/booking.js') }}"></script>
+
+{% endblock %}

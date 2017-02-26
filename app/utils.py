@@ -1,5 +1,7 @@
 from models import User, Client, Prof, Message
 
+from sqlalchemy import and_, or_
+
 # These functions are not fully tested
 
 def latest_message(message_list):
@@ -13,8 +15,9 @@ def message_senders(message_list):
 	""" Returns a list of senders from a message list """
 	return list(set([m.sender for m in message_list]))
 
-def messages_from_sender(message_list, sender):
-	return [m for m in message_list if (m.sender == sender)]
+
+
+
 
 def latest_messages_by_sender(User, n=0):
 	all_received = User.messages_received
@@ -28,3 +31,12 @@ def latest_messages_by_sender(User, n=0):
 		return latest_by_sender[:n]
 	else:
 		return latest_by_sender
+
+
+def conversation_query(user1, user2):
+	conversation = Message.query.filter(or_(
+								and_(Message.sender == user1, Message.receiver == user2),
+								and_(Message.sender == user2, Message.receiver == user1)
+										))
+
+	return conversation.order_by(Message.timestamp.desc())

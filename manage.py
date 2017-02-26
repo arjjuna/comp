@@ -10,7 +10,8 @@ from app import create_app, db, socketio
 from flask_script import Manager, Command, Shell, Server as _Server, Option
 from flask_migrate import MigrateCommand
 
-from app.models import Role, User, Prof, Client, Message
+from app.models import Role, User, Prof, Client, Message, Subject
+
 
 #The manager from flask_script can take a factory function as an argument,
 # the manager method run() creats an app and runs it
@@ -80,7 +81,8 @@ manager.add_command("db", MigrateCommand)
 
 
 def shell_context_maker():
-	return dict(db=db, Role=Role, User=User, Prof=Prof, Client=Client, Message=Message)
+	return dict(db=db, Role=Role, User=User, Prof=Prof, Client=Client, Message=Message,
+				Subject=Subject)
 
 manager.add_command("shell", Shell(make_context = shell_context_maker)) 
 

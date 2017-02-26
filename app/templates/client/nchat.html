@@ -1,0 +1,154 @@
+{% extends 'client/nbase.html' %}
+
+{% block styles %}
+{{ super() }}
+<link href="{{ url_for('static', filename='ressources/starrr/dist/starrr.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='ressources/customs/chat/css/nchat.css') }}" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class=" col-md-3 col-sm-4 contacts-tile desktop-only">
+	{% for m in latest_messages %}
+		<div class="one-contact" >
+			<div class="contact-img ">
+				<img src="{{ url_for('static', filename=m.who.picture) }} ">
+			</div>
+			<div class="contact-info">
+				<div class="name">{{ m.who.first_name }} {{ m.who.last_name }}</div>
+				<div class="last-message">
+					{% if m.type=="sent" %}
+							<i class="fa fa-arrow-left" aria-hidden="true"></i>
+					{% elif m.type=="received" %} 
+							<i class="fa fa-arrow-right" aria-hidden="true"></i>
+					{% endif %}
+
+					{{ m.message_obj.text }}</div>
+				<div class="message-time" data-time="{{ m.message_obj.timestamp }}"></div>
+			</div>
+		</div>
+	{% endfor %}
+
+		<div class="one-contact" >
+			<div class="contact-img ">
+				<img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}">
+			</div>
+			<div class="contact-info">
+				<div class="name">Mohammed tiw ssousi alaoui</div>
+				<div class="last-message">Hello sat bikhir hani kidayr roujoula amiine lahy7afdekani kidayr roujoula amiine lahy7afdek</div>
+				<div class="time">17:30</div>
+			</div>
+		</div>
+	</div>	
+
+	<div class=" col-md-9 col-sm-8 chat-tile">
+		<div class="messages-row-wrapper">
+			<div class="row messages-row">
+
+				<div class="left-message message">
+					<div class="image">
+						<div class="image-container">
+							<img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}">
+						</div>
+						<div class="status-color online"></div>
+					</div>
+					<div class="message-text">
+						foo <br> left <br> left <br> left <br> left 
+					</div>
+				</div>
+				<div class="left-message message">
+					<div class="image">
+						<div class="image-container">
+							<img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}">
+						</div>
+						<div class="status-color online"></div>
+					</div>
+					<div class="message-text">
+						Linda has done an incredible job editing my large project. Easy to communicate with and very responsive. She really did a great job listening to what I wanted and did an excellent job executing the direction given. On time, under budget and a absolute pleasure to work with. I highly recommend Linda to anyone considering her for a projec
+					</div>
+				</div>
+
+				<div class="right-message message">
+					<div class="image">
+						<div class="image-container">
+							<img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}">
+						</div>
+						<div class="status-color online"></div>
+					</div>
+					<div class="message-text">
+						right
+					</div>
+				</div>
+
+				<div class="left-message message">
+					<div class="image">
+						<div class="image-container">
+							<img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}">
+						</div>
+						<div class="status-color online"></div>
+					</div>
+					<div class="message-text">
+						Linda has done an incredible job editing my large project. Easy to communicate with and very responsive. She really did a great job listening to what I wanted and did an excellent job executing the direction given. On time, under budget and a absolute pleasure to work with. I highly recommend Linda to anyone considering her for a projec
+					</div>
+				</div>
+				<div class="left-message message">
+					<div class="image">
+						<div class="image-container">
+							<img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}">
+						</div>
+						<div class="status-color online"></div>
+					</div>
+					<div class="message-text">
+						Linda has done an incredible job editing my large project. Easy to communicate with and very responsive. She really did a great job listening to what I wanted and did an excellent job executing the direction given. On time, under budget and a absolute pleasure to work with. I highly recommend Linda to anyone considering her for a projec
+					</div>
+				</div>
+
+				<div class="right-message message">
+					<div class="image">
+						<div class="image-container">
+							<img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}">
+						</div>
+						<div class="status-color offline"></div>
+					</div>
+					<div class="message-text">
+						Linda has done an incredible job editing my large project. Easy to communicate with and very responsive. She really did a great job listening to what I wanted and did an excellent job executing the direction given. On time, under budget and a absolute pleasure to work with. I highly recommend Linda to anyone considering her for a projec
+					</div>
+				</div>
+			</div>
+		</div>
+
+			<div class="row type-row">
+				<div class="col-md-10 col-sm-10 col-xs-10">
+					<textarea class="chat-input"></textarea>
+				</div>
+				<div class="col-md-2 col-sm-2 col-xs-2 actions-col">
+					<div class="send-btn"><i class="fa fa-paper-plane" aria-hidden="true"></i> </div> 
+				</div>
+			</div>
+		
+	</div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='ressources/starrr/dist/starrr.js') }}"></script>
+
+<script>
+$(document).ready(function() {
+
+	$('#stars-score').starrr({
+		rating: 5
+	});
+
+	$('#score-value').html("5");
+
+	$('#stars-score').on('starrr:change', function (e, value) {
+		$('#score-value').html(value);
+	});
+
+});
+    </script>
+{% endblock %}

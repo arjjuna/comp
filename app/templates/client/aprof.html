@@ -1,0 +1,278 @@
+{% extends 'client/nbase.html' %}
+
+{% block styles %}
+{{ super() }}
+<!-- Select2 -->
+<link href="{{ url_for('static', filename='ressources/select2/dist/css/select2.min.css') }}" rel="stylesheet">
+
+<!-- ion.rangeSlider -->
+<link href="{{ url_for('static', filename='ressources/ion.rangeSlider/css/ion.rangeSlider.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='ressources/ion.rangeSlider/css/ion.rangeSlider.skinHTML5.css') }}" rel="stylesheet">
+
+<link href="{{ url_for('static', filename='ressources/customs/client/css/aprof.css') }}" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="main-tile col-md-12 profile-tile tile">
+    <div class="row top-row ">
+      <div class="col-md-2 col-sm-4 col-xs-12 profile-img-col">
+        <div class="profile-img">
+          <img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}">
+        </div>
+        <div class="rating text-center">
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star-o" ></i>
+              <br><span>(12 avis)</span>
+        </div>
+      </div>
+      <div class="col-md-10 col-sm-8 col-xs-12">
+        <div class="row personal-data">
+          <div class="col-md-10 ">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="prof-name">{{ prof.first_name }} {{ prof.last_name }} <span class="age-city">(24, rabat)</span></div>
+                <div class="prof-title">Lprof l mezian roujoula 3endou master f kda</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="price">
+              200 dh/h
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="row subjects">
+              <div class="col-md-12">
+                <div class="subject">Maths</div>
+                <div class="subject">Physique</div>
+                <div class="subject">Français</div>
+                <div class="subject">Anglais</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row overview">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="row contact-row">
+          <div class="col-md-6 col-sm-6 col-xs-12 text-center">
+            <div class="book mybtn">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              Résérver une séance
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12  text-center">
+            <div class="contact mybtn">
+              <i class="fa fa-comments-o" aria-hidden="true"></i>
+              Contacter
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <h2>à propos</h2>
+        <div class="overview-text crippled">
+          “Linda has done an incredible job editing my large project. Easy to communicate with and very responsive. She really did a great job listening to what I wanted and did an excellent job executing the direction given. On time, under budget and a absolute pleasure to work with. I highly recommend Linda to anyone considering her for a project.”
+          <br>
+          “LINFOO is amazing! She has quickly become my 'go to' for editing jobs. She's efficient with speedy turn around time. I will definitely use her again. ”
+          <br>
+          "... an excellent writer. She stands out by truly captivating the reader with her writing style. Looking forward to more books with her!”
+          <br>
+          I am a meticulous, deadline-driven perfectionist with finely honed writing, editing, researching and materials production skills. Experienced in working within highly successful publishing companies across Cape Town as well as independently as a freelance project manager, editor and proofreader. I work well independently and under pressure while maintaining an open and collaborative working relationship with my client. I will ensure the reliable, professional and timely delivery of your completed brief.
+        </div>
+        <div class="see-more-text">
+          <span class="more">
+            <i class="fa fa-chevron-down" aria-hidden="true"></i> PLUS
+          </span>
+          <span class="less hidden">
+            <i class="fa fa-chevron-up" aria-hidden="true"></i> MOIN
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- Main tile -->
+
+  <div class="feedback-tile col-md-12 tile ">
+    <div class="row tile-title">
+      <div class="col-md-9 col-sm-9 col-xs-12">  
+        <h3>Feedbacks clients</h3>
+      </div>
+    </div>
+
+    <div class="row feedback-row">
+      <div class="col-md-1 col-sm-3 col-xs-12">
+        <div class="img-container">
+          <img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}">
+        </div>
+      </div>
+
+      <div class="feedback-middle col-md-9 col-sm-9 col-xs-12">
+        <div class="row feedback-top">
+          <div class="col-md-12">
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star-o" ></i>
+              &nbsp;&nbsp; (2 Jan 2016) 
+          </div>
+        </div>
+
+        <div class="row feedback-text ">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <blockquote>&nbsp;&nbsp;
+            Linda was both extremely cooperative and incredibly helpful. I was new to the process of freelance editing when I hired Linda and boy, I did NOT regret it. She was awesome, insightful, and very professional. Perfect person to work with. If you need a trustworthy and talented editor, hire Linda! 
+            </blockquote>
+          </div>
+        </div>
+      </div>
+
+      <div class="feedback-data col-md-2 col-sm-12 col-xs-12">
+        <div class="hours">
+          <i class="fa fa-clock-o" aria-hidden="true"></i> 3 heures
+        </div>
+        <div class="price">
+          <i class="fa fa-usd" aria-hidden="true"></i> 200 dh/h
+        </div>
+        <div class="subject">
+          <i class="fa fa-graduation-cap" aria-hidden="true"></i> Maths 
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="education-tile col-md-12 tile ">
+    <div class="row tile-title">
+      <div class="col-md-9 col-sm-9 col-xs-12">  
+        <h3>Education</h3>
+      </div>
+    </div>
+
+    <div class="row education-row">
+      <div class="title col-md-12">
+        master en mathématiques appliquées <span class="duration">(Septembre 2010, Juin 2012)</span>
+      </div>
+      <div class="school col-md-12">
+        @: Université de Ain Chock
+      </div>
+    </div>
+    <div class="row education-row">
+      <div class="title col-md-12">
+        master en mathématiques appliquées <span class="duration">(Septembre 2010, Juin 2012)</span>
+      </div>
+      <div class="school col-md-12">
+        @: Université de Ain Chock
+      </div>
+    </div>
+  </div> <!-- education tile -->
+
+  <div class="work-tile col-md-12 tile ">
+    <div class="row tile-title">
+      <div class="col-md-9 col-sm-9 col-xs-12">  
+        <h3>Expériences professionnelles</h3>
+      </div>
+    </div>
+
+    <div class="row work-row">
+      <div class="title col-md-12">
+        Risk manager
+        <span class="duration">(Septembre 2012, présent)</span>
+      </div>
+      <div class="place col-md-12">
+        Banque marocaine pour le commerce et l'industrie (BMCI)
+      </div>
+      <div class="description col-md-12">
+        Writing, editing and proofreading services offered to a range of clients including education and fiction book publishers, corporates and NGOs
+      </div>
+    </div>
+    <div class="row work-row">
+      <div class="title col-md-12">
+        Risk manager
+        <span class="duration">(Septembre 2012, présent)</span>
+      </div>
+      <div class="place col-md-12">
+        Banque marocaine pour le commerce et l'industrie (BMCI)
+      </div>
+      <div class="description col-md-12">
+        Writing, editing and proofreading services offered to a range of clients including education and fiction book publishers, corporates and NGOs
+      </div>
+    </div>
+    
+  </div> <!-- work tile -->
+
+</div> <!-- row -->
+
+
+		
+
+		
+
+		
+{% endblock %}
+
+
+
+{% block scripts %}
+{{ super() }}
+<!-- Select2 -->
+<script src="{{ url_for('static', filename='ressources/select2/dist/js/select2.min.js') }}"></script>
+<script src="{{ url_for('static', filename='ressources/ion.rangeSlider/js/ion.rangeSlider.min.js') }}"></script>
+
+
+
+<!-- Select2 -->
+<script>
+  $(document).ready(function() {
+    $(".select2_single").select2({
+      placeholder: "Select a state",
+      allowClear: true
+    });
+    $(".select2_group").select2({});
+    $(".select2_multiple").select2({
+      maximumSelectionLength: 4,
+      placeholder: "With Max Selection limit 4",
+      allowClear: true
+    });
+  });
+</script>
+<!-- /Select2 -->
+
+<!-- ionRangeSlider -->
+<script>
+ $("#age-range").ionRangeSlider({
+          hide_min_max: true,
+          keyboard: true,
+          min: 18,
+          max: 80,
+          from: 18,
+          to: 80,
+          type: 'double',
+          step: 1,
+          prefix: "",
+          grid: true
+        });
+
+ $("#price-range").ionRangeSlider({
+          hide_min_max: true,
+          keyboard: true,
+          min: 50,
+          max: 400,
+          from: 50,
+          to: 400,
+          type: 'double',
+          step: 10,
+          postfix: " dh",
+          grid: true
+        });
+</script>
+<!-- /ionRangeSlider -->
+
+{% endblock %}

@@ -1,0 +1,57 @@
+<html>
+
+<head>
+</head>
+
+<body>
+
+	<ul id="message-list">
+		<li>
+			<div class="name" style="font-weight: bold">foo:</div>
+			<div class="text">bar</div>
+		</li>
+	</ul>
+
+	<div class="fetch-btn", style="padding: 10px 20px 10px 20px; background-color: pink; border-radius: 50px; display: inline-block; cursor: pointer;">Fetch more</div>
+
+</body>
+<script src="{{ url_for('static', filename='ressources/jquery/dist/jquery.min.js') }}"></script>
+<script>
+var ajax_counter = 1;
+var ajax_steps = 70;
+
+function append_messages(data) {
+	$.each(data, function(n, message) {
+		var nm = $('<li/>').append(
+			$('<div/>', { 'class': 'name', 'text': message.from_id+' ('+message.id+')' })).append(
+			$('<div/>', { 'class': 'text', 'text': message.text }));
+
+		$('#message-list').append(nm);
+	});
+};
+
+$(document).ready(function(){
+	$(".fetch-btn").on('click', function(){
+
+		$.ajax({
+			type: 'GET',
+			url: '/client/chat/mezian_prof_5/' 
+				 + ajax_counter.toString() +'/' 
+				 + (ajax_steps+ajax_counter-1).toString(),
+			dataType: 'json',
+			success: function(data) {
+				append_messages(data);
+			}
+		});
+
+		ajax_counter += ajax_steps;
+
+	});
+});
+
+</script>
+
+
+
+
+</html>

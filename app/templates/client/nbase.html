@@ -8,7 +8,7 @@
     <link href="{{ url_for('static', filename='ressources/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
 	
 	<!-- Custom Theme Style -->
-    <link href="{{ url_for('static', filename='ressources/customs/client/custom.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='ressources/customs/client/css/base.css') }}" rel="stylesheet">
 	
     <!--link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"--> 
 
@@ -76,23 +76,27 @@
 						<div class="message-list hidden">
 
 							<ul>
+								{% for m in latest_messages %}
 								<li>
-									<img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}">
+									<img src="{{ url_for('static', filename=m.who.picture) }} ">
 									<div class="middle-wrapper">
-										<div class="message-sender"> Med Tiw </div>
-										<div class="message-prev"> Message 1, when it is too long what should be done bro, come on give me an answer brooo</div>
-									</div>
-									<div class="message-time"> Monday </div>
-								</li>
-								<li>
-									<img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}">
-									<div class="middle-wrapper">
-										<div class="message-sender"> Med Tiw </div>
-										<div class="message-prev"> Message 1, when it is too long what should be done bro, come on give me an answer brooo</div>
-									</div>
-									<div class="message-time"> Monday </div>
+										<div class="message-sender">{{ m.who.last_name }} {{ m.who.first_name }} </div>
+										<div class="message-prev">
+										{% if m.type=="sent" %}
+											<i class="fa fa-arrow-left" aria-hidden="true"></i>
+										{% elif m.type=="received" %} 
+											<i class="fa fa-arrow-right" aria-hidden="true"></i>
+										{% endif %}
+										
 
+										 {{m.message_obj.text}} </div>
+									</div>
+									<div class="message-time" data-time="{{m.iso_date}}"> </div>
 								</li>
+								{% endfor %}
+
+								
+								
 							</ul>
 							<div class="text-center see-more">
 								<a href="#">Voir plus</a>
@@ -187,11 +191,18 @@
     <!-- Bootstrap -->
     <script src="{{ url_for('static', filename='ressources/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <!-- FastClick: removes click lag -->
-    <script src="{{ url_for('static', filename='ressources/fastclick/lib/fastclick.js') }}"></script>    
+    <script src="{{ url_for('static', filename='ressources/fastclick/lib/fastclick.js') }}"></script>
+    <!-- Moment -->
+    <script src="{{ url_for('static', filename='ressources/moment/min/moment.min.js') }}"></script>    
+    <script src="{{ url_for('static', filename='ressources/moment/locale/fr.js') }}"></script>    
+    <!-- bootstrap-daterangepicker -->
+    <script src="{{ url_for('static', filename='ressources/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+	
+    <script src="{{ url_for('static', filename='ressources/customs/client/js/custom.js') }}"></script>
+
 
 	{% block scripts %}
 	{% endblock %}
 	<!-- Custom jsg -->
-    <script src="{{ url_for('static', filename='ressources/customs/client/custom.js') }}"></script>
 </body>
 </html>

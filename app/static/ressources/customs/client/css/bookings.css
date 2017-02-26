@@ -1,0 +1,104 @@
+.bookings-tile {
+	padding-top: 10px;
+}
+
+
+.bookings-tile .abooking  {
+	padding: 20px 0 20px 0;
+	border-bottom: 1px solid #d0d0d0;
+}
+
+.bookings-tile .abooking img {
+	width: 100%;
+}
+
+.bookings-tile .abooking .img-col {
+ 	text-align: center;
+}
+.bookings-tile .abooking .img-col .img-container {
+	width: 100%;
+	max-height: 200px;
+	overflow: hidden;
+	display: inline-block;
+
+	border-radius: 300px;
+}
+
+.bookings-tile .abooking .img-col {
+ 	text-align: center;
+}
+
+.bookings-tile .abooking .name {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.bookings-tile .abooking .date {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.bookings-tile .abooking .date span.date-value{
+    color: green;
+}
+
+.bookings-tile .abooking .rate{
+    font-size: 20px;
+}
+
+.bookings-tile .abooking .status{
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.bookings-tile .abooking.waiting .status span.value {
+	color: red;
+}
+
+.bookings-tile .abooking.accepted .status span.value {
+	color: green;
+}
+
+.bookings-tile .abooking .booking-actions {
+	padding-top: 10px;
+	text-align: center;
+}
+
+.bookings-tile .abooking .booking-actions .cancel,
+.bookings-tile .abooking .booking-actions .validate{
+	text-align: center;
+	font-size: 15px;
+	border-radius: 20px;
+	padding: 5px 25px 5px 25px;
+	display: inline-block;
+	margin-bottom: 15px;
+}
+
+.bookings-tile .abooking.waiting .booking-actions .cancel{
+	color: red;
+	border: 1px solid red;
+	cursor: pointer;
+}
+
+.bookings-tile .abooking.accepted .booking-actions .validate{
+	color: green;
+	border: 1px solid green;
+	cursor: pointer;
+}
+
+.bookings-tile .abooking.waiting .booking-actions .cancel:hover{
+	background-color: #ffcccc;
+}
+
+.bookings-tile .abooking.accepted .booking-actions .validate:hover{
+	background-color: #cce5cc;
+}
+
+.bookings-tile .abooking.accepted .booking-actions .cancel{
+	color: #d0d0d0;
+	border: 1px solid #d0d0d0;
+}
+
+

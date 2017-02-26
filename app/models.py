@@ -8,6 +8,10 @@ from flask_login import UserMixin, AnonymousUserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
+from sqlalchemy import desc
+
+from unidecode import unidecode
+
 
 class Permission:
 	"""A binary representation of permissions.
@@ -48,6 +52,12 @@ class Role(db.Model):
 	def __repr__(self):
 		return '<role %s>' % self.name
 
+contact_relation = db.Table('contacts_table',
+								db.Column('left_user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True),
+								db.Column('right_user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
+								)
+
+
 class User(UserMixin, db.Model):
 	"""User model"""
 	__tablename__ = 'users'
@@ -56,21 +66,40 @@ class User(UserMixin, db.Model):
 	password_hash = db.Column(db.String(128))
 	username      = db.Column(db.String(64))
 	first_name    = db.Column(db.String(64))
-	last_name     = db.Column(db.String(64))
+	last_name     = db.Column(db.String(64), index=True)
+	safe_name     = db.Column(db.String(200))
 	picture       = db.Column(db.String(500))
 	member_since  = db.Column(db.DateTime(), default=datetime.utcnow)
 	confirmed     = db.Column(db.Boolean, default=False)
 	last_seen     = db.Column(db.DateTime(), default=datetime.utcnow)
-	
+
+
 	role_id       = db.Column(db.Integer, db.ForeignKey('roles.id'))
 
 	client        = db.relationship('Client', uselist=False, back_populates='user')
 	prof          = db.relationship('Prof', uselist=False, back_populates='user')
 	
+	contacts_right = db.relationship('User', secondary=contact_relation,
+									primaryjoin=id==contact_relation.c.left_user_id,
+									secondaryjoin=id==contact_relation.c.right_user_id,
+									backref="contacts_left")
+
 	messages_sent     = db.relationship('Message', backref='sender',   lazy='dynamic', foreign_keys='Message.from_id')
 	messages_received = db.relationship('Message', backref='receiver', lazy='dynamic', foreign_keys='Message.to_id')
 
-	
+	@property
+	def contacts(self):
+		return list(set(self.contacts_right + self.contacts_left))
+
+	@contacts.setter
+	def contacts(self, value):
+		raise AttributeError("Contacts can't be set. Check contacts_right and contacts_left")
+
+	@contacts.deleter
+	def contacts(self):
+		raise AttributeError("Contacts can't be deleted. Check contacts_right and contacts_left")
+
+
 	#Password is proprety that can't be accessed
 	@property
 	def password(self):
@@ -117,6 +146,44 @@ class User(UserMixin, db.Model):
 
 	def is_anonymous(self):
 		return False
+
+
+	def last_message_sent_to(self, to):
+		return self.messages_sent.filter_by(receiver=to).order_by(desc(Message.timestamp)).first()
+
+	def last_message_received_from(self, _from):
+		return self.messages_received.filter_by(sender=_from).order_by(desc(Message.timestamp)).first()
+
+	def last_contact_with(self, other):
+		latest_sent = self.last_message_sent_to(other)
+		latest_received = self.last_message_received_from(other)
+
+		if latest_sent is None:
+			if latest_received is None:
+				return None
+			else:
+				return latest_received
+		elif latest_received is None:
+			return latest_sent
+
+		# We can be sure that both are not none 
+
+		if latest_sent.timestamp > latest_received.timestamp:
+			return {'type': 'sent', 'who': latest_sent.receiver,
+					'message_obj': latest_sent, 'iso_date': latest_sent.timestamp.isoformat()}
+		else: 
+			return {'type': 'received', 'who': latest_sent.sender,
+					'message_obj': latest_received, 'iso_date': latest_received.timestamp.isoformat()}
+
+	def contacts_latest_messages(self, n=None):
+		the_list = [ self.last_contact_with(contact) for contact in self.contacts ]
+		the_list.sort(key=lambda x: x['message_obj'].timestamp, reverse=True)
+		if n:
+			return the_list[:n]
+		else:
+			return the_list
+
+
 	
 	def __init__(self, **kwargs):
 		super(User, self).__init__(**kwargs)
@@ -126,8 +193,10 @@ class User(UserMixin, db.Model):
 			if self.role is None:
 				self.role = Role.query.filter_by(name='user').first()
 			if self.picture is None:
-				self.picture = current_app.config['APP_UPLOAD_FOLDER'] + '/' + "users/placeholder.jpg"
-	
+				self.picture = "uploads/users/placeholder.jpg"
+
+		self.safe_name = unidecode(self.first_name + u'_' + self.last_name + u'_' + unicode(self.id))
+
 	def __repr__(self):
 		return '<User %r, email: %r>' % (self.username, self.email)
 		
@@ -173,6 +242,7 @@ class Client(db.Model):
 		if not prof.user.is_prof():
 			raise MessageRestriction("Client can only messages to profs")
 		message = Message(text=text, sender=self.user, receiver=prof.user)
+		self.user.contacts_right.append(prof.user)
 		db.session.add(message)
 		db.session.commit()
 
@@ -193,6 +263,7 @@ class Prof(db.Model):
 		if not client.user.is_client():
 			raise MessageRestriction("Prof can only messages to clients")
 		message = Message(text=text, sender=self.user, receiver=client.user)
+		self.user.contacts_right.append(client.user)
 		db.session.add(message)
 		db.session.commit()
 
@@ -205,9 +276,50 @@ class Message(db.Model):
 	id            = db.Column(db.Integer, primary_key=True)
 	text          = db.Column(db.String(2500))
 	timestamp     = db.Column(db.DateTime(), default=datetime.utcnow)
+	seen          = db.Column(db.Boolean, default=False)
 
 	from_id       = db.Column(db.Integer, db.ForeignKey('users.id'))
 	to_id         = db.Column(db.Integer, db.ForeignKey('users.id'))
 
+	def to_dict(self):
+		return {
+			'id': str(self.id),
+			'text': self.text,
+			'timestamp': self.timestamp.isoformat(),
+			'seen': str(self.seen),
+			'from_id': str(self.from_id),
+			'to_id': str(self.to_id)
+		}
+
 	def __repr__(self):
 		return '<Message %s>' % self.id
+
+
+class Subject(db.Model):
+	""" Suvjects """
+	__tablename__ = 'subjects'
+	id = db.Column(db.Integer, primary_key=True)
+	name = db.Column(db.String(64), unique=True)
+
+	@staticmethod
+	def insert_subjects():
+		subjects = ['maths', 'physique', 'SVT']
+
+		for s in subjects:
+			one_subject = Subject.query.filter_by(name=s).first()
+			if not one_subject: 
+				one_subject = Subject(name=s)
+				db.session.add(one_subject)
+
+		db.session.commit()
+
+
+class Booking(db.Model):
+	__tablename__ = 'bookings'
+
+	id         = db.Column(db.Integer, primary_key=True)
+	date       = db.Column(db.DateTime())
+	price      = db.Column(db.Integer)
+	hours      = db.Column(db.Integer)
+	subject_id = db.Column(db.Integer, db.ForeignKey('subjects.id'))
+	subject    = db.relationship("Subject", backref="bookings")

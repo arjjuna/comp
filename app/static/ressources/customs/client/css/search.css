@@ -1,0 +1,145 @@
+/*Search rules*/
+.more-options {
+	font-size: 17px;
+	cursor: pointer;
+	margin-bottom: 10px;
+}
+
+.more-options-row .age-option span {
+	font-size: 1.05em !important;
+}
+
+.more-options-row p {
+	font-size: 15px;
+	margin-top: 10px;
+	font-weight: bolder;
+}
+
+
+
+.search-results-wrapper {
+	margin-top: 25px;
+}
+
+.search-results-wrapper .one-result {
+	min-height: 150px;
+	border-style: solid;
+	border-color: #e9e9e9 #ffffff #e9e9e9 #ffffff;
+	border-width: 1px;
+
+
+
+	padding: 5px 10px 5px 10px;
+
+}
+
+.search-results-wrapper .one-result .img-container{
+	height: 135px;
+	width: 135px;
+	overflow: hidden;
+	margin-right: 10px;
+	border-radius: 20px;
+
+
+}
+
+.search-results-wrapper .one-result img{
+	height: 100%;
+}
+
+.search-results-wrapper .one-result .result-data{
+	min-height: 135px;
+}
+
+.search-results-wrapper .one-result .result-data .name{
+	font-weight: bolder;
+	height: 25px;
+	font-size: 20px;
+	overflow: hidden;
+}
+
+.search-results-wrapper .one-result .result-data .title{
+	max-height: 40px;
+	line-height: 19px;
+	font-size: 15px;
+	overflow: hidden;
+}
+.search-results-wrapper .one-result .result-data .rating{
+	height: 20px;
+	font-size: 15px;
+	overflow: hidden;
+}
+
+.search-results-wrapper .one-result .result-data .bottom-section{
+	margin-top: 20px;
+}
+
+.search-results-wrapper .one-result .result-data .bottom-section .price{
+	height: 25px;
+}
+
+.search-results-wrapper .one-result .result-data .bottom-section .subjects{
+	line-height: 20px;
+}
+
+
+.clickable-result {
+	cursor: pointer;
+}
+
+.light-blue-hover {
+	background-color: #edf2f6;
+}
+
+.action-btns .mybtn {
+	width: 100%;
+	font-size: 13px;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 5px;
+	margin-top: 20px;
+	padding: 7px 10px 7px 10px;
+
+	cursor: pointer;
+
+	border-color: #0e6554;
+	color: #0e6554;
+}
+
+.action-btns .mybtn:hover{
+	border-color: #15997f;
+	color: #15997f;
+	background-color: #edf2f6;
+
+}
+
+
+
+
+
+.pagination-tile {
+	margin-top: 40px;
+	height: 60px;
+	text-align: center;
+	padding: 10px 30px 10px 30px;
+
+}
+
+.pagination-tile span{
+	font-size: 25px;
+	padding: 0 17px 0 15px;
+
+	border-left: 1px solid #000;
+
+	margin-right: -5px;
+
+	cursor: pointer;
+}
+
+.pagination-tile span:hover{
+	background-color: #D0D0D0;
+}
+
+
+
+

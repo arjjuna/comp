@@ -11,6 +11,27 @@ $(" .navbar-header .message-icon, .navbar-header .message-list, \
 });
 
 $(document).ready(function(){
+	$(".message-time").each( function(i, obj){
+
+		if (moment($(this).data('time')	).isSame(moment(), 'day')) {
+			$(this).text(
+				moment(
+						$(this).data('time')
+					).format("hh:mm"));
+		}
+		else {
+			$(this).text(
+				moment(
+						$(this).data('time')
+					  ).fromNow());
+		}
+			
+
+
+
+	});
+
+
 	$(".navbar-header .message-icon").on('click', function(){
 		$(".navbar-header .notification-list").addClass("hidden");
 		$(".navbar-header .profile-list").addClass("hidden");
@@ -60,6 +81,10 @@ $(document).ready(function(){
 		$(this).addClass("hidden");
 		$(".profile-tile .overview .see-more-text span.more").removeClass("hidden");
 	});
+
+
+
+
 
 });
 

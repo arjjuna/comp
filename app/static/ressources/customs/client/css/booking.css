@@ -1,0 +1,205 @@
+.booking-tile .profile-img-col {
+	text-align: center;	
+}
+
+.booking-tile .profile-img {
+	width: 100%;
+	overflow: hidden;
+}
+
+.booking-tile .profile-img img{
+	width: 80%;
+	border-radius: 200px;
+}
+
+@media (max-width: 768px){
+	.booking-tile .profile-img  {
+		width: 50%;
+		display: block;
+		margin: auto;
+		margin-bottom: 20px;
+	}
+	
+}
+
+
+.booking-tile .profile-img-col {
+	font-size: 16px;
+}
+
+.booking-tile .profile-img-col .rating {
+	margin-top: 10px;
+}
+
+.booking-tile .profile-img-col .prof-name {
+	font-weight: bold;
+}
+
+.booking-tile .profile-img-col .prof-name span.age-city{
+	font-weight: normal;
+	font-style: italic;
+}
+
+
+
+
+.booking-tile .options-row .booking-date {
+	display: inline-block;
+	border: 1px solid #d0d0d0;
+	padding: 5px 15px 5px 10px;
+}
+
+.booking-tile .options-row .booking-date span {
+	display: inline-block;
+	padding-right: 10px;
+	border-right: 1px solid #d0d0d0;
+}
+
+.booking-tile .options-row .booking-date input {
+	display: inline-block;
+	border: none;
+	background-color: #fff;
+}
+
+
+/* dateragepicker style 
+
+
+.daterangepicker {
+	font-size: 17px ;
+	position: absolute;
+	left: 0;
+}
+
+.daterangepicker .calendar-table .month {
+	text-align: center;
+}
+
+.daterangepicker table.table-condensed thead tr:first-child {
+    background: #34495E;
+    color: #ECF0F1;
+}
+
+.daterangepicker table.table-condensed thead tr:first-child th i{
+	width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.daterangepicker table.table-condensed thead tr:first-child th.prev,
+.daterangepicker table.table-condensed thead tr:first-child th.next {
+	cursor: pointer;
+}
+
+.daterangepicker table.table-condensed thead tr:first-child th.prev:hover,
+.daterangepicker table.table-condensed thead tr:first-child th.next:hover {
+	background-color: #fff;
+	color: #000;
+}
+
+
+.daterangepicker table.table-condensed thead tr:nth-child(2) th{
+	padding: 3px 5px 3px 5px;
+}
+
+.daterangepicker table.table-condensed tbody tr td{
+	text-align: center;
+	cursor: pointer;
+	border: 1px solid #d0d0d0;
+	border-bottom: none;
+	padding-right: 7px;
+	padding-left: 7px;
+}
+
+.daterangepicker table.table-condensed tbody tr td:hover{
+	background-color: #d0d0d0;
+}
+*/
+
+.booking-tile .options-row .option-col .title{
+	font-size: 25px;
+	margin-bottom: 25px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.booking-tile .options-row .option-col .price-row .title {
+	margin-top: 20px;
+}
+
+.booking-tile .options-row .option-col .message-row textarea {
+	font-size: 23px;
+}
+
+.booking-tile .options-row .option-col .validation-row .mybtn-col {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.booking-tile .options-row .option-col .validation-row .mybtn {
+	font-size: 25px;
+	width: 60%;
+	display: inline-block;
+
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 5px;
+	margin-top: 20px;
+	padding: 7px 10px 7px 10px;
+
+	cursor: pointer;
+
+	border-color: #0e6554;
+	color: #0e6554;
+}
+
+.booking-tile .options-row .option-col .validation-row .mybtn:hover {
+	border-color: #15997f;
+	color: #15997f;
+	background-color: #edf2f6;
+
+}
+
+.option-col .title span{
+	color: green;
+}
+
+.option-col .hours-row .title{
+	margin-top: 20px;
+}
+
+.option-col .hours-row i{
+	padding: 0px 20px 0px 20px;
+	cursor: pointer;
+}
+
+.option-col .hours-row i.plus:hover{
+	color: green;	
+}
+
+.option-col .hours-row i.minus:hover{
+	color: red;	
+}
+
+
+
+.option-col .subject-row .subject-select select{
+	width: 100%;
+}
+
+.option-col .subject-row .subject-select {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+
+.select2-container .select2-selection--single {
+	height: 40px !important;
+	padding-top: 5px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+	height: 40px !important;
+}
+
