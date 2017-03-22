@@ -3,14 +3,14 @@ import subprocess
 import sys
 
 
-import eventlet
-eventlet.monkey_patch()
+#import eventlet
+#eventlet.monkey_patch()
 
 from app import create_app, db, socketio
 from flask_script import Manager, Command, Shell, Server as _Server, Option
 from flask_migrate import MigrateCommand
 
-from app.models import Role, User, Prof, Client, Message, Subject
+from app.models import Role, User, Prof, Client, Message, Subject, Booking
 
 
 #The manager from flask_script can take a factory function as an argument,
@@ -82,7 +82,7 @@ manager.add_command("db", MigrateCommand)
 
 def shell_context_maker():
 	return dict(db=db, Role=Role, User=User, Prof=Prof, Client=Client, Message=Message,
-				Subject=Subject)
+				Subject=Subject, Booking=Booking)
 
 manager.add_command("shell", Shell(make_context = shell_context_maker)) 
 
@@ -105,6 +105,11 @@ class CeleryWorker(Command):
 			['celery', 'worker', '-A', 'app.celery'] + argv)
 		sys.exit(ret)
 
+@manager.command
+def test():
+	"""runs unittesting"""
+	tests = subprocess.call(['python', '-c', 'import tests;' 'tests.run()'])
+	sys.exit(tests)
 
 manager.add_command("celery", CeleryWorker())
 

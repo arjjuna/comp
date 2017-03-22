@@ -21,6 +21,8 @@ def login():
 		if user is not None and user.verify_password(form.password.data):
 			login_user(user, form.remember_me.data)
 			return redirect(request.args.get('next') or url_for('main.index') )
+
+		
 		flash("Nom d'utilisateur ou mot de passe incorrecte")
 	return render_template('auth/login.html', form=form)
 
@@ -38,7 +40,6 @@ def registration_choice():
 @auth.route('/enregistrer/client', methods=['GET', 'POST'])
 def register_client():
 	form = ClientRegistrationForm()
-
 	if form.validate_on_submit():
 		client = Client()
 		user   = User(email=form.email.data, password=form.password.data, username=form.username.data,
@@ -108,11 +109,13 @@ def unconfirmed():
 @auth.route('/confirm')
 @login_required
 def resend_confirmation():
-	token = current_user.generate_confirmation_token()
-	if current_user.is_client():
-		send_email(current_user.email, 'Confirmez votre inscription', 'auth/emails/confirm_client',  user=current_user, token=token)
-	elif current_user.is_prof():
-		send_email(current_user.email, 'Confirmez votre inscription', 'auth/emails/confirm_prof',  user=current_user, token=token)
-	
-	flash(u'Un nouvel email vous a \xe9t\xe9 envoy\xe9.')
+	if not current_user.confirmed:
+		token = current_user.generate_confirmation_token()
+		if current_user.is_client():
+			send_email(current_user.email, 'Confirmez votre inscription', 'auth/emails/confirm_client',  user=current_user, token=token)
+		elif current_user.is_prof():
+			send_email(current_user.email, 'Confirmez votre inscription', 'auth/emails/confirm_prof',  user=current_user, token=token)
+		flash(u'Un nouvel email vous a \xe9t\xe9 envoy\xe9.')
+		if current_app.config['TESTING']:
+			return token
 	return redirect(url_for('main.index'))

@@ -2,8 +2,17 @@ from models import User, Client, Prof, Message
 
 from sqlalchemy import and_, or_
 
-# These functions are not fully tested
+from flask import render_template
 
+
+def room_name(id1, id2):
+	#gives a unique room name for a combinaton of two user ids
+	if id1 > id2:
+		return str(id2) + "_" + str(id1)
+	else:
+		return str(id1) + "_" + str(id2)
+
+# These functions are not fully tested
 def latest_message(message_list):
 	""" Returns the latest message from a list """
 	if len(message_list) == 0:
@@ -40,3 +49,19 @@ def conversation_query(user1, user2):
 										))
 
 	return conversation.order_by(Message.timestamp.desc())
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

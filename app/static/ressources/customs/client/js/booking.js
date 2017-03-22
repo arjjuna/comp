@@ -7,11 +7,12 @@ function booking_data() {
 	var message = $('#feedback-message').val();
 
 	var booking_json = {
-		'date': date,
-		'price': price,
-		'hours': hours,
+		'date'   : date,
+		'price'  : price,
+		'hours'  : hours,
 		'subject': subject,
-		'message': message
+		'message': message,
+		'prof_id': pid
 
 	};
 
@@ -24,12 +25,17 @@ $(document).ready( function() {
 	$('#book-btn').on('click', function() {
 		//$.post('/client/test', {'key1': 1, 'key2': '2'});
 		$.ajax({
-			url:'/client/reservation_handler',
+			url:'/client/booking_handler',
 			type: 'post',
 			datatype: 'json',
 			contentType: "application/json",
-			success: function(data){
-				alert(data)
+			success: function(data, textStatus, request){
+				if (textStatus == "success") {
+	                window.location.href = request.getResponseHeader('location');
+	            }
+	            else {
+	                // Process the expected results...
+	            }
 			},
 			data: JSON.stringify(booking_data())
 		});

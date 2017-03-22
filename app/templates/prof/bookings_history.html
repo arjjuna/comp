@@ -1,0 +1,97 @@
+{% extends 'prof/base.html' %}
+
+{% block styles %}
+{{ super() }}
+    <link href="{{ url_for('static', filename='ressources/customs/shared/index/css/index.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='ressources/customs/prof/css/bookings.css') }}" rel="stylesheet">
+    
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-12 main-title">
+		<h1>Réservations</h1>
+	</div>
+
+	<div class="main-tile tile col-md-10 col-sm-12">
+		<div class="col-md-12">
+ 			{% for b in bookings %}
+				<div class="abooking">
+					<div class="client">
+						<div class="client-img">
+							<img src="{{ url_for('static', filename=b.client.user.picture) }}">
+						</div>
+						<div class="name">
+							{{ b.client.user.first_name }} {{ b.client.user.last_name }}
+						</div>
+					</div>
+					<div class="price">
+						<div class="hourlyPrice">
+							{{ b.price }} dh/h
+						</div>
+						<div class="hours">
+							{{ b.hours }}h
+						</div>
+						<div class="hourlyPrice">
+							{{ b.total }} dh
+						</div>
+
+					</div>
+					<div class="subject">
+						{{ b.subject.name }}
+					</div>
+					<div class="date">
+						<span class="date-value" data-time="{{ b.date }}"></span>
+					</div> 
+					<div class="status">
+						status:
+						{% if b.client_canceled %}
+							annulée par client
+						{% elif b.client_validated %}
+							validée
+						{% elif b.prof_accepted %}
+							en cours
+						{% elif b.prof_declined %}
+							refusée
+						{% endif %}
+
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+
+	</div>
+	
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+
+
+$('.abooking .date .date-value').each(function(){
+	$(this).text(moment($(this).data('time')).format('LLL'));
+
+});
+
+$('.abooking .remaining-time .remaining-days').each(function(){
+	$(this).text(
+		
+		moment($(this).data('time')).diff(moment(), 'days')
+		
+		);
+});
+
+$('.abooking .remaining-time .remaining-days').each(function(){
+	$(this).text(
+		
+		moment.duration(moment($(this).data('time')).diff(moment())).humanize()
+		
+		);
+});
+
+
+</script>
+
+{% endblock %}

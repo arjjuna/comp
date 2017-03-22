@@ -1,0 +1,90 @@
+{% extends 'client/nbase.html' %}
+
+{% block styles %}
+{{ super() }}
+<link href="{{ url_for('static', filename='ressources/starrr/dist/starrr.css') }}" rel="stylesheet">
+
+<link href="{{ url_for('static', filename='ressources/customs/client/css/validate.css') }}" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-12 main-title">
+		<h1>Satisfait par la prestation du prof? <br>Laissez votre feedback:</h1>
+	</div>
+	<div class="main-tile tile col-md-10 bookings-tile">
+		<div class="row abooking waiting">
+			<div class="col-md-2 col-sm-3 col-xs-4 img-col">
+				<div class="img-container">
+					<img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}">
+				</div>
+			</div>
+			<div class="col-md-10 col-sm-9">
+				<div class="booking-data">
+					<div class="name">
+						{{ booking.prof.user.first_name.title() }} {{ booking.prof.user.last_name.title() }}
+					</div>
+					<div class="date">
+						Date et heure: <span class="date-value">22 février 2017 12:44</span>
+					</div>
+					<div class="rate">
+						Séance de <span class="green">2</span> heures à 
+						<span class="green">200 dh/h</span>
+						 (total: <span class="green">400 dh</span>)
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+		<div class="row provide-feedback">
+			<div class="col-md-12">
+				<div class="title">Feedback</div>
+			</div>
+			<div class="col-md-4">
+				<div class="score">
+					<div class="value">
+						Note: <span id="score-value"></span>/5
+					</div>
+					<div class="stars">
+						<div id="stars-score"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-8">
+				<textarea class="form-control" id="feedback-message" maxlength="1000" rows="4" placeholder="Que pensez-vous de la prestation?"></textarea>
+			</div>
+			<div class="col-md-12 send-feedback-col">
+				<div class="send-feedback" data-id="{{ booking.id }}"> envoyer </div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='ressources/starrr/dist/starrr.js') }}"></script>
+<script src="{{ url_for('static', filename='ressources/customs/client/js/validate_booking.js') }}"></script>
+
+
+<script>
+$(document).ready(function() {
+
+	$('#stars-score').starrr({
+		rating: 5
+	});
+
+	$('#score-value').html("5");
+
+	$('#stars-score').on('starrr:change', function (e, value) {
+		$('#score-value').html(value);
+	});
+
+});
+</script>
+{% endblock %}

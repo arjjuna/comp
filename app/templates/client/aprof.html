@@ -63,8 +63,10 @@
         <div class="row contact-row">
           <div class="col-md-6 col-sm-6 col-xs-12 text-center">
             <div class="book mybtn">
-              <i class="fa fa-clock-o" aria-hidden="true"></i>
-              Résérver une séance
+              <a class="div-link" href="{{ url_for('client.booking', safe_name=safe_name) }}">
+                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                Résérver une séance
+              </a>
             </div>
           </div>
           <div class="col-md-6 col-sm-6 col-xs-12  text-center">

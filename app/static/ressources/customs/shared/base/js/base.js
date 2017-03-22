@@ -52,23 +52,7 @@ $(document).ready(function(){
 
 
 
-	$('.search-options-wrapper').addClass("hidden");
-
-	$(".search-tile #more-options").on('click', function(){
-		$('.search-options-wrapper').toggleClass("hidden");
-		$(".search-tile #more-options .more").toggleClass("hidden");
-		$(".search-tile #more-options .less").toggleClass("hidden");
-	});
-
-
-
-	$(".clickable-result").hover(
-		function(){
-			$(".clickable-result").addClass("light-blue-hover")
-		},
-		function(){
-			$(".clickable-result").removeClass("light-blue-hover")
-	});
+	
 
 	$(".profile-tile .overview .see-more-text span.more").on('click', function(){
 		$(".overview .overview-text").removeClass('crippled');

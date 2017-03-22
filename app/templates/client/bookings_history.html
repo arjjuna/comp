@@ -1,0 +1,70 @@
+{% extends 'client/nbase.html' %}
+
+{% block styles %}
+{{ super() }}
+<link href="{{ url_for('static', filename='ressources/customs/client/css/bookings.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-12 main-title">
+		<h1>Réservations</h1>
+	</div>
+	<div class="main-tile tile col-md-10 bookings-tile">
+	{% for b in bookings %}
+			<div class="row abooking" data-id="{{ b.id }}">
+				<div class="col-md-2 col-sm-3 col-xs-4 img-col">
+					<div class="img-container">
+						<img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}">
+					</div>
+				</div>
+				<div class="col-md-8 col-sm-9">
+					<div class="booking-data">
+						<div class="name">
+							{{ b.prof.user.first_name.title() }} {{ b.prof.user.last_name.title() }}
+						</div>
+						<div class="date">
+							Date et heure: <span class="date-value">22 février 2017 12:44</span>
+						</div>
+						<div class="rate">
+							Séance de <span class="green">{{ b.hours }}</span> heures à 
+							<span class="green">{{ b.price }} dh/h</span>
+							 (total: <span class="green">{{ b.total }} dh</span>)
+						</div>
+
+						<div class="status">
+							<!-- {% if b.prof_accepted %}
+							Status: <span class="value">Acceptée.</span>
+							{% else %}
+							Status: <span class="value">En attente d'acceptation.</span>
+							{% endif %} -->
+						</div>
+					</div>
+				</div>
+				<div class="col-md-2 col-sm-12">
+					<div class="booking-actions">
+						<div class=" disabled">
+							<a class="div-link" href="#">
+								<i class="fa fa-times" aria-hidden="true"> disabled</i>
+							</a>
+						</div>
+						<div class="validate">
+							<a class="div-link" href="#">
+								<i class="fa fa-times" aria-hidden="true"> enabled</i>
+							</a>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+	{% endfor %}
+
+		
+	</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+{% endblock %}

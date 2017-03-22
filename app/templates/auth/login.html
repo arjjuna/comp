@@ -1,6 +1,13 @@
 {% extends 'auth/base.html' %}
 {% import "bootstrap/wtf.html" as wtf %}
 
+{% block unittest %}
+{% if _ut %}
+    {{_ut}}
+{% endif %}
+{% endblock %}
+
+
 {% block content %}
 <div class="col-md-12 m-lg-bottom">
   <hgroup class="text-center">

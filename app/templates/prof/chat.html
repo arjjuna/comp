@@ -1,0 +1,98 @@
+{% extends 'prof/base.html' %}
+
+{% block styles %}
+{{ super() }}
+<link href="{{ url_for('static', filename='ressources/starrr/dist/starrr.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='ressources/customs/shared/chat/css/nchat.css') }}" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class=" col-md-3 col-sm-4 contacts-tile desktop-only">
+	{% for m in latest_messages %}
+		<div class="one-contact" id='contact_{{ m.who.id }}'>
+			<div class="contact-img ">
+				<img src="{{ url_for('static', filename=m.who.picture) }} ">
+			</div>
+			<div class="contact-info">
+				<div class="name">{{ m.who.first_name }} {{ m.who.last_name }}</div>
+				<div class="last-message">
+					{% if m.type=="sent" %}
+							<i class="fa fa-arrow-left" aria-hidden="true"></i>
+					{% elif m.type=="received" %} 
+							<i class="fa fa-arrow-right" aria-hidden="true"></i>
+					{% endif %}
+
+					{{ m.message_obj.text }}</div>
+				<div class="message-time" data-time="{{ m.message_obj.timestamp }}"></div>
+			</div>
+		</div>
+	{% endfor %}
+
+		
+	</div>	
+
+	<div class=" col-md-9 col-sm-8 chat-tile">
+		<div class="messages-row-wrapper">
+			<div class="row messages-row">
+				<div class="more-chat"> Voir Plus </div>
+				<div class="messages-from-ajax">
+				</div>
+				
+			</div>
+		</div>
+
+			<div class="row type-row">
+				<div class="col-md-10 col-sm-10 col-xs-10">
+					<textarea class="chat-input" id="chatBox"></textarea>
+				</div>
+				<div class="col-md-2 col-sm-2 col-xs-2 actions-col">
+					<div class="send-btn" id="sendButton"><i class="fa fa-paper-plane" aria-hidden="true"></i> </div> 
+				</div>
+			</div>
+		
+	</div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='ressources/starrr/dist/starrr.js') }}"></script>
+<script src="{{ url_for('static', filename='ressources/socket.io-client/dist/socket.io.min.js') }}"></script>
+
+
+<script>
+$(document).ready(function() {
+
+	$('#stars-score').starrr({
+		rating: 5
+	});
+
+	$('#score-value').html("5");
+
+	$('#stars-score').on('starrr:change', function (e, value) {
+		$('#score-value').html(value);
+	});
+
+});
+</script>
+
+<script>
+	var safe_name = '{{ safe_name }}';
+	var user_id = '{{ user.id }}';
+	var contact_id = '{{ client.user_id }}';
+
+
+	var r = '{{ room_name }}';
+
+	var f = {'id': {{user.id}} }
+	var t = {'id': {{client.user_id}} }
+
+	var chat_root = '/prof/chat/'
+
+</script>
+
+<script src="{{ url_for('static', filename='ressources/customs/shared/chat/js/nchat.js') }}"></script>
+{% endblock %}

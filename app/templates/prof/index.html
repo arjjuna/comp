@@ -1,30 +1,113 @@
-{% extends 'client/base.html' %}
+{% extends 'prof/base.html' %}
+
+{% block styles %}
+{{ super() }}
+    <link href="{{ url_for('static', filename='ressources/customs/shared/index/css/index.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='ressources/customs/prof/css/index.css') }}" rel="stylesheet">
+    
+{% endblock %}
 
 {% block content %}
-<div class="col-md-6 col-sm-6 col-xs-12">
-	<div class="x_panel">
-		<div class="x_title">
-			<h2>  </h2>
-			<ul class="nav navbar-right panel_toolbox">
-				<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-				</li>
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-					<ul class="dropdown-menu" role="menu">
-						<li><a href="#">Settings 2</a>
-						</li>
-					</ul>
-				</li>
-				<li><a class="close-link"><i class="fa fa-close"></i></a>
-				</li>
-			</ul>
-			<div class="clearfix"></div>
-		</div>
-
-		<div class="x_content">
-			This is the prof's index, from here the magic happens
-		</div>
+<div class="row">
+	<div class="col-md-12 main-title">
+		<h1>Bienvenue {{ user['last_name'] }}!</h1>
 	</div>
-</div>
 
+	<div class="main-tile tile col-md-10 col-sm-12">
+		<div class="col-md-12">
+			<h3>Mes stats </h3>
+			<div class="row stat-wrapper">
+
+				<div class="col-md-3 col-sm-3 col-xs-6 stat_tile">
+			      <span class="stat_top dark-blue"><i class="fa fa-usd"></i> Solde</span>
+			      <div class="stat_count dark-blue">2500dh</div>
+			      <span><a class="green">Historique </a></span>
+			    </div>
+			    <div class="col-md-3 col-sm-3 col-xs-6 stat_tile">
+			      <span class="stat_top dark-blue"><i class="fa fa-clock-o"></i> Réservations en cours</span>
+			      <div class="stat_count dark-blue">3</div>
+			      <span><a class="green">Consulter </a></span>
+			    </div>
+			    <div class="col-md-3 col-sm-3 col-xs-6 stat_tile">
+			      <span class="stat_top dark-blue"><i class="fa fa-user"></i> Séances </span>
+			      <div class="stat_count dark-blue">9h</div>
+			      <span><i class="red"><i class="fa fa-arrow-down"></i> 4% </i> ce mois</span>
+			    </div>
+			    <div class="col-md-3 col-sm-3 col-xs-6 stat_tile">
+			      <span class="stat_top dark-blue"><i class="fa fa-user"></i> Total dépenses</span>
+			      <div class="stat_count dark-blue">500</div>
+			      <span><i class="red"><i class="fa fa-arrow-down"></i> 4% </i> ce mois</span>
+			    </div>
+			</div>
+		</div>
+
+
+		<div class="col-md-12">
+			<h3>Séances prochaines </h3>
+		</div>
+		
+		<div class="row squares-row">
+			<div class="square-col col-md-3 col-sm-3 col-xs-6">
+				<div class="square booking">
+					<div class="first-click">
+						<div class="square-img">
+							<img src="{{ url_for('static', filename='ressources/images/icons/booking.png') }}">
+						</div>
+						<div class="square-text text-center">
+							<span>Réservations</span>
+						</div>
+					</div>
+					<div class="second-click hidden">
+						<div class="square-img">
+							<img src="{{ url_for('static', filename='ressources/images/icons/blank.png') }}">
+						</div>
+						<div class="square-text text-center">
+						</div>
+
+						<div class="choice choice-top">
+							<div class="choice-text" data-link="demandes">Demandes</div>
+						</div>
+						<div class="choice choice-middle">
+							<div class="choice-text" data-link="seances">Séances futures</div>
+						</div>
+						<div class="choice choice-bottom">
+							<div class="choice-text" data-link="reservations/historique">Historique</div>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+		
+
+		
+
+		
+
+	</div>
+	
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+$(document).ready(function(){
+	$('.square.booking').on('click', function(){
+
+		$(this).find('.first-click').addClass('hidden');
+		$(this).find('.second-click').removeClass('hidden');
+
+		$(this).addClass('noPadding');
+
+		$(this).find('.choice').on('click', function(){
+			window.location.href = $(this).find('.choice-text').data('link');
+		});
+
+	});
+});
+
+</script>
 {% endblock %}

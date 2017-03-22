@@ -1,0 +1,11 @@
+.abooking .accept {
+	background-color: lightgreen;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.abooking .decline {
+	background-color: pink;
+	cursor: pointer;
+	display: inline-block;
+}

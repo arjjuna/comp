@@ -1,0 +1,38 @@
+{
+  "name": "jquery-confirm2",
+  "version": "3.1.0",
+  "homepage": "https://github.com/craftpip/jquery-confirm",
+  "authors": [
+    "boniface pereira <bonifacepereira@gmail.com>"
+  ],
+  "description": "A multipurpose alert and confirm plugin",
+  "main": "dist/jquery-confirm.min.js",
+  "keywords": [
+    "jquery-plugin",
+    "javascript",
+    "confirm",
+    "alert",
+    "dialog"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": ">=1.6"
+  },
+  "_release": "3.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v3.1.0",
+    "commit": "d73d6bb420bbc222f3a895155927f24a62d29c1a"
+  },
+  "_source": "https://github.com/craftpip/jquery-confirm.git",
+  "_target": "^3.1.0",
+  "_originalSource": "jquery-confirm2",
+  "_direct": true
+}

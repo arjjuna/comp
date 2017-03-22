@@ -17,7 +17,7 @@
 	<div class="main-tile col-md-12 search-tile tile">
 		<div class="row">
 			<div class="col-md-12">
-				<h3>Résultats pour "hmed moul lkhoubz"</h3>
+				<h3>Résultats pour "{{ keywords }}"</h3>
 			</div>
 		</div>
 
@@ -53,7 +53,7 @@
 						<div class="row form-group">
 	                        <label class="control-label col-md-12 col-sm-12 col-xs-12">Matières</label>
 	                        <div class="col-md-12 col-sm-12 col-xs-12">
-	                          <select class="select2_multiple form-control" multiple="multiple">
+	                          <select class="select2_multiple form-control" multiple="multiple" style="width: 100%">
 	                            <option>Choose option</option>
 	                            <option>Option one</option>
 	                            <option>Option two</option>
@@ -71,7 +71,7 @@
 						<div class="row form-group">
 	                        <label class="control-label col-md-12 col-sm-12 col-xs-12">Niveaux</label>
 	                        <div class="col-md-12 col-sm-12 col-xs-12">
-	                          <select class="select2_multiple form-control" multiple="multiple">
+	                          <select class="select2_multiple form-control" multiple="multiple" style="width: 100%">
 	                            <option>Choose option</option>
 	                            <option>Option one</option>
 	                            <option>Option two</option>
@@ -89,7 +89,7 @@
 						<div class="row form-group">
 	                        <label class="control-label col-md-12 col-sm-12 col-xs-12">Villes</label>
 	                        <div class="col-md-12 col-sm-12 col-xs-12">
-	                          <select class="select2_multiple form-control" multiple="multiple">
+	                          <select class="select2_multiple form-control" multiple="multiple" style="width: 100%">
 	                            <option>Choose option</option>
 	                            <option>Option one</option>
 	                            <option>Option two</option>
@@ -119,7 +119,7 @@
 
 		<div class="search-results-wrapper">
 			<div class="row one-result no-wrap">
-				<div class="col-md-2 col-sm-3 col-xs-3 clickable-result">
+				<div class="col-md-2 col-sm-3 col-xs-3">
 					<div class="img-container">
 						<img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}">
 					</div>
@@ -127,7 +127,7 @@
 				<div class="col-md-8 col-sm-9 col-xs-9 clickable-result">
 					<div class="result-data">
 						<div class="top-section">
-							<div class="name">Mohammed Tiw (24, rabat)</div>
+							<div class="name">Mohammed Tiw (34, rabat)</div>
 							<div class="title">Titre de sat 3chiri mohammed tiw wa twil a sahbi n9ouss chwia pliz</div>
 							<div class="rating">
 								<i class="fa fa-star" ></i>
@@ -142,10 +142,12 @@
 							<div class="price">Prix: 200 dh/h</div>
 							<div class='subjects'> Matières: Maths, Physique, français, anglais ss aksjd alsjhc alscjhas laskcj</div>
 						</div>
-
-						
 					</div>
 				</div>
+
+				
+
+
 				<div class="col-md-2 col-sm-12 col-xs-12">
 						<div class="row action-btns">
 							<div class="col-md-12 col-sm-6 text-center btn-col">
@@ -157,6 +159,57 @@
 						</div>
 				</div>
 			</div>
+
+			{% for prof in prof_list %}
+			<div class="row one-result no-wrap">
+				<div class="col-md-2 col-sm-3 col-xs-3">
+					<div class="img-container">
+						<img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}">
+					</div>
+				</div>
+				<div class="col-md-8 col-sm-9 col-xs-9 clickable-result">
+					<div class="result-data">
+						<div class="top-section">
+							<div class="name">{{ prof.user.first_name }} {{ prof.user.last_name }} ({{ prof.user.age }}, rabat)</div>
+							<div class="title">Titre de sat 3chiri mohammed tiw wa twil a sahbi n9ouss chwia pliz</div>
+							<div class="rating">
+								<i class="fa fa-star" ></i>
+								<i class="fa fa-star" ></i>
+								<i class="fa fa-star" ></i>
+								<i class="fa fa-star" ></i>
+								<i class="fa fa-star-o" ></i>
+							</div>
+						</div>
+
+						<div class="bottom-section">
+							<div class="price">Prix: 200 dh/h</div>
+							<div class='subjects'> Matières: Maths, Physique, français, anglais ss aksjd alsjhc alscjhas laskcj</div>
+						</div>
+					</div>
+				</div>
+
+				
+
+
+				<div class="col-md-2 col-sm-12 col-xs-12">
+						<div class="row action-btns">
+							<div class="col-md-12 col-sm-6 text-center btn-col">
+								<div class="mybtn"> Message </div>							
+							</div>
+							<div class="col-md-12 col-sm-6 text-center btn-col">
+								<div class="mybtn"> Réserver une séance </div>								
+							</div>
+						</div>
+				</div>
+			</div>
+
+			{% endfor %}
+
+
+			
+
+
+
 
 		</div>
 
@@ -191,6 +244,7 @@
 <!-- Select2 -->
 <script src="{{ url_for('static', filename='ressources/select2/dist/js/select2.min.js') }}"></script>
 <script src="{{ url_for('static', filename='ressources/ion.rangeSlider/js/ion.rangeSlider.min.js') }}"></script>
+<script src="{{ url_for('static', filename='ressources/customs/client/js/search.js') }}"></script>
 
 
 

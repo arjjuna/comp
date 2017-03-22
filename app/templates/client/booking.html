@@ -90,10 +90,9 @@
               <div class="col-md-6 col-sm-7 col-xs-6"> 
                  <div class="subject-select">
                   <select id="subject-select">
-                    <option value="volvo">Volvo</option>
-                    <option value="saab">Saab</option>
-                    <option value="mercedes">Mercedes</option>
-                    <option value="audi">Audi</option>
+                    {% for s in prof.subjects %}
+                      <option value="{{ s.id }}">{{ s.name.title() }}</option>
+                    {% endfor %}
                   </select> 
                  </div>
               </div>
@@ -241,7 +240,9 @@ $(document).ready(function(){
 });
 </script>
 
-
+<script>
+var pid = "{{ prof.id }}"
+</script>
 
 <script src="{{ url_for('static', filename='ressources/customs/client/js/booking.js') }}"></script>
 

@@ -1,3 +1,29 @@
+.form-group.input-with-icon {
+	border: solid;
+    border-width: 2px;
+    border-color: #e9e9e9;
+	padding: 5px 10px 5px 10px;
+	display: table;
+	width: 100%;
+}
+
+.form-group.input-with-icon .fa-search{
+	color: #7e7e7e;
+	display: table-cell;
+	width: 15px;
+}
+
+.form-group.input-with-icon input{
+	display: table-cell;
+	width: 100%;
+	padding-right: 10px
+}
+
+.naked-input {
+	background-color: #ffffff;
+	border: none;
+}
+
 /*Search rules*/
 .more-options {
 	font-size: 17px;

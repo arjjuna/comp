@@ -34,8 +34,13 @@ class DevelopmentConfig(Config):
 
 	CELERY_CONFIG = {}
 
+
 class TestingConfig(Config):
 	TESTING = True
+
+	WTF_CSRF_ENABLED = False
+
+	SERVER_NAME = '127.0.0.1:5000'
 
 	SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:' + PROJECT_DB_PASSWORD + '@localhost/test_db_1'
 
