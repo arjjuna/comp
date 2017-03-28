@@ -293,6 +293,11 @@
 	font-size: 20px;
 }
 
+.education-tile .education-row .description {
+	font-size: 20px;
+	margin-top: 15px;
+}
+
 
 .work-tile {
 	margin-top: 30px;

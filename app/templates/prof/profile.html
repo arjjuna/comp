@@ -1,0 +1,550 @@
+{% extends 'prof/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block styles %}
+{{ super() }}
+<link href="{{ url_for('static', filename='ressources/customs/prof/css/profile.css') }}" rel="stylesheet">
+
+<link href="{{ url_for('static', filename='ressources/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+    
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-12 main-title">
+		<h1>Modifiez votre profile</h1>
+	</div>
+	<div class="tile col-md-10 col-sm-12">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="profile-section">
+					<h3>Informations générales</h3>
+					<hr>
+					<form method="post" action="{{ url_for('prof.profile_general') }}">	
+						<div class="row">
+							<div class="input-row row profil_picture ">
+								<div class="col-md-3 form-label">
+									Image de profil:
+								</div>
+								<div class="col-md-9">
+									<img src="{{ url_for('main.profile_picture', filename=user.profile_picture) }}">
+									<br>
+									<a href="{{ url_for('prof.picture_upload') }}" class="div-link">
+										<div class="edit-btn">
+											Modiier
+										</div>
+									</a>
+								</div>
+							</div>
+
+							<div class="input-row row">
+								<div class="col-md-3 form-label">
+									Prix (dh/h):
+								</div>
+								<div class="col-md-9">
+									<input id="hourly_fee" name="hourly_fee" value="{{ prof.hourly_fee }}">
+								</div>
+							</div>
+
+							<div class="input-row row">
+								<div class="col-md-3 form-label">
+									titre
+								</div>
+								<div class="col-md-9">						
+									<textarea name='title'>{{ placeholders.title }}</textarea>
+								</div>
+							</div>
+
+							<div class="input-row row">
+								<div class="col-md-3 form-label">
+									Matière principal:
+								</div>
+								<div class="col-md-9">
+									<select name="principal_subject">
+									{% for s in subjects %}
+										<option value="{{ s.id }}"{% if prof.principal_subject== s%} selected{% endif %}>{{ s.name }}</option>
+									{% endfor %}
+									</select>
+								</div>
+							</div>
+
+							<div class="input-row row">
+								<div class="col-md-3 form-label">
+									Matière secondaire:
+								</div>
+								<div class="col-md-9">
+									<select name="secondary_subject">
+									{% for s in subjects %}
+										<option value="{{ s.id }}"{% if prof.secondary_subject== s%} selected{% endif %}>{{ s.name }}</option>
+									{% endfor %}
+									</select>
+								</div>
+							</div>
+
+							<div class="input-row row">
+								<div class="col-md-3 form-label">
+									Date de naissance:
+								</div>
+								<div class="col-md-9">
+									<input id="birth_date" name="birth_date" value="{{ placeholders.birth_date }}">
+								</div>
+							</div>
+
+							<div class="input-row row">
+								<div class="col-md-3 form-label">
+									ABOUT ME:
+								</div>
+								<div class="col-md-9">
+									
+								</div>
+							</div>
+
+							<div class="col-md-offset-3 col-md-9">
+								<input type="submit" value="Enregistrer" class="btn">
+							</div>
+						</div>
+					</form>	
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="tile col-md-10 col-sm-12">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="profile-section">
+					<h3>Education</h3>
+					<hr>
+					{% for ed in educations %}
+						<div class="an_education">
+							<div class="education_list">
+								<div class="input-row row">
+									<div class="col-md-3 form-label">
+										Diplôme:
+									</div>
+									<div class="col-md-9">
+										{{ ed.title }}
+									</div>
+								</div>
+								<div class="input-row row">
+									<div class="col-md-3 form-label">
+										Ecole:
+									</div>
+									<div class="col-md-9">
+										{{ ed.school }}
+									</div>
+								</div>
+								<div class="input-row row">
+									<div class="col-md-3 form-label">
+										Début:
+									</div>
+									<div class="col-md-9">
+										<span class="school_date my_date" data-date="{{ ed.start }}"></span>
+									</div>
+								</div>
+								<div class="input-row row">
+									<div class="col-md-3 form-label">
+										Fin:
+									</div>
+									<div class="col-md-9">
+										<span class="school_date my_date" data-date="{{ ed.end }}"></span>
+									</div>
+								</div>
+								<div class="input-row row">
+									<div class="col-md-3 form-label">
+										Description:
+									</div>
+									<div class="col-md-9">
+										{{ ed.description }}
+									</div>
+								</div>
+								
+								
+							</div>
+
+							
+
+							<div class="education_form hidden" >
+								<form method="post" action="{{ url_for('prof.edit_education', _id=ed.id) }}">	
+									<div class="row">
+										<div class="input-row row">
+											<div class="col-md-3 form-label">
+												Diplôme:
+											</div>
+											<div class="col-md-9">
+												<input name="title" value="{{ ed.title }}">
+											</div>
+										</div>
+
+										<div class="input-row row">
+											<div class="col-md-3 form-label">
+												Ecole:
+											</div>
+											<div class="col-md-9">
+												<input name="school" value="{{ ed.school }}">
+											</div>
+										</div>
+										
+										<div class="input-row row">
+											<div class="col-md-3 form-label">
+												Début
+											</div>
+											<div class="col-md-9">
+												<input name="start" class="school_date_input my_date_input" value="{{ ed.start_repr() }}">
+											</div>
+										</div>
+										
+										<div class="input-row row">
+											<div class="col-md-3 form-label">
+												Fin
+											</div>
+											<div class="col-md-9">
+												<input name="end" class="school_date_input my_date_input" value="{{ ed.end_repr() }}">
+											</div>
+										</div>
+
+										<div class="input-row row">
+											<div class="col-md-3 form-label">
+												Description:
+											</div>
+											<div class="col-md-9">
+												<textarea name="description">{{ ed.description }}</textarea>
+											</div>
+										</div>
+
+										<div class="col-md-offset-3 col-md-9">
+											<input type="submit" value="Enregistrer" class="hidden btn" id="submit_edu_{{ed.id}}">
+										</div>
+
+									</div>								
+								</form>
+							</div>
+							<div class="actions">
+								<span class="edit_education edit-btn">Modifier</span>
+								<span class="save-btn copy-btn hidden" data-id="submit_edu_{{ed.id}}">Enregistrer</span>
+								<span class="edit_education cancel-btn hidden">Annuler</span>
+								<span class="delete_education delete-btn" data-id="{{ ed.id }}">Supprimer</span>
+							</div>
+						</div>
+
+					{% endfor %}
+
+					<hr>
+					
+					<div class="add_education">
+						<h4>Ajouter éducation:</h4>
+						<form method="post" action="{{ url_for('prof.profile_education') }}">	
+
+							<div class="row">
+								<div class="input-row row">
+									<div class="col-md-3 form-label">
+										Diplôme:
+									</div>
+									<div class="col-md-9">
+										<input name="title">
+									</div>
+								</div>
+
+								<div class="input-row row">
+									<div class="col-md-3 form-label">
+										Ecole:
+									</div>
+									<div class="col-md-9">
+										<input name="school">
+									</div>
+								</div>
+								
+								<div class="input-row row">
+									<div class="col-md-3 form-label">
+										Début
+									</div>
+									<div class="col-md-9">
+										<input name="start" class="school_date_input my_date_input">
+									</div>
+								</div>
+								
+								<div class="input-row row">
+									<div class="col-md-3 form-label">
+										Fin
+									</div>
+									<div class="col-md-9">
+										<input name="end" class="school_date_input my_date_input">
+									</div>
+								</div>
+
+								<div class="input-row row">
+									<div class="col-md-3 form-label">
+										Description:
+									</div>
+									<div class="col-md-9">
+										<textarea name="description"></textarea>
+									</div>
+								</div>
+
+								<div class="col-md-offset-3 col-md-9">
+									<input type="submit" value="Enregistrer" class="btn">
+								</div>
+
+							</div>	
+
+							<!--
+							Diplôme:
+							<br>
+							<input name="title">
+							<br>
+							Ecole:
+							<br>
+							<input name="school">
+							<br>
+							Début
+							<br>
+							<input name="start" class="school_date_input my_date_input">
+							<br>
+							Fin
+							<br>
+							<input name="end" class="school_date_input my_date_input">
+							<br>
+							Description:
+							<br>
+							<textarea name="description"></textarea>
+							<br>
+							<input type="submit" value="Enregistrer">
+							-->
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="tile col-md-10 col-sm-12">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="profile-section">
+					<h3>Expériences professionelles</h3>
+					<hr>
+					{% for exp in experiences %}
+						<div class="an_experience">
+							<div class="experience_list">
+								<div class="input-row row">
+									<div class="col-md-3 form-label">
+										Poste:
+									</div>
+									<div class="col-md-9">
+										{{ exp.position }}
+									</div>
+								</div>
+								<div class="input-row row">
+									<div class="col-md-3 form-label">
+										Entreprise:
+									</div>
+									<div class="col-md-9">
+										{{ exp.company }}
+									</div>
+								</div>
+								<div class="input-row row">
+									<div class="col-md-3 form-label">
+										Début:
+									</div>
+									<div class="col-md-9">
+										<span class="experience_date my_date" data-date="{{ exp.start }}"></span>
+									</div>
+								</div>
+								<div class="input-row row">
+									<div class="col-md-3 form-label">
+										Fin:
+									</div>
+									<div class="col-md-9">
+										<span class="experience_date my_date" data-date="{{ exp.end }}"></span>
+									</div>
+								</div>
+								<div class="input-row row">
+									<div class="col-md-3 form-label">
+										Description:
+									</div>
+									<div class="col-md-9">
+										{{ exp.description }}
+									</div>
+								</div>
+
+
+							</div>
+
+							<div class="experience_form hidden" >
+								<form method="post" action="{{ url_for('prof.edit_experience', _id=exp.id) }}">	
+									
+									<div class="row">
+
+										<div class="input-row row">
+											<div class="col-md-3 form-label">
+												Poste:
+											</div>
+											<div class="col-md-9">
+												<input name="position" value="{{ exp.position }}">
+											</div>
+										</div>
+										
+										<div class="input-row row">
+											<div class="col-md-3 form-label">
+												Entreprise:
+											</div>
+											<div class="col-md-9">
+												<input name="company" value="{{ exp.company }}">
+											</div>
+										</div>
+										
+										<div class="input-row row">
+											<div class="col-md-3 form-label">	
+												Début
+											</div>
+											<div class="col-md-9">
+												<input name="start" class="school_date_input my_date_input" value="{{ exp.start_repr() }}">
+											</div>
+										</div>
+										
+										<div class="input-row row">
+											<div class="col-md-3 form-label">
+												Fin
+											</div>
+											<div class="col-md-9">
+												<input name="end" class="school_date_input my_date_input" value="{{ exp.end_repr() }}">
+											</div>
+										</div>
+
+										<div class="input-row row">
+											<div class="col-md-3 form-label">
+												Description:
+											</div>
+											<div class="col-md-9">
+												<textarea name="description">{{ exp.description }}</textarea>
+											</div>
+										</div>
+
+										<div class="col-md-offset-3 col-md-9">
+											<input type="submit" value="Enregistrer" class="btn hidden" id="submit_exp_{{exp.id}}">
+										</div>
+
+									</div>
+								</form>
+							</div>
+
+							<div class="actions">
+								<span class="edit_experience edit-btn">Modifier</span>
+								<span class="save-btn copy-btn hidden" data-id="submit_exp_{{exp.id}}">Enregistrer</span>
+								<span class="edit_experience cancel-btn hidden">Annuler</span>
+								<span class="delete_experience delete-btn" data-id="{{ exp.id }}"> supprimer</span>
+							</div>
+						</div>
+
+					{% endfor %}
+
+					<hr>
+					
+					<div class="add_experience">
+						<h4>Ajouter une expérience professionelle</h4> 
+						<form method="post" action="{{ url_for('prof.profile_experience') }}">
+
+							<div class="row">
+
+								<div class="input-row row">
+									<div class="col-md-3 form-label">
+										Poste:
+									</div>
+									<div class="col-md-9">
+										<input name="position">
+									</div>
+								</div>
+								
+								<div class="input-row row">
+									<div class="col-md-3 form-label">
+										Entreprise:
+									</div>
+									<div class="col-md-9">
+										<input name="company">
+									</div>
+								</div>
+								
+								<div class="input-row row">
+									<div class="col-md-3 form-label">	
+										Début
+									</div>
+									<div class="col-md-9">
+										<input name="start" class="school_date_input my_date_input">
+									</div>
+								</div>
+								
+								<div class="input-row row">
+									<div class="col-md-3 form-label">
+										Fin
+									</div>
+									<div class="col-md-9">
+										<input name="end" class="school_date_input my_date_input">
+									</div>
+								</div>
+
+								<div class="input-row row">
+									<div class="col-md-3 form-label">
+										Description:
+									</div>
+									<div class="col-md-9">
+										<textarea name="description"></textarea>
+									</div>
+								</div>
+
+								<div class="col-md-offset-3 col-md-9">
+									<input type="submit" class="btn" value="Enregistrer">
+								</div>
+
+							</div>
+
+
+
+
+							<!--
+							Poste:
+							<br>
+							<input name="position">
+							<br>
+							Entreprise:
+							<br>
+							<input name="company">
+							<br>
+							Début
+							<br>
+							<input name="start" class="experience_date_input my_date_input">
+							<br>
+							Fin
+							<br>
+							<input name="end" class="experience_date_input my_date_input">
+							<br>
+							Description:
+							<br>
+							<textarea name="description"></textarea>
+							<br>
+							<input type="submit" value="Enregistrer">
+							-->
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='ressources/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+<script src="{{ url_for('static', filename='ressources/jquery-confirm2/js/jquery-confirm.js') }}"></script>
+
+<script src="{{ url_for('static', filename='ressources/customs/prof/js/profile.js') }}"></script>
+
+<script>
+var delete_education_url = "{{ url_for('prof.delete_education') }}";
+var delete_experience_url = "{{ url_for('prof.delete_experience') }}";
+</script>
+{% endblock %}

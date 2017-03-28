@@ -2,8 +2,11 @@ from models import User, Client, Prof, Message
 
 from sqlalchemy import and_, or_
 
-from flask import render_template
+from flask import render_template, current_app
 
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in current_app.config['ALLOWED_EXTENSIONS']
 
 def room_name(id1, id2):
 	#gives a unique room name for a combinaton of two user ids

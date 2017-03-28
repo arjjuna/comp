@@ -17,19 +17,22 @@
 	<div class="main-tile tile col-md-10 col-sm-12">
 		<div class="row">
 			<div class="col-md-12">
-				<h3>Profile</h3>
-				<form id="profile_form" method="post">
-					{{ profile_form.csrf_token }}
-					<div class="col-md-12">
-						{{ wtf.form_field(profile_form.about_me) }}
-					</div>
-					<div class="col-md-12">
-						{{ wtf.form_field(profile_form.birth_date) }}
-					</div>
-					<div class="col-md-12">
-						{{ wtf.form_field(profile_form.submit) }}
-					</div>
-				</form>
+				<h3>Informations générales</h3>
+				<form method="post" action="{{ url_for('client.profile_general') }}">	
+					about me <br>
+					
+					<textarea name='about_me'>{{ placeholders.about_me }}</textarea>
+
+
+
+					<br>
+					Date de naissance:
+					<br>
+					<input id="birth_date" name="birth_date" value="{{ placeholders.birth_date }}">
+
+					<br>
+					<input type="submit" value="Enregistrer">
+				</form>	
 
 			</div>
 		</div>

@@ -1,0 +1,32 @@
+INFO:engineio:Server initialized for eventlet.
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:engineio:725fd225d69e463d929deb95d3295437: Sending packet OPEN data {'pingInterval': 25000, 'pingTimeout': 60000, 'upgrades': ['websocket'], 'sid': '725fd225d69e463d929deb95d3295437'}
+INFO:engineio:725fd225d69e463d929deb95d3295437: Sending packet MESSAGE data 0
+INFO:engineio:725fd225d69e463d929deb95d3295437: Received packet MESSAGE data 2["join",{"room":"4_5"}]
+INFO:socketio:received event "join" from 725fd225d69e463d929deb95d3295437 [/]
+INFO:socketio:725fd225d69e463d929deb95d3295437 is entering room 4_5 [/]
+INFO:engineio:725fd225d69e463d929deb95d3295437: Received request to upgrade to websocket
+INFO:engineio:725fd225d69e463d929deb95d3295437: Sending packet NOOP data None
+INFO:engineio:725fd225d69e463d929deb95d3295437: Upgrade to websocket successful
+INFO:engineio:725fd225d69e463d929deb95d3295437: Received packet MESSAGE data 2["msg_to_server",{"room":"4_5","from_id":5,"to_id":4,"text":"foo\n"}]
+INFO:socketio:received event "msg_to_server" from 725fd225d69e463d929deb95d3295437 [/]
+DEBUG:amqp:Start from server, version: 0.9, properties: {u'information': u'Licensed under the MPL.  See http://www.rabbitmq.com/', u'product': u'RabbitMQ', u'copyright': u'Copyright (C) 2007-2016 Pivotal Software, Inc.', u'capabilities': {u'exchange_exchange_bindings': True, u'connection.blocked': True, u'authentication_failure_close': True, u'direct_reply_to': True, u'basic.nack': True, u'per_consumer_qos': True, u'consumer_priorities': True, u'consumer_cancel_notify': True, u'publisher_confirms': True}, u'cluster_name': u'rabbit@arjjuna-HP-EliteBook-840-G2', u'platform': u'Erlang/OTP', u'version': u'3.6.6'}, mechanisms: [u'AMQPLAIN', u'PLAIN'], locales: [u'en_US']
+DEBUG:amqp:Open OK!
+DEBUG:amqp:using channel_id: 1
+DEBUG:amqp:Channel open
+INFO:socketio:emitting event "msg_from_server" to 4_5 [/]
+INFO:engineio:725fd225d69e463d929deb95d3295437: Sending packet MESSAGE data 2["msg_from_server",{"to_id":4,"text":"foo\n","room":"4_5","from_id":5}]
+INFO:engineio:f1e32aaacae5442e972433e3a740f6b8: Sending packet OPEN data {'pingInterval': 25000, 'pingTimeout': 60000, 'upgrades': ['websocket'], 'sid': 'f1e32aaacae5442e972433e3a740f6b8'}
+INFO:engineio:f1e32aaacae5442e972433e3a740f6b8: Sending packet MESSAGE data 0
+INFO:engineio:f1e32aaacae5442e972433e3a740f6b8: Received packet MESSAGE data 2["join",{"room":"4_5"}]
+INFO:socketio:received event "join" from f1e32aaacae5442e972433e3a740f6b8 [/]
+INFO:socketio:f1e32aaacae5442e972433e3a740f6b8 is entering room 4_5 [/]
+INFO:engineio:f1e32aaacae5442e972433e3a740f6b8: Received request to upgrade to websocket
+INFO:engineio:f1e32aaacae5442e972433e3a740f6b8: Sending packet NOOP data None
+INFO:engineio:f1e32aaacae5442e972433e3a740f6b8: Upgrade to websocket successful
+INFO:engineio:f1e32aaacae5442e972433e3a740f6b8: Received packet PING data None
+INFO:engineio:f1e32aaacae5442e972433e3a740f6b8: Sending packet PONG data None
+INFO:engineio:f1e32aaacae5442e972433e3a740f6b8: Received packet PING data None
+INFO:engineio:f1e32aaacae5442e972433e3a740f6b8: Sending packet PONG data None
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/tasks/tasks.py', reloading

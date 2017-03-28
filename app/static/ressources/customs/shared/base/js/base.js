@@ -69,8 +69,55 @@ $(document).ready(function(){
 
 
 
+	$(".message-icon").on('click', function() {
+		$(".message-icon .unread-number").text("");
+
+		$.ajax({
+		type: 'POST',
+		dataType: 'json',
+		url: 'reset_unread',
+	  	success: function(data) {
+		  		console.log("Noice");
+		  	}
+			  	
+		});
+
+	}); 
 
 });
+
+
+$(document).ready(function(){
+
+function LoadUnreadMessages()
+{
+
+	$.ajax({
+		type: 'GET',
+		dataType: 'json',
+		url: 'unread_msgs_number',
+	  	success: function(data) {
+	  			if (data.n == 0){
+		  			$(".message-icon .unread-number").text("");
+		  			$('title').text("ostudy");
+	  			}
+	  			else{
+		  			$(".message-icon .unread-number").text(data.n);
+		  			$('title').text("(" + data.n.toString() + ") " + "ostudy") ;
+	  			}
+		  		console.log("pchh");
+		  	}
+			  	
+		});
+}
+
+LoadUnreadMessages();
+
+//setInterval(LoadUnreadMessages, 2000);
+
+});
+
+
 
 
 

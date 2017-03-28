@@ -66,35 +66,50 @@
 						</div>
 
 						<div class="message-icon desktop-only">
-							<div class="unread-number">3</div>
+							<div class="unread-number">
+								{% if current_user.unread_msgs > 0 %}
+									{{ current_user.unread_msgs }}
+								{% endif %}
+							</div>
 							<i class="fa fa-comment-o" aria-hidden="true"></i>
 						</div>
 						<div class="message-icon mobile-only">
 							<a href="foo">
-								<div class="unread-number">3</div>
+								<div class="unread-number">
+									{% if current_user.unread_msgs > 0 %}
+										{{ current_user.unread_msgs }}
+									{% endif %}
+								</div>
 								<i class="fa fa-comment-o" aria-hidden="true"></i>
 							</a>
 						</div>
+
+
 						<div class="message-list hidden">
 
 							<ul>
 								{% for m in latest_messages %}
-								<li>
-									<img src="{{ url_for('static', filename=m.who.picture) }} ">
-									<div class="middle-wrapper">
-										<div class="message-sender">{{ m.who.last_name }} {{ m.who.first_name }} </div>
-										<div class="message-prev">
-										{% if m.type=="sent" %}
-											<i class="fa fa-arrow-left" aria-hidden="true"></i>
-										{% elif m.type=="received" %} 
-											<i class="fa fa-arrow-right" aria-hidden="true"></i>
-										{% endif %}
-										
+								<a href="{{ url_for('prof.chat', safe_name=m.who.safe_name) }}" class="div-link">
+									<div>
+										<li>
+											<img src="{{ url_for('main.profile_picture', filename=m.who.picture) }} ">
+											<div class="middle-wrapper">
+												<div class="message-sender">{{ m.who.last_name }} {{ m.who.first_name }} </div>
+												<div class="message-prev">
+												{% if m.type=="sent" %}
+													<i class="fa fa-arrow-left" aria-hidden="true"></i>
+												{% elif m.type=="received" %} 
+													<i class="fa fa-arrow-right" aria-hidden="true"></i>
+												{% endif %}
+												
 
-										 {{m.message_obj.text}} </div>
+												 {{m.message_obj.text}} </div>
+											</div>
+											<div class="message-time" data-time="{{m.iso_date}}"> </div>
+										</li>
 									</div>
-									<div class="message-time" data-time="{{m.iso_date}}"> </div>
-								</li>
+
+								</a>
 								{% endfor %}
 
 								
@@ -130,9 +145,11 @@
 						<div class="profile-list hidden">
 							<ul>
 								<li>
-									<a class="div-link">
-										<img src="{{ url_for('static', filename='ressources/images/icons/user.png') }}">
-										Profile
+									<a class="div-link" href="{{ url_for('prof.profile') }}">
+										<div>
+											<img src="{{ url_for('static', filename='ressources/images/icons/user.png') }}">
+											Profile
+										</div>
 									</a>
 								</li>
 								<li>
@@ -143,8 +160,10 @@
 								</li>
 								<li>
 									<a class="div-link" href="{{ url_for('auth.logout') }}">
-										<img src="{{ url_for('static', filename='ressources/images/icons/logout.png') }}">
-										Déconnexion
+										<div>
+											<img src="{{ url_for('static', filename='ressources/images/icons/logout.png') }}">
+											Déconnexion
+										</div>
 									</a>
 								</li>
 								

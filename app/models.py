@@ -13,7 +13,7 @@ from sqlalchemy.orm import backref
 
 from unidecode import unidecode
 
-from datetime import date
+from datetime import date, datetime
 
 def calculate_age(born):
     today = date.today()
@@ -98,7 +98,7 @@ class User(UserMixin, db.Model):
 	last_name     = db.Column(db.String(64), index=True)
 	safe_name     = db.Column(db.String(200))
 	
-	picture       = db.Column(db.String(500)) #can edit
+	picture       = db.Column(db.String(500), default="placeholder.jpg") #can edit
 	
 	birth_date    = db.Column(db.DateTime())
 
@@ -106,6 +106,7 @@ class User(UserMixin, db.Model):
 	confirmed     = db.Column(db.Boolean, default=False)
 	last_seen     = db.Column(db.DateTime(), default=datetime.utcnow)
 
+	unread_msgs   = db.Column(db.Integer, default=0)
 
 	role_id       = db.Column(db.Integer, db.ForeignKey('roles.id'))
 
@@ -244,6 +245,8 @@ class User(UserMixin, db.Model):
 				'full_name': self.first_name.title() + " " + self.last_name.title(),
 				'first_name': self.first_name.title(),
 				'last_name': self.last_name.title(),
+				'profile_picture': self.picture,
+
 				}
 
 	
@@ -307,7 +310,7 @@ def load_user(user_id):
 
 
 class Subject(db.Model):
-	""" Suvjects """
+	""" Subjects """
 	__tablename__ = 'subjects'
 	id = db.Column(db.Integer, primary_key=True)
 	name = db.Column(db.String(64), unique=True)
@@ -384,21 +387,6 @@ class Client(db.Model):
 				'user_id': self.user.id
 				}
 
-	def make_booking(self, date, price, hours, subject, message, prof):
-		booking = Booking(client  = self,
-						  date    = date,
-						  price   = price,
-						  hours   = hours,
-						  subject = subject,
-						  message = message,
-						  prof    = prof
-						  )
-
-		db.session.add(booking)
-		db.session.commit()
-
-		return True, 201 # REssource created
-
 
 	def __repr__(self):
 		return '<Client %s, (%s %s)>' % (self.id, self.user.first_name, self.user.last_name)
@@ -413,8 +401,15 @@ class Prof(db.Model):
 	id            = db.Column(db.Integer, primary_key=True)
 	title         = db.Column(db.String(250))
 
+	hourly_fee    = db.Column(db.Integer)
+
+	city_id       = db.Column(db.Integer, db.ForeignKey('cities.id'))
+	city          = db.relationship("City", backref="profs" )
+
 	user_id       = db.Column(db.Integer, db.ForeignKey('users.id'))
 	user          = db.relationship("User", back_populates="prof")
+
+	about_me      = db.Column(db.String(2500))
 
 	principal_subject_id = db.Column(db.Integer, db.ForeignKey('subjects.id'))
 	principal_subject = db.relationship("Subject", backref="principal_profs",
@@ -423,6 +418,9 @@ class Prof(db.Model):
 	secondary_subject_id = db.Column(db.Integer, db.ForeignKey('subjects.id'))
 	secondary_subject = db.relationship("Subject", backref="secondary_profs",
 										foreign_keys=[secondary_subject_id])
+
+	educations = db.relationship("Education", back_populates="prof")
+	experiences = db.relationship("Experience", back_populates="prof")
 
 	@property
 	def subjects(self):
@@ -451,8 +449,17 @@ class Prof(db.Model):
 				'id': self.id,
 				'first_name': self.user.first_name.title(),
 				'last_name': self.user.last_name.title(),
-				'subjects' : self.subjects,
-				'user_id': self.user.id
+				'safe_name': self.user.safe_name,
+				'profile_picture': self.user.picture,
+				'title': self.title,
+				'subjects' : [s.name.title() for s in self.subjects],
+				'user_id': self.user.id,
+				'age': self.user.age,
+				'city': self.city.name.title(),
+				'hourly_fee': self.hourly_fee,
+				'about_me': self.about_me,
+				'educations': self.educations,
+				'experiences': self.experiences
 				}
 
 	def __repr__(self):
@@ -464,6 +471,60 @@ class Prof(db.Model):
 
 
 
+
+
+
+class Education(db.Model):
+	__tablename__ = "educations"
+	id            = db.Column(db.Integer, primary_key=True)
+	title       = db.Column(db.String(250))
+	school      = db.Column(db.String(250))
+	start       = db.Column(db.DateTime())
+	end         = db.Column(db.DateTime())
+	description = db.Column(db.String(2500))
+	prof_id     = db.Column(db.Integer, db.ForeignKey('profs.id'))
+	prof        = db.relationship("Prof", back_populates="educations")
+
+	def start_repr(self, month_letters=False):
+		if month_letters:
+			return datetime.strftime(self.start, "%B %Y")
+		return datetime.strftime(self.start, "%m/%Y")
+	
+	def end_repr(self, month_letters=False):
+		if month_letters:
+			return datetime.strftime(self.end, "%B %Y")
+		return datetime.strftime(self.end, "%m/%Y")
+
+
+	def __repr__(self):
+		return "<education: {0}, prof_id: {1}>".format(self.title, str(self.prof_id))
+
+
+
+class Experience(db.Model):
+	__tablename__ = "experiences"
+	id            = db.Column(db.Integer, primary_key=True)
+	position    = db.Column(db.String(250))
+	company     = db.Column(db.String(250))
+	start       = db.Column(db.DateTime())
+	end         = db.Column(db.DateTime())
+	description = db.Column(db.String(2500))
+	prof_id     = db.Column(db.Integer, db.ForeignKey('profs.id'))
+	prof        = db.relationship("Prof", back_populates="experiences")
+
+	def start_repr(self, month_letters=False):
+		if month_letters:
+			return datetime.strftime(self.start, "%B %Y")
+		return datetime.strftime(self.start, "%m/%Y")
+	
+	def end_repr(self, month_letters=False):
+		if month_letters:
+			return datetime.strftime(self.end, "%B %Y")
+		return datetime.strftime(self.end, "%m/%Y")
+
+
+	def __repr__(self):
+		return "<experience: {0}, prof_id: {1}>".format(self.title, str(self.prof_id))
 
 
 
@@ -526,118 +587,20 @@ class Message(db.Model):
 
 
 
+class City(db.Model):
+	__tablename__ = "cities"
+	id = db.Column(db.Integer, primary_key=True)
+	name = db.Column(db.String(100))
 
-
-
-
-
-class Booking(db.Model):
-	__tablename__ = 'bookings'
-
-	id         = db.Column(db.Integer, primary_key=True)
-	date       = db.Column(db.DateTime())
-	price      = db.Column(db.Integer)
-	hours      = db.Column(db.Integer)
-	message    = db.Column(db.String(2500))
-	subject_id = db.Column(db.Integer, db.ForeignKey('subjects.id'))
-	subject    = db.relationship("Subject", backref="bookings")
-
-	prof_id   = db.Column(db.Integer, db.ForeignKey('profs.id'))
-	prof      = db.relationship("Prof", backref="bookings")
-	client_id = db.Column(db.Integer, db.ForeignKey('clients.id'))
-	client    = db.relationship("Client", backref="bookings")
-
-
-	prof_declined   = db.Column(db.Boolean, default=False) 
-	prof_accepted   = db.Column(db.Boolean, default=False)
-	
-	client_canceled  = db.Column(db.Boolean, default=False)
-	client_validated = db.Column(db.Boolean, default=False)
-
-	commented  = db.Column(db.Boolean, default=False)
-
-	score            = db.Column(db.Integer)
-	feedback_message = db.Column(db.String(1000))
-
-	@property
-	def total(self):
-		return self.price*self.hours
-
-	@total.setter
-	def total(self, value):
-		raise AttributeError("Total can't be set")
-
-	@total.deleter
-	def total(self):
-		raise AttributeError("Total can't be deleted")
-
-	@property
-	def past_due(self):
-		return (datetime.utcnow() > self.date)
-
-	@past_due.setter
-	def past_due(self, value):
-		AttributeError("Past_due can't be set")
-
-	@past_due.deleter
-	def past_due(self, value):
-		AttributeError("Past_due can't be deleted")
-
-	def no_response(self):
-		return (not self.prof_accepted and not self.prof_declined)
-
-	def prof_decline(self, prof_user):
-		if self.prof.user == prof_user:
-			if self.prof_accepted or self.client_canceled or self.client_validated:
-				return False, 400 #Bad Request
-
-			else:
-				self.prof_declined = True
-				db.session.commit()
-				return True, 200 #OK
-		else:
-			return False, 403 #Forbidden
-
-	def prof_accept(self, prof_user):
-		if self.prof.user == prof_user:
-			if self.prof_declined or self.client_canceled or self.client_validated:
-				return False, 400 #Bad Request
-
-			else:
-				self.prof_accepted = True
-				db.session.commit()
-				return True, 200 #OK
-		else:
-			return False, 403 #Forbidden
-
-	def client_cancel(self, client_user):
-		if self.client.user == client_user:
-			if self.prof_declined or self.prof_accepted or self.client_validated:
-				return False, 400 #bad request
-
-			else:
-				self.client_canceled = True
-				db.session.commit()
-				return True, 200 #OK
-		else:
-			return False, 403 #Forbidden
-
-	def client_validate(self, client_user, score, message):
-		if self.client.user == client_user:
-			if self.prof_declined or not self.prof_accepted or self.client_canceled:
-				return False, 400 #Bad request
-
-			else:
-				self.client_validated = True
-				self.score = int(score)
-				self.feedback_message = message
-				db.session.commit()
-				return True, 200 #OK
-		else:
-			return False, 403 #Forbidden
-
-
-
+	@staticmethod
+	def insert_cities():
+		from consts import cities
+		for c in cities:
+			city = City.query.filter_by(name=c).first()
+			if city is None:
+				city = City(name=c)
+				db.session.add(city)
+		db.session.commit()
 
 	def __repr__(self):
-		return "<booking: %s>" % self.id
+		return "<city: {0}>".format(self.name)

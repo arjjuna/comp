@@ -169,3 +169,12 @@
 
 
 
+.submit-div {
+	text-align: center;
+	padding-top: 40px;
+}
+
+.submit-div input.btn{
+	border: 1px solid gray;
+	min-width: 200px;
+}

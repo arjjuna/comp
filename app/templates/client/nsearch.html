@@ -17,18 +17,20 @@
 	<div class="main-tile col-md-12 search-tile tile">
 		<div class="row">
 			<div class="col-md-12">
-				<h3>Résultats pour "{{ keywords }}"</h3>
+				{% if keywords %}
+					<h3>Résultats pour "{{ keywords }}"</h3>
+				{% else %}
+					<h3>Recherche</h3>
+				{% endif %}
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-md-12">
-				<form>
-					<div class="form-group input-with-icon">
-						<input class="naked-input" type="text" name="" placeholder="Nom, ville, matière...">
-						<i class="fa fa-search fa-icon" aria-hidden="true"></i>
-					</div>
-				</form>
+				<div class="form-group input-with-icon">
+					<input id="search_bar" class="naked-input" type="text" name="" placeholder="Nom, ville, matière...">
+					<i class="fa fa-search fa-icon" aria-hidden="true"></i>
+				</div>
 			</div>
 		</div>
 		
@@ -53,14 +55,14 @@
 						<div class="row form-group">
 	                        <label class="control-label col-md-12 col-sm-12 col-xs-12">Matières</label>
 	                        <div class="col-md-12 col-sm-12 col-xs-12">
-	                          <select class="select2_multiple form-control" multiple="multiple" style="width: 100%">
-	                            <option>Choose option</option>
-	                            <option>Option one</option>
-	                            <option>Option two</option>
-	                            <option>Option three</option>
-	                            <option>Option four</option>
-	                            <option>Option five</option>
-	                            <option>Option six</option>
+	                          <select id="subjects" class="select2_multiple form-control" multiple="multiple" style="width: 100%">
+	                            <option value="1">Choose option</option>
+	                            <option value="2">Option one</option>
+	                            <option value="3">Option two</option>
+	                            <option value="4">Option three</option>
+	                            <option value="5">Option four</option>
+	                            <option value="6">Option five</option>
+	                            <option value="7">Option six</option>
 	                          </select>
 	                        </div>
 	                      </div>
@@ -71,14 +73,14 @@
 						<div class="row form-group">
 	                        <label class="control-label col-md-12 col-sm-12 col-xs-12">Niveaux</label>
 	                        <div class="col-md-12 col-sm-12 col-xs-12">
-	                          <select class="select2_multiple form-control" multiple="multiple" style="width: 100%">
-	                            <option>Choose option</option>
-	                            <option>Option one</option>
-	                            <option>Option two</option>
-	                            <option>Option three</option>
-	                            <option>Option four</option>
-	                            <option>Option five</option>
-	                            <option>Option six</option>
+	                          <select id="levels" class="select2_multiple form-control" multiple="multiple" style="width: 100%">
+	                            <option value="1">Choose option</option>
+	                            <option value="2">Option one</option>
+	                            <option value="3">Option two</option>
+	                            <option value="4">Option three</option>
+	                            <option value="5">Option four</option>
+	                            <option value="6">Option five</option>
+	                            <option value="7">Option six</option>>
 	                          </select>
 	                        </div>
 	                      </div>
@@ -89,14 +91,14 @@
 						<div class="row form-group">
 	                        <label class="control-label col-md-12 col-sm-12 col-xs-12">Villes</label>
 	                        <div class="col-md-12 col-sm-12 col-xs-12">
-	                          <select class="select2_multiple form-control" multiple="multiple" style="width: 100%">
-	                            <option>Choose option</option>
-	                            <option>Option one</option>
-	                            <option>Option two</option>
-	                            <option>Option three</option>
-	                            <option>Option four</option>
-	                            <option>Option five</option>
-	                            <option>Option six</option>
+	                          <select id="cities" class="select2_multiple form-control" multiple="multiple" style="width: 100%">
+	                            <option value="1">Choose option</option>
+	                            <option value="2">Option one</option>
+	                            <option value="3">Option two</option>
+	                            <option value="4">Option three</option>
+	                            <option value="5">Option four</option>
+	                            <option value="6">Option five</option>
+	                            <option value="7">Option six</option>ion>
 	                          </select>
 	                        </div>
 	                      </div>
@@ -107,13 +109,17 @@
 			<div class="row more-options-row">
 				<div class="col-md-6 col-sm-6 col-xs-12 age-option slider">
 					<p>Age</p>
-					<input type="text" id="age-range" value="" name="range" />
+					<input type="text" id="age_range" value="" name="range" />
 				</div>
 				<div class="col-md-6 col-sm-6 col-xs-12 age-option slider">
 					<p>Prix par heure</p>
-					<input type="text" id="price-range" value="" name="range" />
+					<input type="text" id="price_range" value="" name="range" />
 				</div>
-				
+
+				<div class="col-md-12 submit-div">
+					<input class="btn" type="submit" value="Envoyer">
+				</div>
+
 			</div>
 		</div>
 
@@ -172,13 +178,6 @@
 						<div class="top-section">
 							<div class="name">{{ prof.user.first_name }} {{ prof.user.last_name }} ({{ prof.user.age }}, rabat)</div>
 							<div class="title">Titre de sat 3chiri mohammed tiw wa twil a sahbi n9ouss chwia pliz</div>
-							<div class="rating">
-								<i class="fa fa-star" ></i>
-								<i class="fa fa-star" ></i>
-								<i class="fa fa-star" ></i>
-								<i class="fa fa-star" ></i>
-								<i class="fa fa-star-o" ></i>
-							</div>
 						</div>
 
 						<div class="bottom-section">
@@ -194,11 +193,11 @@
 				<div class="col-md-2 col-sm-12 col-xs-12">
 						<div class="row action-btns">
 							<div class="col-md-12 col-sm-6 text-center btn-col">
-								<div class="mybtn"> Message </div>							
+								<div class="mybtn"> Contacter </div>							
 							</div>
-							<div class="col-md-12 col-sm-6 text-center btn-col">
+							<!--div class="col-md-12 col-sm-6 text-center btn-col">
 								<div class="mybtn"> Réserver une séance </div>								
-							</div>
+							</div-->
 						</div>
 				</div>
 			</div>
@@ -255,7 +254,6 @@
       placeholder: "Select a state",
       allowClear: true
     });
-    $(".select2_group").select2({});
     $(".select2_multiple").select2({
       maximumSelectionLength: 4,
       placeholder: "With Max Selection limit 4",
@@ -267,7 +265,7 @@
 
 <!-- ionRangeSlider -->
 <script>
- $("#age-range").ionRangeSlider({
+ $("#age_range").ionRangeSlider({
           hide_min_max: true,
           keyboard: true,
           min: 18,
@@ -280,7 +278,7 @@
           grid: true
         });
 
- $("#price-range").ionRangeSlider({
+ $("#price_range").ionRangeSlider({
           hide_min_max: true,
           keyboard: true,
           min: 50,

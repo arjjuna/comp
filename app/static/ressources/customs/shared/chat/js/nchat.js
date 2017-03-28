@@ -234,18 +234,19 @@ $(document).ready(function() {
 
 	//Handling incoming messages
 	socket.on("msg_from_server", function(data){
-		console.log('msg_from_server')
 
 		if (data.from_id == f.id){
 			append_one_message('.row.messages-row .messages-from-ajax', 'sent', data);
 			scrollPercentFunction('.row.messages-row', 2)();
-			console.log('msg_rec1');
 		}
 
 		if (data.from_id == t.id){
 			append_one_message('.row.messages-row .messages-from-ajax', 'received', data);
 			scrollPercentFunction('.row.messages-row', 2)();
-			console.log('msg_rec2');
+			socket.emit('received_one_msg', {'receiver': data.to_id, 'sender': data.from_id});
+			console.log(data);
+
+
 		}
 
 

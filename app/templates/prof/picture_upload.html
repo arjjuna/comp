@@ -1,0 +1,44 @@
+{% extends 'prof/base.html' %}
+
+{% block styles %}
+{{ super() }}
+    <link href="{{ url_for('static', filename='ressources/cropper/dist/cropper.min.css') }}" rel="stylesheet">
+    
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-12 main-title">
+		<h1>Photo de profile</h1>
+	</div>
+
+	<div class="main-tile tile col-md-10 col-sm-12">
+		<div class="col-md-12">
+			<h3>Photo de profile</h3>
+			
+			<br>
+			<form method='post' enctype='multipart/form-data'>
+				<input type='file' name='profile_picture'>
+				<br>
+				<input type='submit' value="Enregistrer">
+			</form>
+
+			<div class="crop-zone">
+				
+			</div>
+		</div>
+
+
+
+		
+
+	</div>
+	
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script src="{{ url_for('static', filename='ressources/cropper/dist/cropper.min.js') }}"></script>
+
+{% endblock %}

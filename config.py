@@ -20,8 +20,12 @@ class Config(object):
 class DevelopmentConfig(Config):
 	DEBUG = True
 
-	APP_UPLOAD_FOLDER =  '/home/arjjuna/flask/compagnon/compagnon/app/static/uploads'
-	APP_STATIC_FOLDER = '/home/arjjuna/flask/compagnon/compagnon/app/static'
+	APP_UPLOAD_FOLDER   =  '/home/arjjuna/flask/compagnon/compagnon/app/static/uploads'
+	USERS_UPLOAD_FOLDER =  '/home/arjjuna/flask/compagnon/compagnon/app/static/uploads/users'
+	USERS_UPLOAD_FOLDER_RELATIVE =  'uploads/users'
+	APP_STATIC_FOLDER   = '/home/arjjuna/flask/compagnon/compagnon/app/static'
+
+	ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg', 'gif'])
 	
 
 	MAIL_SERVER             = 'smtp.gmail.com'
