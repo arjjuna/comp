@@ -520,7 +520,7 @@ def profile_general():
 
 
 
-@client.route('/profile/picture_upload', methods=['GET','POST'])
+@client.route('/profile/picture_upload', methods=['GET'])
 def picture_upload():
 
 	latest_messages = current_user.contacts_latest_messages()

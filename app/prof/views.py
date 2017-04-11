@@ -458,43 +458,14 @@ def delete_experience():
 	return jsonify({'success': True})
 
 
-@prof.route('/profile/picture_upload', methods=['GET', 'POST'])
+@prof.route('/profile/picture_upload', methods=['GET'])
 def picture_upload():
 	#from flask import session
 	#session.pop('_flashes', None)
 
-
-
 	latest_messages = current_user.contacts_latest_messages()
 	
-	if request.method == 'POST':
-		if 'profile_picture' not in request.files:
-			flash('No profile_picture part')
-			return redirect(request.url)
-
-		file = request.files['profile_picture']
-
-		if file.filename== '':
-			return redirect(request.url)
-
-		if file and allowed_file(file.filename, set(['png', 'jpg', 'jpeg', 'gif'])):
-			ext = os.path.splitext(secure_filename(file.filename))[1]
-			filename_original = "original_user_{0}{1}".format(current_user.id, ext)
-			file.save(os.path.join(current_app.config['USERS_UPLOAD_FOLDER'], filename_original))
-			
-			filename_cropped = "cropped_user_{0}{1}".format(current_user.id, ext)
-			crop_first_upload(
-				os.path.join(current_app.config['USERS_UPLOAD_FOLDER'], filename_original),
-				os.path.join(current_app.config['USERS_UPLOAD_FOLDER'], filename_cropped)
-				)
-
-
-			current_user.original_picture = filename_original
-			current_user.picture = filename_cropped
-			db.session.commit()
-			flash(u'image enregistrée')
-			return redirect(url_for('prof.profile'))
-
+	
 	return render_template('prof/picture_upload.html', user=current_user.serialize(),
 	 prof=current_user.prof, latest_messages=latest_messages)
 
