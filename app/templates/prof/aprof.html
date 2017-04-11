@@ -1,0 +1,217 @@
+{% extends 'prof/base.html' %}
+
+{% block styles %}
+{{ super() }}
+<!-- Select2 -->
+<link href="{{ url_for('static', filename='ressources/select2/dist/css/select2.min.css') }}" rel="stylesheet">
+
+<!-- ion.rangeSlider -->
+<link href="{{ url_for('static', filename='ressources/ion.rangeSlider/css/ion.rangeSlider.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='ressources/ion.rangeSlider/css/ion.rangeSlider.skinHTML5.css') }}" rel="stylesheet">
+
+<link href="{{ url_for('static', filename='ressources/customs/client/css/aprof.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='ressources/customs/prof/css/aprof.css') }}" rel="stylesheet">
+
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-12 main-title">
+    <h1>Aperçu de votre profile <a class="div-link" href="{{ url_for('prof.profile') }}"><span class="profile_edit_btn">Modifier</span></a></h1>
+  </div>
+  <div class="main-tile col-md-12 profile-tile tile">
+    <div class="row top-row ">
+      <div class="col-md-2 col-sm-4 col-xs-12 profile-img-col">
+        <div class="profile-img">
+          <img src="{{ url_for('main.profile_picture', filename=prof.profile_picture) }}">
+        </div>
+        <!--div class="rating text-center">
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star-o" ></i>
+              <br><span>(12 avis)</span>
+        </div-->
+      </div>
+      <div class="col-md-10 col-sm-8 col-xs-12">
+        <div class="row personal-data">
+          <div class="col-md-10 ">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="prof-name">{{ prof.first_name }} {{ prof.last_name }} <span class="age-city">({{ prof.age }}, {{ prof.city }})</span></div>
+                <div class="prof-title">{{ prof.title }}</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="price">
+              {{ prof.hourly_fee }} dh/h
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="row subjects">
+              <div class="col-md-12">
+                {% for s in prof.subjects %}
+                  <div class="subject">{{ s }}</div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row overview">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="row contact-row">
+          
+          <div class="col-md-offset-3 col-md-6 col-sm-12 col-xs-12  text-center">
+            <a href="#" class="div-link">
+              <div class="contact mybtn">
+                
+                <i class="fa fa-comments-o" aria-hidden="true"></i>
+                Contacter
+              </div>
+            </a>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <h2>à propos</h2>
+        <div class="overview-text crippled">
+          
+          {{ prof.about_me | safe }}
+
+
+        </div>
+        <div class="see-more-text">
+          <span class="more">
+            <i class="fa fa-chevron-down" aria-hidden="true"></i> PLUS
+          </span>
+          <span class="less hidden">
+            <i class="fa fa-chevron-up" aria-hidden="true"></i> MOIN
+          </span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- Main tile -->
+
+  
+
+  <div class="education-tile col-md-12 tile ">
+    <div class="row tile-title">
+      <div class="col-md-9 col-sm-9 col-xs-12">  
+        <h3>Education</h3>
+      </div>
+    </div>
+    
+    {% for ed in prof.educations %}
+      <div class="row education-row">
+        <div class="title col-md-12">
+          {{ ed.title }} <span class="duration">({{ ed.start_repr(True) }}, {{ ed.end_repr(True) }})</span>
+        </div>
+        <div class="school col-md-12">
+          @: {{ ed.school }}
+        </div>
+        <div class="description col-md-12">
+          {{ ed.description }}
+        </div>
+      </div>
+    {% endfor %}
+  </div> <!-- education tile -->
+
+  <div class="work-tile col-md-12 tile ">
+    <div class="row tile-title">
+      <div class="col-md-9 col-sm-9 col-xs-12">  
+        <h3>Expériences professionnelles</h3>
+      </div>
+    </div>
+    
+    {% for exp in prof.experiences %}
+      <div class="row work-row">
+        <div class="title col-md-12">
+          {{ exp.position }}
+          <span class="duration">({{ exp.start_repr(True) }}, {{ exp.end_repr(True) }})</span>
+        </div>
+        <div class="place col-md-12">
+          {{ exp.company }}
+        </div>
+        <div class="description col-md-12">
+          {{ exp.description }}
+        </div>
+      </div>
+    {% endfor %}
+    
+  </div> <!-- work tile -->
+
+</div> <!-- row -->
+
+
+		
+
+		
+
+		
+{% endblock %}
+
+
+
+{% block scripts %}
+{{ super() }}
+<!-- Select2 -->
+<script src="{{ url_for('static', filename='ressources/select2/dist/js/select2.min.js') }}"></script>
+<script src="{{ url_for('static', filename='ressources/ion.rangeSlider/js/ion.rangeSlider.min.js') }}"></script>
+
+
+
+<!-- Select2 -->
+<script>
+  $(document).ready(function() {
+    $(".select2_single").select2({
+      placeholder: "Select a state",
+      allowClear: true
+    });
+    $(".select2_group").select2({});
+    $(".select2_multiple").select2({
+      maximumSelectionLength: 4,
+      placeholder: "With Max Selection limit 4",
+      allowClear: true
+    });
+  });
+</script>
+<!-- /Select2 -->
+
+<!-- ionRangeSlider -->
+<script>
+ $("#age-range").ionRangeSlider({
+          hide_min_max: true,
+          keyboard: true,
+          min: 18,
+          max: 80,
+          from: 18,
+          to: 80,
+          type: 'double',
+          step: 1,
+          prefix: "",
+          grid: true
+        });
+
+ $("#price-range").ionRangeSlider({
+          hide_min_max: true,
+          keyboard: true,
+          min: 50,
+          max: 400,
+          from: 50,
+          to: 400,
+          type: 'double',
+          step: 10,
+          postfix: " dh",
+          grid: true
+        });
+</script>
+<!-- /ionRangeSlider -->
+
+{% endblock %}

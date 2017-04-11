@@ -9,11 +9,11 @@
     <!-- Jquery-Confirm -->
     <link href="{{ url_for('static', filename='ressources/jquery-confirm2/css/jquery-confirm.css') }}" rel="stylesheet">
 	
-	<!-- Custom Theme Style -->
-    <link href="{{ url_for('static', filename='ressources/customs/shared/base/css/base.css') }}" rel="stylesheet">
-	
     <!--link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"--> 
 
+
+    <!-- Custom Theme Style -->
+    <link href="{{ url_for('static', filename='ressources/customs/shared/base/css/base.css') }}" rel="stylesheet">
 
     {% block styles %}
     {% endblock %}
@@ -32,12 +32,20 @@
 				<div class="nav navbar-header navbar-right">
 					<div class="right-wrapper">
 						<div class="notification-icon desktop-only">
-							<div class="notification-number">2</div>
+							<div class="notification-number">
+								{% if current_user.unread_notifications > 0 %}
+									{{ current_user.unread_notifications }}
+								{% endif %}
+							</div>
 							<i class="fa fa-bell-o" aria-hidden="true"></i>
 						</div>
 						<div class="notification-icon mobile-only">
 							<a href="foo">
-								<div class="notification-number">2</div>
+								<div class="notification-number">
+									{% if current_user.unread_notifications > 0 %}
+										{{ current_user.unread_notifications }}
+									{% endif %}
+								</div>
 								<i class="fa fa-bell-o" aria-hidden="true"></i>
 							</a>
 						</div>
@@ -153,9 +161,11 @@
 									</a>
 								</li>
 								<li>
-									<a class="div-link">
-										<img src="{{ url_for('static', filename='ressources/images/icons/settings.png') }}">
+									<a class="div-link" href="{{ url_for('prof.settings') }}">
+										<div>
+											<img src="{{ url_for('static', filename='ressources/images/icons/settings.png') }}">
 										Préférences
+										</div>
 									</a>
 								</li>
 								<li>
@@ -229,6 +239,13 @@
 	
     <script src="{{ url_for('static', filename='ressources/customs/shared/base/js/base.js') }}"></script>
 
+	<script>
+		{% if current_user.is_prof() %}
+			var USER_PREFIX = '/prof';
+		{% elif current_user.is_client() %}
+			var USER_PREFIX = '/client';
+		{% endif %}
+	</script>
 
 	{% block scripts %}
 	{% endblock %}

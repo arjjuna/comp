@@ -2,35 +2,29 @@ from . import mybp
 
 from flask import current_app, url_for, render_template
 
-import urllib
+from ..models import Notification, User
 
-@mybp.route('/urls')
-def urls():
-	urls = '<ul>'
-	for rule in current_app.url_map.iter_rules():
-		options = {}
+from .. import db
 
-		url = ''
-		for arg in rule.arguments:
-			options[arg] = '[{0}]'.format(str(arg))
+from forms import NotifyForm
 
-		options['_external'] = True
-		url = urllib.unquote(url_for(rule.endpoint, **options))
+@mybp.route('/notify', methods=['POST', 'GET'])
+def notify():
+	form = NotifyForm()
 
-		urls += '<li>' + str(rule.endpoint) + " <a href='{0}'>".format(url) + url + '</a></li>'
+	if form.validate_on_submit():
+		n = Notification(
+				text = form.text.data,
+				link = form.link.data,
+				
+				picture_endpoint = form.picture_endpoint.data,
+				picture_kwargs   = form.picture_kwargs.data,
 
-	urls += '</ul>'
-	return urls
+				user = User.query.get(int(form.user_id.data))
 
-@mybp.route('/dashboard')
-def dashboard():
-	return render_template('dashboard/base.html')
+			)
 
-@mybp.route('/dashboard/extended')
-def dashboard_extended():
-	return render_template('dashboard/test_base.html')
-
-@mybp.route('/login')
-def auth():
-	return render_template('auth/login.html')
-
+		db.session.add(n)
+		db.session.commit()
+	
+	return render_template('test/notify.html', form=form)

@@ -474,3 +474,891 @@ INFO:werkzeug: * Debugger pin code: 210-097-500
 INFO:werkzeug: * Restarting with stat
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/utils.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/utils.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/utils.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/utils.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/utils.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/utils.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/sockets/events.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/utils.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/config.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/config.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/config.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/mybp/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/mybp/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/mybp/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/mybp/forms.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/mybp/forms.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/mybp/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/mybp/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/mybp/forms.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/mybp/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/mybp/forms.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/mybp/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/prof/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/models.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/config.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:flask_wtf.csrf:The CSRF token has expired.
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/utils.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/utils.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/utils.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/utils.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * To enable the debugger you need to enter the security pin:
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * To enable the debugger you need to enter the security pin:
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 299-266-661
+INFO:werkzeug: * To enable the debugger you need to enter the security pin:
+INFO:werkzeug: * Debugger pin code: 299-266-661
+INFO:werkzeug: * Detected change in '/home/arjjuna/flask/compagnon/compagnon/app/client/views.py', reloading
+INFO:werkzeug: * Restarting with stat

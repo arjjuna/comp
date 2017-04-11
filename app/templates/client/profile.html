@@ -1,8 +1,10 @@
-{% extends 'client/nbase.html' %}
+{% extends 'client/base.html' %}
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block styles %}
 {{ super() }}
+<link href="{{ url_for('static', filename='ressources/customs/shared/profile/css/profile.css') }}" rel="stylesheet">
+
 <link href="{{ url_for('static', filename='ressources/customs/client/css/index.css') }}" rel="stylesheet">
 
 <link href="{{ url_for('static', filename='ressources/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
@@ -14,35 +16,75 @@
 	<div class="col-md-12 main-title">
 		<h1>Modifiez votre profile</h1>
 	</div>
-	<div class="main-tile tile col-md-10 col-sm-12">
+
+	<div class="col-md-12 col-sm-12">
 		<div class="row">
-			<div class="col-md-12">
-				<h3>Informations générales</h3>
-				<form method="post" action="{{ url_for('client.profile_general') }}">	
-					about me <br>
-					
-					<textarea name='about_me'>{{ placeholders.about_me }}</textarea>
+			<div class="main-tile tile col-md-10 col-sm-12">
+				<div class="row">
+					<div class="col-md-12">
+						<h3>Informations générales</h3>
+						<form method="post" action="{{ url_for('client.profile_general') }}">
+							<div class="row">
+								<div class="col-md-12">
+
+									<div class="input-row row profil_picture ">
+										<div class="col-md-3 form-label">
+											Image de profil:
+										</div>
+										<div class="col-md-9">
+											<a href="{{ url_for('client.picture_upload') }}" class="div-link">
+												<img src="{{ url_for('main.profile_picture', filename=user.profile_picture) }}">
+											</a>
+											<br>
+											<a href="{{ url_for('client.picture_upload') }}" class="div-link">
+												<div class="edit-btn">
+													Modifier
+												</div>
+											</a>
+										</div>
+									</div>
+
+									<div class="row input-row about_me">
+										<div class="col-md-3 form-label">
+											A propos de moi:
+										</div> 
+										<div class="col-md-9">
+											<textarea name='about_me'>{{ placeholders.about_me }}</textarea>
+										</div>
+									</div>
+									
+									<div class="input-row row">
+										<div class="col-md-3 form-label">
+											Date de naissance:
+										</div>
+										<div class="col-md-9">
+											<input id="birth_date" name="birth_date" value="{{ placeholders.birth_date }}">
+										</div>
+									</div>
+									
+									<div class="col-md-offset-3 col-md-9">
+										<input type="submit" value="Enregistrer" class="btn">
+									</div>
 
 
+								</div>
+							</div>
+						</form>	
 
-					<br>
-					Date de naissance:
-					<br>
-					<input id="birth_date" name="birth_date" value="{{ placeholders.birth_date }}">
-
-					<br>
-					<input type="submit" value="Enregistrer">
-				</form>	
-
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
+
 </div>
 {% endblock %}
 
 {% block scripts %}
 {{ super() }}
 <script src="{{ url_for('static', filename='ressources/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+
+<script src="{{ url_for('static', filename='ressources/customs/client/js/profile.js') }}"></script>
 
 <script>
 $(function () {

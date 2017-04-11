@@ -17,6 +17,10 @@ class Config(object):
 	#Getting a warning from SQLAlchemy to set this variable value to True
 	SQLALCHEMY_TRACK_MODIFICATIONS = True
 
+	MAX_CONTENT_LENGTH = 16 * 1024 * 1024
+
+	LONG_POLL_SLEEP = 2
+
 class DevelopmentConfig(Config):
 	DEBUG = True
 

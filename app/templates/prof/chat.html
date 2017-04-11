@@ -13,7 +13,7 @@
 	{% for m in latest_messages %}
 		<div class="one-contact" id='contact_{{ m.who.id }}'>
 			<div class="contact-img ">
-				<img src="{{ url_for('static', filename=m.who.picture) }} ">
+				<img src="{{ url_for('main.profile_picture', filename=m.who.picture) }} ">
 			</div>
 			<div class="contact-info">
 				<div class="name">{{ m.who.first_name }} {{ m.who.last_name }}</div>
@@ -89,6 +89,9 @@ $(document).ready(function() {
 
 	var f = {'id': {{user.id}} }
 	var t = {'id': {{client.user_id}} }
+
+	var f = {'id': {{user.id}}, 'picture': "{{ url_for('main.profile_picture', filename=user.profile_picture) }}" }
+	var t = {'id': {{client.user_id}}, 'picture': "{{ url_for('main.profile_picture', filename=client.profile_picture) }}" }
 
 	var chat_root = '/prof/chat/'
 

@@ -2,6 +2,7 @@
 
 {% block styles %}
 {{ super() }}
+	<link href="{{ url_for('static', filename='ressources/customs/shared/profile/css/profile_picture.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='ressources/cropper/dist/cropper.min.css') }}" rel="stylesheet">
     
 {% endblock %}
@@ -12,20 +13,40 @@
 		<h1>Photo de profile</h1>
 	</div>
 
-	<div class="main-tile tile col-md-10 col-sm-12">
+	<div class="main-tile tile col-md-12 col-sm-12">
 		<div class="col-md-12">
-			<h3>Photo de profile</h3>
-			
-			<br>
-			<form method='post' enctype='multipart/form-data'>
-				<input type='file' name='profile_picture'>
-				<br>
-				<input type='submit' value="Enregistrer">
-			</form>
-
-			<div class="crop-zone">
-				
+			<div class="overview section">
+				<h3>Aperçu</h3>
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<div class="picture_overview">
+							<img src="{{ url_for('main.profile_picture', filename=user.profile_picture) }}">
+						</div>
+					</div>
+				</div>
 			</div>
+
+			<div class="change_picture section">
+				<h3>Modifier l'image</h3>
+				<input id="fileupload" class="inputfile" type='file' name="profile_picture" data-url="{{ url_for('prof.picture_upload_handler') }}">
+				<label for="fileupload">Choisissez un fichier</label>
+				<div id="progress">
+				    <div class="bar" style="width: 0%;"></div>
+				    <div id="upload_error"></div>
+				</div>
+			</div>
+
+			
+			{% if prof.user.original_picture %}
+			<div class="crop_picture section">
+				<h3>Ajuster l'image:</h3>
+				<div class="crop-zone">
+					<img id="to_crop" src="{{ url_for('main.profile_picture', filename=prof.user.original_picture) }}">
+
+					<input id="save_crop" value="Enregistrer">
+				</div>
+			</div>
+			{% endif %}
 		</div>
 
 
@@ -39,6 +60,56 @@
 
 {% block scripts %}
 {{ super() }}
+<script type="text/javascript">
+	var crop_picture_url = "{{ url_for('prof.picture_crop') }}";
+</script>
+
 <script src="{{ url_for('static', filename='ressources/cropper/dist/cropper.min.js') }}"></script>
+
+<script src="{{ url_for('static', filename='ressources/blueimp-file-upload/js/vendor/jquery.ui.widget.js') }}"></script>
+<script src="{{ url_for('static', filename='ressources/blueimp-file-upload/js/jquery.iframe-transport.js') }}"></script>
+<script src="{{ url_for('static', filename='ressources/blueimp-file-upload/js/jquery.fileupload.js') }}"></script>
+
+<script src="{{ url_for('static', filename='ressources/customs/prof/js/profile_picture.js') }}"></script>
+
+<script>
+$(function () {
+    $('#fileupload').fileupload({
+        dataType: 'json',
+        start: function (e, data) {
+        	$('#progress .bar').removeClass('red_background');
+        	$('#progress .bar').css('width', '0%');
+        	$('#upload_error').text("");
+
+        },
+
+        done: function (e, data) {
+            $.each(data.result.files, function (index, file) {
+                //$('<p/>').text(file.name).appendTo($("#filename"));
+                location.reload();
+
+            });
+        },
+
+        fail: function(e, data){
+        	$('#progress .bar').addClass('red_background');
+        	$('#upload_error').text("Erreur: " + data.jqXHR.responseJSON.error);
+        	//console.log(data.jqXHR.responseJSON.error);
+        },
+    });
+
+    
+    $('#fileupload').fileupload({
+	    /* ... */
+	    progressall: function (e, data) {
+	        var progress = parseInt(data.loaded / data.total * 100, 10);
+	        $('#progress .bar').css(
+	            'width',
+	            progress + '%'
+	        );
+	    }
+	});
+});
+</script>
 
 {% endblock %}

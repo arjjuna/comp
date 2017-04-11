@@ -1,4 +1,4 @@
-{% extends 'client/nbase.html' %}
+{% extends 'client/base.html' %}
 
 {% block styles %}
 {{ super() }}
@@ -58,21 +58,7 @@
       </div>
     </div>
     <div class="row overview">
-      <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="row contact-row">
-          
-          <div class="col-md-offset-3 col-md-6 col-sm-12 col-xs-12  text-center">
-            <a href="{{ url_for('client.chat', safe_name=prof.safe_name) }}" class="div-link">
-              <div class="contact mybtn">
-                
-                <i class="fa fa-comments-o" aria-hidden="true"></i>
-                Contacter
-              </div>
-            </a>
-
-          </div>
-        </div>
-      </div>
+      
 
       <div class="col-md-12 col-sm-12 col-xs-12">
         <h2>à propos</h2>
@@ -89,6 +75,21 @@
           <span class="less hidden">
             <i class="fa fa-chevron-up" aria-hidden="true"></i> MOIN
           </span>
+        </div>
+      </div>
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="row contact-row">
+          
+          <div class="col-md-offset-3 col-md-6 col-sm-12 col-xs-12  text-center">
+            <a href="{{ url_for('client.chat', safe_name=prof.safe_name) }}" class="div-link">
+              <div class="contact mybtn">
+                
+                <i class="fa fa-comments-o" aria-hidden="true"></i>
+                Contacter
+              </div>
+            </a>
+
+          </div>
         </div>
       </div>
     </div>

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 import subprocess
 import sys
@@ -7,11 +8,14 @@ import eventlet
 eventlet.monkey_patch()
 
 from app import create_app, db, socketio
+
+from app import utils as uts
+
 from flask_script import Manager, Command, Shell, Server as _Server, Option
 from flask_migrate import MigrateCommand
 
-from app.models import Role, User, Prof, Client, Message, Subject, Education, \
-						Experience, City
+from app.models import Role, User, Prof, Client, Message, Subject, Level, Education, \
+						Experience, City, Notification, ChatStatus
 
 
 #The manager from flask_script can take a factory function as an argument,
@@ -82,9 +86,9 @@ manager.add_command("db", MigrateCommand)
 
 
 def shell_context_maker():
-	return dict(db=db, Role=Role, User=User, Prof=Prof, Client=Client, Message=Message,
-				Subject=Subject, Education=Education, Experience=Experience,
-				City=City)
+	return dict(uts=uts, db=db, Role=Role, User=User, Prof=Prof, Client=Client, Message=Message,
+				Subject=Subject, Education=Education, Experience=Experience, City=City,
+				Notification=Notification, ChatStatus=ChatStatus, Level=Level)
 
 manager.add_command("shell", Shell(make_context = shell_context_maker)) 
 
@@ -115,7 +119,7 @@ class GunicornServer(Command):
 	def run(self, argv):
 		ret = subprocess.call(
 		['gunicorn', '--worker-class', 'eventlet', '-w', '1', '--bind',
-		 '0.0.0.0:8000', 'wsgi'] + argv)
+		 '127.0.0.1:5000', 'wsgi'] + argv)
 
 		sys.exit(ret)
 

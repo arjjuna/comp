@@ -15,7 +15,7 @@ migrate = Migrate()
 bootstrap = Bootstrap()
 mail = Mail()
 socketio = SocketIO()
-celery = Celery(__name__, broker="amqp://localhost", backend="amqp://localhost")
+celery = Celery(__name__, broker="amqp://localhost", backend="rpc://localhost")
 
 
 login_manager = LoginManager()

@@ -1,0 +1,12 @@
+.profile_edit_btn {
+	font-size: 0.5em;
+	font-weight: bold;
+	position: relative;
+	top: -0.2em;
+	margin-left: 30px;
+	padding: 10px 15px 10px 15px;
+	color: #fff;
+	background-color: green;
+	border-radius: 20px;
+	cursor: pointer;
+}

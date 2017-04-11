@@ -1,11 +1,13 @@
-from flask import current_app
+# -*- coding: utf-8 -*-
+from flask import current_app, url_for
 
 from . import db, login_manager
 
 from datetime import datetime
 
 from flask_login import UserMixin, AnonymousUserMixin
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash	
+from werkzeug import  secure_filename
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
 from sqlalchemy import desc
@@ -14,6 +16,8 @@ from sqlalchemy.orm import backref
 from unidecode import unidecode
 
 from datetime import date, datetime
+
+import json
 
 def calculate_age(born):
     today = date.today()
@@ -76,6 +80,41 @@ contact_relation = db.Table('contacts_table',
 
 
 
+class ChatStatus(db.Model):
+	__tablename__ = "chat_statuses"
+	id            = db.Column(db.Integer, primary_key=True)
+	name          = db.Column(db.String(64))
+	name_fr       = db.Column(db.String(64))
+	code          = db.Column(db.Integer)
+
+	@staticmethod
+	def insert_statuses():
+		statuses = {
+			"offline": ["hors ligne", 0b000000],
+			"online": ["en ligne", 0b100000],
+			"busy": ["occupé", 0b010000],
+		}
+
+		for s in statuses:
+			status = ChatStatus.query.filter_by(name=s).first()
+			if status is None:
+				status = ChatStatus(
+					name    = s,
+					name_fr = statuses[s][0],
+					code = statuses[s][1]
+					)
+
+				db.session.add(status)
+				db.session.commit()
+
+
+	def __repr__(self):
+		return "<status {0}>".format(name)
+
+
+
+
+
 
 
 
@@ -99,6 +138,7 @@ class User(UserMixin, db.Model):
 	safe_name     = db.Column(db.String(200))
 	
 	picture       = db.Column(db.String(500), default="placeholder.jpg") #can edit
+	original_picture = db.Column(db.String(500)) #can edit
 	
 	birth_date    = db.Column(db.DateTime())
 
@@ -106,7 +146,18 @@ class User(UserMixin, db.Model):
 	confirmed     = db.Column(db.Boolean, default=False)
 	last_seen     = db.Column(db.DateTime(), default=datetime.utcnow)
 
-	unread_msgs   = db.Column(db.Integer, default=0)
+	unread_msgs          = db.Column(db.Integer, default=0)
+	unread_notifications = db.Column(db.Integer, default=0)
+
+	status_id     = db.Column(db.Integer, db.ForeignKey('chat_statuses.id'))
+	status        = db.relationship('ChatStatus', backref='users', foreign_keys=[status_id])
+
+
+	
+	default_status_id     = db.Column(db.Integer, db.ForeignKey('chat_statuses.id'))
+	default_status        = db.relationship('ChatStatus', backref='users_with_default', foreign_keys=[default_status_id])
+
+
 
 	role_id       = db.Column(db.Integer, db.ForeignKey('roles.id'))
 
@@ -239,14 +290,31 @@ class User(UserMixin, db.Model):
 		else:
 			return the_list
 
+	def chat_link(self):
+		chat_link = ''
+		if self.is_prof():
+			chat_link = url_for('client.chat', safe_name=self.safe_name)
+		elif self.is_client():
+			chat_link = url_for('prof.chat', safe_name=self.safe_name)
+
+		return chat_link
+
+	def picture_link(self):
+		picture_link = url_for('main.profile_picture', filename=self.picture)
+		return picture_link
+
+
 	def serialize(self):
+
 		return {
 				'id': self.id,
 				'full_name': self.first_name.title() + " " + self.last_name.title(),
 				'first_name': self.first_name.title(),
 				'last_name': self.last_name.title(),
 				'profile_picture': self.picture,
-
+				'original_picture': self.original_picture,
+				'chat_link': self.chat_link(),
+				'picture_link': self.picture_link()
 				}
 
 	
@@ -260,8 +328,9 @@ class User(UserMixin, db.Model):
 			if self.picture is None:
 				self.picture = "uploads/users/placeholder.jpg"
 
-		self.safe_name = unidecode(self.first_name + u'_' + \
-							self.last_name + u'_' + unicode(self.id))
+		#Added "secure_filename" part without testing
+		self.safe_name = secure_filename(unidecode(self.first_name + u'_' + \
+							self.last_name + u'_' + unicode(self.id))).lower()
 
 	def __repr__(self):
 		return '<User %r, email: %r>' % (self.username, self.email)
@@ -327,8 +396,50 @@ class Subject(db.Model):
 
 		db.session.commit()
 
+	def url_safe_name(self):
+		return secure_filename(unidecode(self.name.lower()))
+
 	def __repr__(self):
-		return '<Subject %s, %s>' % (self.id, self.name)
+		return ('<Subject %s, %s>' % (self.id, self.name)).encode('utf-8')
+
+
+
+
+
+
+
+"""Association table for the many-to-many relation between profs and levels"""
+levels_prof_relation = db.Table('levels_profs', db.Model.metadata,
+		db.Column('level_id', db.Integer, db.ForeignKey('levels.id')),
+		db.Column('prof_id', db.Integer, db.ForeignKey('profs.id'))
+	)
+
+
+
+
+
+class Level(db.Model):
+	""" Levels """
+	__tablename__ = 'levels'
+	id = db.Column(db.Integer, primary_key=True)
+	name = db.Column(db.String(64), unique=True)
+
+
+
+	@staticmethod
+	def insert_levels():
+		levels = ['collège', 'lycée', 'primaire']
+
+		for l in levels:
+			one_level = Level.query.filter_by(name=l).first()
+			if not one_level: 
+				one_level = Level(name=l)
+				db.session.add(one_level)
+
+		db.session.commit()
+
+	def __repr__(self):
+		return ('<Level %s, %s>' % (self.id, self.name)).encode('utf-8')
 
 
 
@@ -384,6 +495,7 @@ class Client(db.Model):
 				'id': self.id,
 				'first_name': self.user.first_name.title(),
 				'last_name': self.user.last_name.title(),
+				'profile_picture': self.user.picture,
 				'user_id': self.user.id
 				}
 
@@ -406,6 +518,7 @@ class Prof(db.Model):
 	city_id       = db.Column(db.Integer, db.ForeignKey('cities.id'))
 	city          = db.relationship("City", backref="profs" )
 
+
 	user_id       = db.Column(db.Integer, db.ForeignKey('users.id'))
 	user          = db.relationship("User", back_populates="prof")
 
@@ -416,11 +529,14 @@ class Prof(db.Model):
 										foreign_keys=[principal_subject_id])
 	
 	secondary_subject_id = db.Column(db.Integer, db.ForeignKey('subjects.id'))
-	secondary_subject = db.relationship("Subject", backref="secondary_profs",
+	secondary_subject    = db.relationship("Subject", backref="secondary_profs",
 										foreign_keys=[secondary_subject_id])
+
 
 	educations = db.relationship("Education", back_populates="prof")
 	experiences = db.relationship("Experience", back_populates="prof")
+
+	levels = db.relationship("Level", secondary=levels_prof_relation, backref="levels")
 
 	@property
 	def subjects(self):
@@ -477,13 +593,16 @@ class Prof(db.Model):
 class Education(db.Model):
 	__tablename__ = "educations"
 	id            = db.Column(db.Integer, primary_key=True)
-	title       = db.Column(db.String(250))
-	school      = db.Column(db.String(250))
-	start       = db.Column(db.DateTime())
-	end         = db.Column(db.DateTime())
-	description = db.Column(db.String(2500))
-	prof_id     = db.Column(db.Integer, db.ForeignKey('profs.id'))
-	prof        = db.relationship("Prof", back_populates="educations")
+	title         = db.Column(db.String(250))
+	school        = db.Column(db.String(250))
+	start         = db.Column(db.DateTime())
+	end           = db.Column(db.DateTime())
+	description   = db.Column(db.String(2500))
+	prof_id       = db.Column(db.Integer, db.ForeignKey('profs.id'))
+	prof          = db.relationship("Prof", back_populates="educations")
+
+	def to_text(self):
+		return (self.title + " " + self.description + " " + self.school).lower()
 
 	def start_repr(self, month_letters=False):
 		if month_letters:
@@ -511,6 +630,10 @@ class Experience(db.Model):
 	description = db.Column(db.String(2500))
 	prof_id     = db.Column(db.Integer, db.ForeignKey('profs.id'))
 	prof        = db.relationship("Prof", back_populates="experiences")
+
+
+	def to_text(self):
+		return (self.position + " " + self.description + " " + self.company).lower()
 
 	def start_repr(self, month_letters=False):
 		if month_letters:
@@ -565,6 +688,17 @@ class Message(db.Model):
 			'to_id': str(self.to_id)
 		}
 
+	def serialize(self):
+		d = {
+			'text': self.text,
+			'timestamp': str(self.timestamp.isoformat()),
+			'seen': 1*self.seen + 0,
+			'from_id': str(self.from_id),
+			'to_id': str(self.to_id)
+		}
+
+		return d
+
 	def __repr__(self):
 		return '<Message %s>' % self.id
 
@@ -604,3 +738,99 @@ class City(db.Model):
 
 	def __repr__(self):
 		return "<city: {0}>".format(self.name)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Notification(db.Model):
+	__tablename__ = "notifications"
+	id            = db.Column(db.Integer, primary_key=True)
+	text          = db.Column(db.String(1000))
+
+	picture          = db.Column(db.String(500))
+	picture_endpoint = db.Column(db.String(100))
+	picture_kwargs   = db.Column(db.String(500))
+
+	link          = db.Column(db.String(500))
+	link_endpoint = db.Column(db.String(100))
+	link_kwargs   = db.Column(db.String(500))
+
+
+	timestamp     = db.Column(db.DateTime(), default=datetime.utcnow)
+
+
+	user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+	user    = db.relationship('User', backref="notifications")
+
+	def generate_link(self, endpoint, kwargs_json):
+		return url_for(endpoint, **json.loads(kwargs_json))
+
+	def get_picture(self):
+		if self.picture:
+			return self.picture
+		else:
+			return self.generate_link(self.picture_endpoint, self.picture_kwargs)
+
+	def get_link(self):
+		if self.link:
+			return self.link
+		else:
+			return self.generate_link(self.link_endpoint, self.link_kwargs)
+
+
+	def serialize(self):
+		d = {
+				'text'     : self.text,
+				'picture'  : self.get_picture(),
+				'link'     : self.get_link(),
+				'timestamp': str(self.timestamp.isoformat()),
+			}
+
+		return d
+
+
+	def __repr__(self):
+		return "<notification: {0}>".format(self.id)
+
+	def __init__(self, **kwargs):
+		super(Notification, self).__init__(**kwargs)
+		if not self.user.unread_notifications:
+			self.user.unread_notifications = 1
+		else:
+			self.user.unread_notifications += 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

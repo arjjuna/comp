@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$('.search-options-wrapper').addClass("hidden");
+	$('.search-options-wrapper').addClass("");
 
 	$(".search-tile #more-options").on('click', function(){
 
@@ -32,13 +32,49 @@ $(document).ready(function(){
 		}
 	});
 
+	function getProfs(data, url) {
+		url = url || '/recherche/aprof'
+		$.ajax({
+			type: 'POST',
+			url: USER_PREFIX + url,
+			contentType: "application/json; charset=utf-8",
+			data: JSON.stringify(data),
+
+			dataType: 'html',
+
+			success: function(data, textStatus, jqXHR){
+				$(".search-results-wrapper .results_list").html(data);
+
+				if (data == ""){
+					$(".no_result").removeClass('hidden');
+				} else {
+					$(".no_result").addClass('hidden');
+				}
+				//$(".search-results-wrapper").append(data);
+			},
+
+			error: function(xhr, ajaxOptions, thrownError){
+				console.log('error');
+				console.log(xhr);
+			},
+		});
+	}
+
+
+
+	/*if (default_subject) {
+		getProfs({'subject_id': default_subject}, '/recherche/subject')
+	}*/
+
 	$(".submit-div input.btn").on('click', function(){
 		var data = {};
 
 		data['keywords'] = $('<div/>').text($('#search_bar').val()).html();
 
-		if (!($('.search-options-wrapper').hasClass('hidden')))
-		{
+
+		//if (!($('.search-options-wrapper').hasClass('hidden')))
+		if (true)
+		{	
 			$(".select2_multiple").each(function(index, value){
 				data[$(this).attr('id')] = $(this).val();
 			});
@@ -53,11 +89,40 @@ $(document).ready(function(){
 			});
 		};
 
-		console.log(data);
+		//console.log(data);
+
+		$("#search_form textarea").text(JSON.stringify(data));
+		//$("#search_form .submit").click();
+
+		getProfs(data);
+		
+		/*
+		$.ajax({
+			type: 'POST',
+			url: USER_PREFIX + '/recherche',
+			contentType: "application/json; charset=utf-8",
+			data: JSON.stringify(data),
+
+			//dataType: 'json',
+
+			success: function(data, textStatus, jqXHR){
+				console.log('success');
+			},
+
+			error: function(xhr, ajaxOptions, thrownError){
+				console.log(xhr);
+			},
+
+			timeout: 100000,
+
+		}); 
+		*/
 
 
 	});
 
+
+	$(".submit-div input.btn").click();
 
 
 

@@ -1,8 +1,15 @@
+# -*- coding: utf-8 -*-
 from . import main
 import os
 
 from flask import abort, flash, url_for, render_template, redirect, request, current_app
 from flask_login import current_user
+
+from .. import db
+
+@main.teardown_request
+def shutdown_session(exception=None):
+    db.session.remove()
 
 
 @main.route('/')

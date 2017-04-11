@@ -1,0 +1,42 @@
+{% for prof in prof_list %}
+<div class="row one-result no-wrap">
+	<a class="div-link" href="{{ url_for('client.aprof', safe_name=prof.user.safe_name) }}">
+		<div class="col-md-2 col-sm-3 col-xs-3">
+			<div class="img-container">
+				<img src="{{ url_for('main.profile_picture', filename=prof.user.picture) }}">
+			</div>
+		</div>
+	
+		<div class="col-md-8 col-sm-9 col-xs-9 clickable-result">
+			<div class="result-data">
+				<div class="top-section">
+					<div class="name">{{ prof.user.first_name }} {{ prof.user.last_name }} ({{ prof.user.age }}, rabat)</div>
+					<div class="title">{{ prof.title }}</div>
+				</div>
+
+				<div class="bottom-section">
+					<div class="price">Prix: {{prof.hourly_fee }} dh/h</div>
+					<div class='subjects'> <b>Matières: {{prof.principal_subject.name.capitalize()}}, {{prof.secondary_subject.name.capitalize()}} </b></div>
+				</div>
+			</div>
+		</div>
+	</a>
+
+	
+
+
+	<div class="col-md-2 col-sm-12 col-xs-12">
+			<div class="row action-btns">
+				<div class="col-md-12 col-sm-6 text-center btn-col">
+					<a class="div-link" href="{{ url_for('client.chat', safe_name=prof.user.safe_name) }}">
+						<div class="mybtn"> Contacter </div>
+					</a>					
+				</div>
+				<!--div class="col-md-12 col-sm-6 text-center btn-col">
+					<div class="mybtn"> Réserver une séance </div>								
+				</div-->
+			</div>
+	</div>
+</div>
+
+{% endfor %}

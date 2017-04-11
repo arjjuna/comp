@@ -26,6 +26,7 @@
 
 /*Search rules*/
 .more-options {
+	display: inline-block;
 	font-size: 17px;
 	cursor: pointer;
 	margin-bottom: 10px;
@@ -112,6 +113,9 @@
 .clickable-result {
 	cursor: pointer;
 }
+.clickable-result:hover {
+	background-color: #edf2f6;
+}
 
 .light-blue-hover {
 	background-color: #edf2f6;
@@ -177,4 +181,12 @@
 .submit-div input.btn{
 	border: 1px solid gray;
 	min-width: 200px;
+}
+
+.no_result {
+	text-transform: uppercase;
+	text-align: center;
+	padding-top: 30px;
+	font-size: 1.5em;
+	color: darkgrey ;
 }

@@ -1,4 +1,4 @@
-{% extends 'client/nbase.html' %}
+{% extends 'client/base.html' %}
 
 {% block styles %}
 {{ super() }}
@@ -13,7 +13,7 @@
 	{% for m in latest_messages %}
 		<div class="one-contact" id='contact_{{ m.who.id }}'>
 			<div class="contact-img ">
-				<img src="{{ url_for('static', filename=m.who.picture) }} ">
+				<img src="{{ url_for('main.profile_picture', filename=m.who.picture) }} ">
 			</div>
 			<div class="contact-info">
 				<div class="name">{{ m.who.first_name }} {{ m.who.last_name }}</div>
@@ -87,8 +87,8 @@ $(document).ready(function() {
 
 	var r = '{{ room_name }}';
 
-	var f = {'id': {{user.id}} }
-	var t = {'id': {{prof.user_id}} }
+	var f = {'id': {{user.id}}, 'picture': "{{ url_for('main.profile_picture', filename=user.profile_picture) }}" }
+	var t = {'id': {{prof.user_id}}, 'picture': "{{ url_for('main.profile_picture', filename=prof.profile_picture) }}" }
 
 	var chat_root = '/client/chat/'
 

@@ -1,0 +1,62 @@
+.crop-zone {
+	margin-top: 20px;
+}
+
+.bar {
+    height: 18px;
+    background: green;
+}
+
+.section {
+	margin-bottom: 40px;
+}
+
+.section.overview img{
+	width: 30%;
+}
+
+h3 {
+	font-weight: bold;
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.inputfile + label {
+    font-size: 1.25em;
+    font-weight: bold;
+    color: white;
+    background-color: green;
+    display: inline-block;
+    cursor: pointer;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+
+}
+
+.section.crop_picture #save_crop{
+    font-size: 1.25em;
+    text-align: center;
+	font-weight: bold;
+    color: white;
+    background-color: green;
+    display: inline-block;
+    cursor: pointer;
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+    margin-top: 20px;	
+}
+
+.red_background {
+	background-color: red !important ;
+}

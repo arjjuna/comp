@@ -36,7 +36,7 @@ def joinRoom(data):
 def receive_message(data):
 	res = save_message_from_dict.delay(data)
 	#print "######################### emitting"
-	res.get(timeout = 1)
+	res.get(timeout = 1000)
 	socketio.emit('msg_from_server', data, room=data['room'], broadcast=True)
 
 @socketio.on('received_one_msg')

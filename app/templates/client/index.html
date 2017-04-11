@@ -1,4 +1,4 @@
-{% extends 'client/nbase.html' %}
+{% extends 'client/base.html' %}
 
 {% block styles %}
 {{ super() }}
@@ -26,7 +26,8 @@
 				<form action="{{ url_for('client.search') }}" method="get">
 					<div class="form-group input-with-icon">
 						<input class="naked-input" type="text" name="keywords" placeholder="Nom, ville, matière...">
-						<i class="fa fa-search fa-icon" aria-hidden="true"></i>
+						<button id="search_submit" type="submit" class="hidden"></button>
+						<i class="fa fa-search fa-icon" id="search_for_keywords" aria-hidden="true" ></i>
 					</div>
 				</form>
 			</div>
@@ -87,4 +88,17 @@
 
 	</div>
 </div>
+{% endblock %}
+
+
+
+{% block scripts %}
+{{ super() }}
+
+<script>
+	$('#search_for_keywords').on('click', function() {
+		$('#search_submit').click();
+	});
+</script>
+
 {% endblock %}

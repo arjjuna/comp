@@ -1,0 +1,20 @@
+{% import "bootstrap/wtf.html" as wtf %}
+
+<HTML>
+<HEAD>
+<link href="{{ url_for('static', filename='ressources/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+<TITLE>t_notify</TITLE>
+
+</HEAD>
+
+<BODY>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				{{ wtf.quick_form(form) }}
+			</div>
+		</div>
+	</div>
+
+</BODY>
+</HTML> 
