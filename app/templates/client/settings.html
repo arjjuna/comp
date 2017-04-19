@@ -1,0 +1,76 @@
+{% extends 'client/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block styles %}
+{{ super() }}
+    <link href="{{ url_for('static', filename='ressources/customs/shared/index/css/index.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='ressources/customs/client/css/settings.css') }}" rel="stylesheet">
+    
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-12 main-title">
+		<h1>Préférences</h1>
+	</div>
+
+	<div class="main-tile tile col-md-10 col-sm-12">
+			<h3> Modifier votre mot de passe </h3>
+			<br>
+			<div class="row">			
+				<div class="col-md-12">	
+					<form action="" method="post" class="form" role="form">
+						{{ password_form.csrf_token }}
+
+						{% if wrong_password %}
+						<div class="col-md-12 field_wrapper error_wrapper">
+							{{ wtf.form_field(
+									password_form.old_password, form_type="horizontal", horizontal_columns=('lg', 3, 4)
+									)
+							}}
+						</div>
+						{% else %}
+						<div class="col-md-12 field_wrapper">
+							{{ wtf.form_field(
+									password_form.old_password, form_type="horizontal", horizontal_columns=('lg', 3, 4)
+									)
+							}}
+						</div>
+						{% endif %}
+
+						<div class="col-md-12 field_wrapper">
+							{{ wtf.form_field(
+									password_form.new_password, form_type="horizontal", horizontal_columns=('lg', 3, 4)
+									)
+							}}
+						</div>
+
+						<div class="col-md-12 field_wrapper">
+							{{ wtf.form_field(
+									password_form.password_confirmation, form_type="horizontal", horizontal_columns=('lg', 3, 4)
+									)
+							}}
+						</div>
+
+						<div class="col-md-12 text-center">
+							{{ wtf.form_field(password_form.submit) }}
+						</div>
+					</form>
+				</div>
+			</div>
+
+
+	</div>
+	
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+<script>
+$(".error_wrapper .form-group").addClass("has-error");
+$(".error_wrapper .form-group").append("<p class='help-block'>wrong password</p>");
+</script>
+
+{% endblock %}

@@ -24,13 +24,19 @@
 		<nav class="primary-navbar navbar navbar-default">
 			<div class="container">
 				<div class="nav navbar-header navbar-left">
-					<a class="navbar-brand">
+					<a class="navbar-brand" href="/">
 						<img src="{{ url_for('static', filename='ressources/images/SampleLogo.png') }}">
 					</a>			
 				</div>
 				
 				<div class="nav navbar-header navbar-right">
 					<div class="right-wrapper">
+						<a class="div-link" href="/">
+							<div class="home-icon">
+								<i class="fa fa-home" aria-hidden="true"></i> <span class="desktop-only">Acceuil</span>
+							</div>
+						</a>
+
 						<div class="notification-icon desktop-only">
 							<div class="notification-number">
 								{% if current_user.unread_notifications > 0 %}
@@ -51,7 +57,7 @@
 						</div>
 						<div class="notification-list hidden">
 							<ul>
-								<li>
+								<!--li>
 									<img src="{{ url_for('static', filename='uploads/users/placeholder.jpg') }}">
 									<div class="middle-wrapper">
 										<div class="notification-text"> Message 1, when it is too long what should be done bro, come on give me an answer brooo</div>
@@ -64,7 +70,7 @@
 										<div class="notification-text"> Message 1, when it is too long what should be done bro, come on give me an answer brooo</div>
 									</div>
 									<div class="notification-time"> Monday </div>
-								</li>
+								</li-->
 								
 							</ul>
 							<div class="text-center see-more">
@@ -93,32 +99,8 @@
 						</div>
 						
 						<div class="message-list hidden">
-
 							<ul>
-								{% for m in latest_messages %}
-								<a href="{{ url_for('client.chat', safe_name=m.who.safe_name) }}" class="div-link">
-									<div>	
-										<li>
-											<img src="{{ url_for('main.profile_picture', filename=m.who.picture) }} ">
-											<div class="middle-wrapper">
-												<div class="message-sender">{{ m.who.last_name }} {{ m.who.first_name }} </div>
-												<div class="message-prev">
-												{% if m.type=="sent" %}
-													<i class="fa fa-arrow-left" aria-hidden="true"></i>
-												{% elif m.type=="received" %} 
-													<i class="fa fa-arrow-right" aria-hidden="true"></i>
-												{% endif %}
-												
-
-												 {{m.message_obj.text}} </div>
-											</div>
-											<div class="message-time" data-time="{{m.iso_date}}"> </div>
-										</li>
-									</div>
-								</a>
-								{% endfor %}
-
-								
+															
 								
 							</ul>
 							<div class="text-center see-more">
@@ -154,14 +136,16 @@
 									<a class="div-link" href="{{ url_for('client.profile') }}">
 										<div>
 											<img src="{{ url_for('static', filename='ressources/images/icons/user.png') }}">
-											Profile c
+											Profile
 										</div>
 									</a>
 								</li>
 								<li>
-									<a class="div-link">
-										<img src="{{ url_for('static', filename='ressources/images/icons/settings.png') }}">
-										Préférences
+									<a class="div-link" href="{{ url_for('client.settings') }}">
+										<div>
+											<img src="{{ url_for('static', filename='ressources/images/icons/settings.png') }}">
+											Préférences
+										</div>
 									</a>
 								</li>
 								<li>

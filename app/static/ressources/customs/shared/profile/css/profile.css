@@ -129,3 +129,21 @@ select::-ms-expand {
 	color: #fff;
 	background-color: green;
 }
+
+input.current {
+	min-width: 0px;
+	margin-left: 20px;
+	margin-right: 10px;
+
+	vertical-align: middle;
+}
+
+.checkbox_label{
+	font-size: 1.3em;
+	vertical-align: middle;
+	padding-top: 5px;
+}
+
+.disabled {
+	background-color: lightgrey !important;
+}

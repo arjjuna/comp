@@ -11,7 +11,7 @@
 <div class="row">
 	<div class=" col-md-3 col-sm-4 contacts-tile desktop-only">
 	{% for m in latest_messages %}
-		<div class="one-contact" id='contact_{{ m.who.id }}'>
+		<div class="one-contact {% if not m.message_obj.seen %}unseen_color{% endif %} " id='contact_{{ m.who.id }}'>
 			<div class="contact-img ">
 				<img src="{{ url_for('main.profile_picture', filename=m.who.picture) }} ">
 			</div>

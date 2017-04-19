@@ -286,7 +286,8 @@
 .education-tile .education-row .title span.duration{
 	font-size: 18px;
 	font-weight: normal;
-	text-transform: uppercase;
+	font-style: italic;
+	text-transform: none;
 }
 
 .education-tile .education-row .school {
@@ -311,12 +312,14 @@
 .work-tile .work-row .title {
 	font-size: 22px;
 	font-weight: bold;
+	text-transform: uppercase;
 }
 
 .work-tile .work-row span.duration {
 	font-size: 18px;
 	font-weight: normal;
 	font-style: italic;
+	text-transform: none;
 }
 
 .work-tile .work-row .place {

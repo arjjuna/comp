@@ -8,9 +8,10 @@ $(function () {
 	});
 
 	$('.my_date').each(function(index, value){
-		var d = $(this).data("date");
+		var d = $(this).data("date"), formatted_date;
 
-		$(this).text(moment(d).format("MMMM YYYY"));
+		formatted_date = moment(d).isValid() ? moment(d).format("MMMM YYYY") : "";
+		$(this).text(formatted_date);
 
 	});
 

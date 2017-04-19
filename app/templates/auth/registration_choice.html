@@ -2,7 +2,7 @@
 
 {% block styles %}
 {{ super() }}
-	    <link href="{{ url_for('static', filename='ressources/customs/auth/choice.css') }}" rel="stylesheet">
+	<link href="{{ url_for('static', filename='ressources/customs/auth/choice.css') }}" rel="stylesheet">
 
 {% endblock %}
 
@@ -33,7 +33,7 @@
 			<br>
 			ou un parent?
 		</p>
-		<a class="btn btn-primary register-btn" href="#">Continuer</a>
+		<a class="btn btn-primary register-btn" href="{{ url_for('auth.register_client') }}">Continuer</a>
 	</div>
 
 	<div class="col-md-2 text-center or-divider">OU</div>
@@ -44,7 +44,7 @@
 				<img src="{{url_for('static', filename='ressources/images/icons/teacher2.png')}}">
 			</div>
 			<div class="user-choice-text">
-				Ouvrir un compt prof
+				Ouvrir un compte prof
 			</div>
 		</div>
 		<p class="m-lg-bottom">
@@ -52,7 +52,7 @@
 			<br>
 			voulez vous enseigner?
 		</p>
-		<a class="btn btn-primary register-btn" href="#">Continuer</a>
+		<a class="btn btn-primary register-btn" href="{{ url_for('auth.register_prof') }}">Continuer</a>
 	</div> <!-- div 1 -->
 	
 </div> <!-- div 2 -->

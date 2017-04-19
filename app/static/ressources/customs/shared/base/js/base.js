@@ -262,7 +262,7 @@ LoadNotifications();
 
 //setInterval(LoadUnreadMessages2, 2000);
 
-
+/*
 function AppendNotification(picture, text, timestamp, link)
 {	
 	var notification_template = '<li> \
@@ -280,10 +280,12 @@ function AppendNotification(picture, text, timestamp, link)
 
 	$(".notification-list ul").append(notification_template);
 }
+*/
 
+/*
 function AppendMessage(chat_link, picture_link, full_name, text, time, type)
 {	
-	var message_template, arrow='';
+	var message_template, arrow='', unread_class;
 
 	if (type == "sent"){
 		arrow = '<i class="fa fa-arrow-left" aria-hidden="true"></i>';
@@ -310,9 +312,10 @@ function AppendMessage(chat_link, picture_link, full_name, text, time, type)
 
 	$(".message-list ul").append(message_template);
 }
+*/
 
 
-
+/*
 function FetchNotifications()
 {
 	$.ajax({
@@ -333,12 +336,34 @@ function FetchNotifications()
 		});
 
 }
+*/
 
+function FetchNotificationsHtml()
+{
+	$.ajax({
+		type: 'POST',
+		url: USER_PREFIX + '/fetch_notifications_html',
+		contentType: "application/json; charset=utf-8",
+		data: {},
+
+		dataType: 'html',
+
+	  	success: function(data, textStatus, jqXHR) {
+	  		UpdateAllNotificationsHtml(data);
+		  	},
+		error: function (jqXHR, exception) {
+			// error handling logic here..
+		},
+		
+		});
+
+}
+ /*
 function FetchMessages()
 {	
 	$.ajax({
 		type: 'POST',
-		url: 'fetch_messages',
+		url: USER_PREFIX + '/fetch_messages',
 		contentType: "application/json; charset=utf-8",
 		data: {},
 
@@ -349,12 +374,36 @@ function FetchMessages()
 		  	},
 		error: function (jqXHR, exception) {
 			// error handling logic here..
+			console.log("pewpew");
 		},
 		
 		});
 
 }
+*/
 
+function FetchMessagesHtml()
+{	
+	$.ajax({
+		type: 'POST',
+		url: USER_PREFIX + '/fetch_messages_html',
+		contentType: "application/json; charset=utf-8",
+		data: {},
+
+		dataType: 'html',
+
+	  	success: function(data, textStatus, jqXHR) {
+	  		UpdateAllMessagesHtml(data);
+		  	},
+		error: function (jqXHR, exception) {
+			// error handling logic here..
+			console.log("pewpew");
+		},
+		
+		});
+
+}
+/*
 function UpdateAllNotifications(data)
 {	
 	var n;
@@ -368,8 +417,29 @@ function UpdateAllNotifications(data)
 
 	ParseNotificationsTimes();	
 }
+*/
+
+function UpdateAllNotificationsHtml(data)
+{	
+	$(".notification-list ul").text(""); 
+
+	$(".notification-list ul").append(data);
+
+	ParseNotificationsTimes();	
+}
 
 
+function UpdateAllMessagesHtml(data)
+{	
+	$(".message-list ul").text(""); 
+
+	$(".message-list ul").append(data);
+
+	ParseMessagesTimes();	
+}
+
+
+/*
 function UpdateAllMessages(data)
 {	
 	var n;
@@ -394,12 +464,13 @@ function UpdateAllMessages(data)
 
 	ParseMessagesTimes();	
 }
+*/
 
 
 
 
-$(".notification-icon").on('click', FetchNotifications);
-$(".message-icon").on('click', FetchMessages);
+$(".notification-icon").on('click', FetchNotificationsHtml);
+$(".message-icon").on('click', FetchMessagesHtml);
 
 
 

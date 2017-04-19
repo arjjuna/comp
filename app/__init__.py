@@ -9,6 +9,9 @@ from flask_mail import Mail
 from flask_socketio import SocketIO
 from celery import Celery
 
+import locale
+locale.setlocale(locale.LC_TIME, 'fr_FR')
+
 
 db = SQLAlchemy()
 migrate = Migrate()

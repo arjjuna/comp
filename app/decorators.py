@@ -1,5 +1,5 @@
 from functools import wraps
-from flask import abort
+from flask import abort, url_for, redirect
 from flask_login import current_user
 from .models import Permission
 
@@ -21,7 +21,8 @@ def prof_required(f):
 		@wraps(f)
 		def decorated_function(*args, **kwargs):
 			if not current_user.is_prof():
-				abort(403)
+				#abort(403)
+				return redirect(url_for('auth.login'))
 			return f(*args, **kwargs)
 		return decorated_function
 	return decorator(f)
@@ -31,7 +32,8 @@ def client_required(f):
 		@wraps(f)
 		def decorated_function(*args, **kwargs):
 			if not current_user.is_client():
-				abort(403)
+				#abort(403)
+				return redirect(url_for('auth.login'))
 			return f(*args, **kwargs)
 		return decorated_function
 	return decorator(f)

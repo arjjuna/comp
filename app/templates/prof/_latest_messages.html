@@ -1,0 +1,24 @@
+{% for m in latest_messages %}
+	<a href="{{ m.who.chat_link }}" class="div-link">
+		<div class="{% if not (m.message_obj.seen) and (m.type == 'received') %}unseen_color{% endif %}">
+			<li>
+				<img src="{{ url_for('main.profile_picture', filename=m.who.profile_picture) }}">
+
+				<div class="middle-wrapper">
+					<div class="message-sender">{{ m.who.full_name }} </div>
+					<div class="message-prev">
+						{% if m.type == 'sent' %}
+						<i class="fa fa-arrow-left" aria-hidden="true"></i>
+						{% elif m.type == 'received' %}
+						<i class="fa fa-arrow-right" aria-hidden="true"></i>
+						{% endif %}
+						 {{ m.message_obj.text }}
+
+					</div>
+				</div>
+
+				<div class="message-time" data-time="{{ m.message_obj.timestamp }}"></div>
+			</li>
+		</div>
+	</a>
+{% endfor %}

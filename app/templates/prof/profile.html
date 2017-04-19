@@ -177,7 +177,11 @@
 												Fin:
 											</div>
 											<div class="col-md-9">
+												{% if ed.is_current %}
+												<span class="">Présent</span>
+												{% else %}
 												<span class="school_date my_date" data-date="{{ ed.end }}"></span>
+												{% endif %}
 											</div>
 										</div>
 										<div class="input-row row">
@@ -230,6 +234,12 @@
 													</div>
 													<div class="col-md-9">
 														<input name="end" class="school_date_input my_date_input" value="{{ ed.end_repr() }}">
+														{% if ed.is_current %}
+														<input name="current" class="current" type="checkbox" checked>
+														{% else %}
+														<input name="current" class="current" type="checkbox">
+														{% endif %}
+														<span class="checkbox_label">Présent</span>
 													</div>
 												</div>
 
@@ -300,6 +310,8 @@
 												</div>
 												<div class="col-md-9">
 													<input name="end" class="school_date_input my_date_input">
+													<input name="current" class="current" type="checkbox">
+													<span class="checkbox_label">Présent</span>
 												</div>
 											</div>
 
@@ -382,8 +394,13 @@
 											<div class="col-md-3 form-label">
 												Fin:
 											</div>
+
 											<div class="col-md-9">
+												{% if exp.is_current %}
+												<span class="">Présent</span>
+												{% else %}
 												<span class="experience_date my_date" data-date="{{ exp.end }}"></span>
+												{% endif %}
 											</div>
 										</div>
 										<div class="input-row row">
@@ -436,6 +453,12 @@
 													</div>
 													<div class="col-md-9">
 														<input name="end" class="school_date_input my_date_input" value="{{ exp.end_repr() }}">
+														{% if exp.is_current %}
+														<input name="current" class="current" type="checkbox" checked>
+														{% else %}
+														<input name="current" class="current" type="checkbox">
+														{% endif %}
+														<span class="checkbox_label">Présent</span>
 													</div>
 												</div>
 
@@ -507,6 +530,8 @@
 												</div>
 												<div class="col-md-9">
 													<input name="end" class="school_date_input my_date_input">
+													<input name="current" class="current" type="checkbox">
+													<span class="checkbox_label">Présent</span>
 												</div>
 											</div>
 
@@ -600,6 +625,36 @@ var delete_education_url = "{{ url_for('prof.delete_education') }}";
 var delete_experience_url = "{{ url_for('prof.delete_experience') }}";
 
 tinymce.init({ selector:'.tinymce' }); 
+
+
+function greyCurrent(checkBoxElem){
+	if (checkBoxElem.is(':checked')){
+			
+		checkBoxElem.siblings('input[name=end]').prop('disabled', true);
+		checkBoxElem.siblings('input[name=end]').addClass('disabled');
+			
+	}
+	else {
+			
+		checkBoxElem.siblings('input[name=end]').prop('disabled', false);
+		checkBoxElem.siblings('input[name=end]').removeClass('disabled')
+
+	}
+
+}
+
+
+$('.current').each(function(){
+	
+	greyCurrent($(this));
+
+
+	$(this).on('click', function(){
+		greyCurrent($(this));
+	});
+});
+
+
 
 
 </script>

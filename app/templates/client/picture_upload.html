@@ -1,4 +1,4 @@
-{% extends 'prof/base.html' %}
+{% extends 'client/base.html' %}
 
 {% block styles %}
 {{ super() }}
@@ -28,7 +28,7 @@
 
 			<div class="change_picture section">
 				<h3>Modifier l'image</h3>
-				<input id="fileupload" class="inputfile" type='file' name="profile_picture" data-url="{{ url_for('prof.picture_upload_handler') }}">
+				<input id="fileupload" class="inputfile" type='file' name="profile_picture" data-url="{{ url_for('client.picture_upload_handler') }}">
 				<label for="fileupload">Choisissez un fichier</label>
 				<div id="progress">
 				    <div class="bar" style="width: 0%;"></div>
@@ -41,7 +41,7 @@
 			<div class="crop_picture section">
 				<h3>Ajuster l'image:</h3>
 				<div class="crop-zone">
-					<img id="to_crop" src="{{ url_for('main.profile_picture', filename=prof.user.original_picture) }}">
+					<img id="to_crop" src="{{ url_for('main.profile_picture', filename=user.original_picture) }}">
 
 					<input id="save_crop" value="Enregistrer">
 				</div>
@@ -61,7 +61,7 @@
 {% block scripts %}
 {{ super() }}
 <script type="text/javascript">
-	var crop_picture_url = "{{ url_for('prof.picture_crop') }}";
+	var crop_picture_url = "{{ url_for('client.picture_crop') }}";
 </script>
 
 <script src="{{ url_for('static', filename='ressources/cropper/dist/cropper.min.js') }}"></script>
@@ -70,7 +70,7 @@
 <script src="{{ url_for('static', filename='ressources/blueimp-file-upload/js/jquery.iframe-transport.js') }}"></script>
 <script src="{{ url_for('static', filename='ressources/blueimp-file-upload/js/jquery.fileupload.js') }}"></script>
 
-<script src="{{ url_for('static', filename='ressources/customs/prof/js/profile_picture.js') }}"></script>
+<script src="{{ url_for('static', filename='ressources/customs/shared/profile/js/profile_picture.js') }}"></script>
 
 <script>
 $(function () {

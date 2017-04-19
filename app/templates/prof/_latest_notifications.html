@@ -1,0 +1,13 @@
+{% for n in latest_notifications %}
+'<li> 
+	<a href="#" class="div-link">
+		<div>
+			<img src="{{ n.picture }}">
+			<div class="middle-wrapper">
+				<div class="notification-text">{{ n.text }}</div>
+			</div>
+			<div class="notification-time" data-time="{{ n.timestamp }}"></div>
+		</div>
+	</a>
+</li>'
+{% endfor %}

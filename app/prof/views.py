@@ -89,7 +89,7 @@ def settings():
 		if current_user.verify_password(password_form.old_password.data):
 			current_user.change_password(password_form.new_password.data)
 			db.session.commit()
-			flash("Nouveau mot de passe enregistré")
+			flash(u"Nouveau mot de passe enregistré")
 			return redirect(url_for('auth.logout'))
 		else:
 			wrong_password = True
@@ -180,7 +180,7 @@ def unread_notifications():
 	counter = 0
 	while (current_user.unread_notifications == shown_unread) and (counter < 10):
 		db.session.commit()
-		print "sleeping {0}".format(counter)
+		#print "sleeping {0}".format(counter)
 		counter += 1
 		time.sleep(2)
 
@@ -196,16 +196,29 @@ def unread_notifications():
 
 
 
-
-
-@prof.route('/fetch_notifications',  methods=['POST'])
-def fetch_notifications():
+@prof.route('/fetch_notifications_html',  methods=['POST'])
+def fetch_notifications_html():
 	_ns = Notification.query.filter_by(user = current_user).order_by(Notification.timestamp.desc()).all()
-	ns = [n.serialize() for n in _ns]
+	ns = [n.serialize() for n in _ns][:6]
 
 
-	return json.dumps(ns), 200, {'ContentType':'application/json'}
+	return render_template('prof/_latest_notifications.html', latest_notifications=ns)
 
+
+
+
+@prof.route('/fetch_messages_html',  methods=['POST'])
+def fetch_messages_html():
+	latest_messages = current_user.contacts_latest_messages()
+
+	for m in latest_messages:
+		m.pop('iso_date', None)
+		m['message_obj'] = m['message_obj'].serialize()
+		m['who'] = m['who'].serialize()
+
+	#print m
+
+	return render_template('prof/_latest_messages.html', latest_messages=latest_messages[:6])
 
 
 
@@ -227,6 +240,12 @@ def chat_handler(safe_name, start, end):
 		abort(404)
 
 	conversation = conversation_query(user, contact).slice(start-1, end).all()
+
+	if not conversation[0].seen:
+		print "seeeing"
+		conversation[0].seen = True
+		db.session.add(conversation[0])
+		db.session.commit()
 
 	idd = start
 	response = {}
@@ -370,11 +389,22 @@ def profile_education():
 	ed = Education(
 		title       = request.form['title'],
 		school      = request.form['school'],
-		start       = datetime.strptime(request.form['start'], "%m/%Y"),
-		end         = datetime.strptime(request.form['end'], "%m/%Y"),
 		description = request.form['description'],
 		prof        = current_user.prof
 		)
+
+	try:
+		ed.start = datetime.strptime(request.form['start'], "%m/%Y")
+	except ValueError:
+		pass
+
+	if 'current' in request.form:
+		ed.is_current = True
+	else:
+		try:
+			ed.end = datetime.strptime(request.form['end'], "%m/%Y")
+		except ValueError:
+			pass
 
 	db.session.add(ed)
 	db.session.commit()
@@ -388,11 +418,22 @@ def profile_experience():
 	exp = Experience(
 		position    = request.form['position'],
 		company     = request.form['company'],
-		start       = datetime.strptime(request.form['start'], "%m/%Y"),
-		end         = datetime.strptime(request.form['end'], "%m/%Y"),
 		description = request.form['description'],
 		prof        = current_user.prof
 		)
+
+	try:
+		exp.start = datetime.strptime(request.form['start'], "%m/%Y")
+	except ValueError:
+		pass
+
+	if 'current' in request.form:
+		exp.is_current = True
+	else:
+		try:
+			exp.end = datetime.strptime(request.form['end'], "%m/%Y")
+		except ValueError:
+			pass
 
 	db.session.add(exp)
 	db.session.commit()
@@ -404,12 +445,23 @@ def profile_experience():
 @prof.route('/profile/education/<int:_id>', methods=['POST'])
 def edit_education(_id):
 	ed = Education.query.get(_id)
+
+
+
 	
 	ed.title       = request.form['title'],
 	ed.school      = request.form['school'],
-	ed.start       = datetime.strptime(request.form['start'], "%m/%Y"),
-	ed.end         = datetime.strptime(request.form['end'], "%m/%Y"),
-	ed.description = request.form['description'],
+	
+	try:
+		ed.start = datetime.strptime(request.form['start'], "%m/%Y")
+	except ValueError:
+		ed.start = None
+	
+	if 'current' in request.form:
+		ed.is_current = True
+	else:
+		ed.end = datetime.strptime(request.form['end'], "%m/%Y")
+	ed.description = request.form['description']
 	ed.prof        = current_user.prof
 
 	db.session.commit()
@@ -424,9 +476,18 @@ def edit_experience(_id):
 	
 	exp.position    = request.form['position'],
 	exp.company     = request.form['company'],
-	exp.start       = datetime.strptime(request.form['start'], "%m/%Y"),
-	exp.end         = datetime.strptime(request.form['end'], "%m/%Y"),
-	exp.description = request.form['description'],
+	
+	try:
+		exp.start = datetime.strptime(request.form['start'], "%m/%Y")
+	except ValueError:
+		exp.start = None
+	
+	if 'current' in request.form:
+		exp.is_current = True
+	else:
+		exp.end = datetime.strptime(request.form['end'], "%m/%Y")
+	
+	exp.description = request.form['description']
 	exp.prof        = current_user.prof
 
 	db.session.commit()

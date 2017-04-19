@@ -190,3 +190,19 @@
 	font-size: 1.5em;
 	color: darkgrey ;
 }
+ 
+.one-result  .prof-picture .img-container{
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.one-result .action-btns .btn-col{
+	margin: auto;
+	display: inline-block;
+	float: none;
+}
+
+.one-result .action-btns {
+	text-align: center;
+}

@@ -31,6 +31,7 @@ $(function(){
 			dataType: "json",
 			success: function(data){
 				console.log(data);
+				$(window).scrollTop(0);
 		    	location.reload();
 			},
 			failure: function(errMsg) {

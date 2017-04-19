@@ -597,6 +597,7 @@ class Education(db.Model):
 	school        = db.Column(db.String(250))
 	start         = db.Column(db.DateTime())
 	end           = db.Column(db.DateTime())
+	is_current  = db.Column(db.Boolean, default=False)
 	description   = db.Column(db.String(2500))
 	prof_id       = db.Column(db.Integer, db.ForeignKey('profs.id'))
 	prof          = db.relationship("Prof", back_populates="educations")
@@ -605,14 +606,18 @@ class Education(db.Model):
 		return (self.title + " " + self.description + " " + self.school).lower()
 
 	def start_repr(self, month_letters=False):
+		if not self.start or (self.start==""):
+			return ""
 		if month_letters:
-			return datetime.strftime(self.start, "%B %Y")
-		return datetime.strftime(self.start, "%m/%Y")
+			return unicode(datetime.strftime(self.start, "%B %Y"), 'utf-8')
+		return unicode(datetime.strftime(self.start, "%m/%Y"), 'utf-8')
 	
 	def end_repr(self, month_letters=False):
+		if not self.end or (self.end==""):
+			return ""
 		if month_letters:
-			return datetime.strftime(self.end, "%B %Y")
-		return datetime.strftime(self.end, "%m/%Y")
+			return unicode(datetime.strftime(self.end, "%B %Y"), 'utf-8')
+		return unicode(datetime.strftime(self.end, "%m/%Y"), 'utf-8')
 
 
 	def __repr__(self):
@@ -627,6 +632,7 @@ class Experience(db.Model):
 	company     = db.Column(db.String(250))
 	start       = db.Column(db.DateTime())
 	end         = db.Column(db.DateTime())
+	is_current  = db.Column(db.Boolean, default=False)
 	description = db.Column(db.String(2500))
 	prof_id     = db.Column(db.Integer, db.ForeignKey('profs.id'))
 	prof        = db.relationship("Prof", back_populates="experiences")
@@ -636,14 +642,18 @@ class Experience(db.Model):
 		return (self.position + " " + self.description + " " + self.company).lower()
 
 	def start_repr(self, month_letters=False):
+		if not self.start or (self.start==""):
+			return ""
 		if month_letters:
-			return datetime.strftime(self.start, "%B %Y")
-		return datetime.strftime(self.start, "%m/%Y")
+			return unicode(datetime.strftime(self.start, "%B %Y"), 'utf-8')
+		return unicode(datetime.strftime(self.start, "%m/%Y"), 'utf-8')
 	
 	def end_repr(self, month_letters=False):
+		if not self.end or (self.end==""):
+			return ""
 		if month_letters:
-			return datetime.strftime(self.end, "%B %Y")
-		return datetime.strftime(self.end, "%m/%Y")
+			return unicode(datetime.strftime(self.end, "%B %Y"), 'utf-8')
+		return unicode(datetime.strftime(self.end, "%m/%Y"), 'utf-8')
 
 
 	def __repr__(self):

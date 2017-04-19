@@ -108,7 +108,12 @@
     {% for ed in prof.educations %}
       <div class="row education-row">
         <div class="title col-md-12">
-          {{ ed.title }} <span class="duration">({{ ed.start_repr(True) }}, {{ ed.end_repr(True) }})</span>
+          {{ ed.title }}
+          {% if ed.is_current %}
+          <span class="duration">({{ ed.start_repr(True) }}, présent)</span>
+          {% else %}
+          <span class="duration">({{ ed.start_repr(True) }}, {{ ed.end_repr(True) }})</span>
+          {% endif %}
         </div>
         <div class="school col-md-12">
           @: {{ ed.school }}
@@ -131,7 +136,11 @@
       <div class="row work-row">
         <div class="title col-md-12">
           {{ exp.position }}
+          {% if exp.is_current %}
+          <span class="duration">({{ exp.start_repr(True) }}, présent)</span>
+          {% else %}
           <span class="duration">({{ exp.start_repr(True) }}, {{ exp.end_repr(True) }})</span>
+          {% endif %}
         </div>
         <div class="place col-md-12">
           {{ exp.company }}
