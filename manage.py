@@ -81,8 +81,10 @@ class Server(_Server):
 					**self.server_options)
 
 
+default_config = os.environ.get('FLASK_CONFIG') or "default"
+
 manager.add_command("runserver", Server())
-manager.add_option('-c', '--config', dest='config_name', required=False)
+manager.add_option('-c', '--config', dest='config_name', required=False, default=default_config)
 manager.add_command("db", MigrateCommand)
 
 
