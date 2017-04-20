@@ -82,7 +82,7 @@ class Server(_Server):
 
 
 manager.add_command("runserver", Server())
-manager.add_option('-c', '--config', dest='config', required=False)
+manager.add_option('-c', '--config', dest='config_name', required=False)
 manager.add_command("db", MigrateCommand)
 
 
