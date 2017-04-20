@@ -121,8 +121,21 @@ class GunicornServer(Command):
 
 	def run(self, argv):
 		ret = subprocess.call(
-		['gunicorn', '--worker-class', 'eventlet', '-w', '3', '--bind',
+		['gunicorn', '--worker-class', 'eventlet', '-w', '1', '--bind',
 		 '0.0.0.0:5000', 'app.wsgi:app'] + argv)
+
+		sys.exit(ret)
+
+
+class ProductionServer(Command):
+	"""Starts the celery worker."""
+	name = 'grunserver'
+	capture_all_args = True
+
+	def run(self, argv):
+		ret = subprocess.call(
+		['gunicorn', '--worker-class', 'eventlet', '-w', '3', '--bind', 'unix:myproject.sock',
+		 '-m', '007', 'app.wsgi:app'] + argv)
 
 		sys.exit(ret)
 
@@ -138,6 +151,7 @@ def test():
 
 manager.add_command("celery", CeleryWorker())
 manager.add_command("grunserver", GunicornServer())
+manager.add_command("prodserver", ProductionServer())
 
 if __name__ == '__main__':
 	if sys.argv[1] == 'test':
