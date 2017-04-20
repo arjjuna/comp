@@ -119,7 +119,7 @@ class GunicornServer(Command):
 	def run(self, argv):
 		ret = subprocess.call(
 		['gunicorn', '--worker-class', 'eventlet', '-w', '1', '--bind',
-		 '127.0.0.1:5000', 'wsgi'] + argv)
+		 '0.0.0.0:5000', 'wsgi'] + argv)
 
 		sys.exit(ret)
 

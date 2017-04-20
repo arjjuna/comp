@@ -14,6 +14,9 @@ class Config(object):
 	APP_MAIL_SENDER         = 'Compagnon Admin <freelancer.arjjuna@gmail.com>'
 
 
+	ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg', 'gif'])
+
+
 	#Getting a warning from SQLAlchemy to set this variable value to True
 	SQLALCHEMY_TRACK_MODIFICATIONS = True
 
@@ -28,8 +31,6 @@ class DevelopmentConfig(Config):
 	USERS_UPLOAD_FOLDER =  '/home/arjjuna/flask/compagnon/compagnon/app/static/uploads/users'
 	USERS_UPLOAD_FOLDER_RELATIVE =  'uploads/users'
 	APP_STATIC_FOLDER   = '/home/arjjuna/flask/compagnon/compagnon/app/static'
-
-	ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg', 'gif'])
 	
 
 	MAIL_SERVER             = 'smtp.gmail.com'
@@ -54,9 +55,12 @@ class TestingConfig(Config):
 
 	CELERY_CONFIG = {'CELERY_ALWAYS_EAGER': True}
 
+class ProductionConfig(Config):
+	DEBUG = False
 
 config = {
 	"development": DevelopmentConfig,
 	"testing"    : TestingConfig,
+	"production" : ProductionConfig,
 	"default"    : DevelopmentConfig
 }
