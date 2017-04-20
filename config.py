@@ -1,6 +1,6 @@
 import os
 
-PROJECT_DB_PASSWORD = os.environ.get('POSTGRES_DB_PASSWORD')	
+PROJECT_DB_PASSWORD = os.environ.get('POSTGRES_DB_PASSWORD') or ""
 
 class Config(object):
 	DEBUG = False
@@ -57,6 +57,7 @@ class TestingConfig(Config):
 
 class ProductionConfig(Config):
 	DEBUG = False
+	CELERY_CONFIG = {}
 
 config = {
 	"development": DevelopmentConfig,
