@@ -26,7 +26,7 @@ login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
 
 
-# Import models so they are visible to SQLAlchemy
+# Import models so they are visible to SQLAlchemyy
 # (the models module imports db from the current package,
 # thats why the models import is done after the instanciation of db)
 from . import models
