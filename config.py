@@ -10,8 +10,8 @@ class Config(object):
 	# The email of the administrator
 	APP_ADMIN = os.environ.get('APP_ADMIN') or 'med.tiour@gmail.com' 
 
-	APP_MAIL_SUBJECT_PREFIX = '[Compagnon]'
-	APP_MAIL_SENDER         = 'Compagnon Admin <freelancer.arjjuna@gmail.com>'
+	APP_MAIL_SUBJECT_PREFIX = '[OStudy]'
+	APP_MAIL_SENDER         = 'Ostudy Admin <freelancer.arjjuna@gmail.com>'
 
 
 	ALLOWED_EXTENSIONS = set(['pdf', 'png', 'jpg', 'jpeg', 'gif'])
@@ -58,6 +58,14 @@ class TestingConfig(Config):
 class ProductionConfig(Config):
 	DEBUG = False
 	CELERY_CONFIG = {}
+
+	MAIL_SERVER             = 'smtp.gmail.com'
+	MAIL_PORT               = 587
+	MAIL_USE_TLS            = True
+	MAIL_USERNAME           = os.environ.get('MAIL_USERNAME')
+	MAIL_PASSWORD           = os.environ.get('MAIL_PASSWORD')
+
+	SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:' + PROJECT_DB_PASSWORD + '@localhost/ostudy'
 
 config = {
 	"development": DevelopmentConfig,
