@@ -33,7 +33,9 @@ from . import models
 from . import sockets
 from . import tasks
 
-def create_app(config_name="default"):
+DEFAULT_CONFIG = os.environ.get('FLASK_CONFIG') or "default"
+
+def create_app(config_name=DEFAULT_CONFIG):
 	app = Flask(__name__)
 	app.config.from_object(config[config_name])
 
