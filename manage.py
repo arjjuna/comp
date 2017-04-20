@@ -134,7 +134,7 @@ class ProductionServer(Command):
 
 	def run(self, argv):
 		ret = subprocess.call(
-		['gunicorn', '--worker-class', 'eventlet', '-w', '3', '--bind', 'unix:/var/log/gunicorn/compagnon.sock',
+		['gunicorn', '--worker-class', 'eventlet', '-w', '3', '--bind', 'unix:compagnon.sock',
 		 '-m', '007', 'app.wsgi:app'] + argv)
 
 		sys.exit(ret)
