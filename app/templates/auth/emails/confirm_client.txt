@@ -1,3 +1,5 @@
-Utilisateur: {{ user.username }} (Client)
+Bienvenue {{ user.username }}!
 
-Lien de confirmation: {{ url_for('auth.confirm', token=token, _external=True) }}
+
+Confirmez votre inscription en visitant le lien suivant:
+{{ url_for('auth.confirm', token=token, _external=True) 

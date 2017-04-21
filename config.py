@@ -59,6 +59,13 @@ class ProductionConfig(Config):
 	DEBUG = False
 	CELERY_CONFIG = {}
 
+	SERVER_NAME = '207.154.228.229'
+
+	APP_UPLOAD_FOLDER   =  '/home/arjjuna/compagnon/app/app/static/uploads'
+	USERS_UPLOAD_FOLDER =  '/home/arjjuna/compagnon/app/app/static/uploads/users'
+	USERS_UPLOAD_FOLDER_RELATIVE =  'uploads/users'
+	APP_STATIC_FOLDER   = '/home/arjjuna/compagnon/app/app/static'
+
 	MAIL_SERVER             = 'smtp.gmail.com'
 	MAIL_PORT               = 587
 	MAIL_USE_TLS            = True
